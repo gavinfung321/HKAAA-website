@@ -18,6 +18,16 @@ export const ContactSection = () => {
     e.preventDefault();
     setStatus('submitting');
     
+    if (!supabase) {
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again.');
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 3000);
+      return;
+    }
+
     try {
       const { error } = await supabase
         .from('leads')
@@ -44,7 +54,7 @@ export const ContactSection = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value

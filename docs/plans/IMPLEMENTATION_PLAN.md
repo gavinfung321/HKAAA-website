@@ -32,7 +32,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Backend | Supabase (`leads` table, anon insert only) |
 | Payments | Stripe Payment Links exist; they will leave the public pricing UI (Plan A — see pricing plan) |
 | Booking | Calendly (`hkaiautomationagency/30min`) |
-| Chat | Voiceflow widget |
+| Chat | Voiceflow widget (to be removed — see [IMPLEMENTATION_PLAN_CHAT_WIDGET.md](IMPLEMENTATION_PLAN_CHAT_WIDGET.md)) |
 | Assets | Imgur (logo, team, “Why Us” images) — to be replaced |
 | Source | GitHub `main` |
 
@@ -50,7 +50,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Team | Gavin Fung, Natalie Tso, plus “Become Our Member?” → `info@hkaiautomation.com`. |
 | Contact | Form → Supabase `leads`. Address, phone, email. |
 | Footer | Logo, blurb, socials. Two empty columns. |
-| Chat | Voiceflow loaded from `index.html`. |
+| Chat | Voiceflow loaded from `index.html` (purple corner button). Planned removal: [IMPLEMENTATION_PLAN_CHAT_WIDGET.md](IMPLEMENTATION_PLAN_CHAT_WIDGET.md). |
 
 ### Lead capture
 
@@ -96,6 +96,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [ ] Confirm all on-page copy is the language we want to ship (hero, process, services, pricing, team bios)
 - [ ] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
+- [ ] Remove the Voiceflow floating chat button — follow [IMPLEMENTATION_PLAN_CHAT_WIDGET.md](IMPLEMENTATION_PLAN_CHAT_WIDGET.md). Do not code until that plan is approved. Keep the Chatbot development service card and in-section demo.
 
 **Contact form vs services**
 
@@ -118,7 +119,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Verify**
 
-- [ ] Walk the full page on desktop: nav, hero CTA, pricing/plans CTAs, contact submit, chat widget
+- [ ] Walk the full page on desktop: nav, hero CTA, pricing/plans CTAs, contact submit (no Voiceflow button once #3 is done)
 - [ ] Walk the same flows on a mobile viewport
 
 ---
@@ -187,3 +188,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-15 | Pricing copy pass implemented locally. Issue #1 open for visual review. |
 | 2026-09-15 | Pricing copy de-niched (no CPA / accounting firm). |
 | 2026-09-15 | Pricing signed off. Issue #1 closed. Host: Netlify (`hkaiautomation.com`). |
+| 2026-09-15 | Chat widget plan drafted (remove Voiceflow button). Issue #3. No code. Issue #2 paused until that is done. |

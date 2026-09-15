@@ -10,7 +10,6 @@ import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { AuroraBackground } from './components/ui/aurora-background';
-import { ChatbotWidget } from './components/ChatbotWidget';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -579,7 +578,6 @@ return (
 
       {/* Footer */}
       <Footer />
-      <ChatbotWidget />
     </div>
   );
 }
