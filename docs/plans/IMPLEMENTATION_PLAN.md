@@ -140,12 +140,12 @@ Stop depending on Imgur (and other hotlinked hosts) for brand-critical images.
 The public site is already on **Netlify**. DNS for `hkaiautomation.com` is Netlify (NSOne / `domains+netlify.netlify.com`). HTTPS responses send `Server: Netlify`.
 
 - [x] Host identified: Netlify (not Vercel, not GitHub Pages)
-- [ ] Confirm this GitHub repo (`gavinfung321/HKAAA-website`) is the site’s Git remote in the Netlify dashboard (GitHub has no classic deploy webhooks yet)
-- [ ] Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as Netlify env vars (the new keys; `.env` is no longer in git)
-- [ ] Production build succeeds (`npm run build`)
-- [ ] After push: live `hkaiautomation.com` shows Launch / Practice / Partner (no public prices)
+- [x] Push to `gavinfung321/HKAAA-website` `main` triggered a Netlify production deploy (`hkaiautomation.com` asset hash updated)
+- [ ] Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as Netlify env vars (missing from the live JS bundle — contact form will fail until set)
+- [x] Production build reached the domain
+- [x] Live `hkaiautomation.com` includes Launch / Practice / Partner (no Stripe checkout on plans)
 - [x] Domain already points at Netlify
-- [ ] Recheck HTTPS, favicon, Calendly, Voiceflow, and contact form on the live domain
+- [ ] Recheck contact form on the live domain after env vars are set
 
 ---
 
