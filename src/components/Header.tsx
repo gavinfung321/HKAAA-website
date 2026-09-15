@@ -18,7 +18,7 @@ export function Header({ scrollToSection }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Process', 'Why Us', 'Our Services', 'Pricing', 'Team'];
+  const navItems = ['Process', 'Why Us', 'Our Services', 'Plans', 'Team'];
 
   return (
     <nav 
@@ -49,7 +49,7 @@ export function Header({ scrollToSection }: HeaderProps) {
                   if (item === 'Process') scrollToSection('process-section');
                   if (item === 'Why Us') scrollToSection('why-us-section');
                   if (item === 'Our Services') scrollToSection('services-section');
-                  if (item === 'Pricing') scrollToSection('pricing-section');
+                  if (item === 'Plans') scrollToSection('pricing-section');
                   if (item === 'Team') scrollToSection('team-section');
                   if (item === 'Contact') scrollToSection('contact-section');
                 }}
@@ -85,7 +85,7 @@ export function Header({ scrollToSection }: HeaderProps) {
                 if (item === 'Process') scrollToSection('process-section');
                 if (item === 'Why Us') scrollToSection('why-us-section');
                 if (item === 'Our Services') scrollToSection('services-section');
-                if (item === 'Pricing') scrollToSection('pricing-section');
+                if (item === 'Plans') scrollToSection('pricing-section');
                 if (item === 'Team') scrollToSection('team-section');
                 if (item === 'Contact') scrollToSection('contact-section');
                 setIsMenuOpen(false);
