@@ -4,7 +4,14 @@
 **Title:** Chore: Remove Bolt leftovers and rewrite the README  
 **Labels:** `chore`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open
+**Status:** Closed
+
+## Shipped
+
+- Deleted `.bolt/`
+- README is for HKAAA-website, not StackBlitz / May-15-
+- npm package name is `hkaaa-website`
+
 
 ## Scope
 
