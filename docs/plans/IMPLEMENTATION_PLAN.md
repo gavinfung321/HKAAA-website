@@ -114,8 +114,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Repo hygiene**
 
-- [ ] Rewrite `README.md` for this project (not StackBlitz / `May-15-`)
-- [ ] Commit `.gitignore`, `.env.example`, and `supabase/config.toml` (no secrets)
+- [x] Rewrite `README.md` for this project (not StackBlitz / `May-15-`). Also removed unused `.bolt/` and renamed the npm package to `hkaaa-website`.
+- [x] Commit `.gitignore`, `.env.example`, and `supabase/config.toml` (no secrets)
 
 **Verify**
 
@@ -189,3 +189,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-15 | Pricing copy de-niched (no CPA / accounting firm). |
 | 2026-09-15 | Pricing signed off. Issue #1 closed. Host: Netlify (`hkaiautomation.com`). |
 | 2026-09-15 | Chat widget plan drafted (remove Voiceflow button). Issue #3. No code. Issue #2 paused until that is done. |
+| 2026-09-16 | Repo hygiene: removed `.bolt`, rewrote README, renamed package to `hkaaa-website`. Issue #4. |

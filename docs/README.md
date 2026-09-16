@@ -11,5 +11,6 @@ All project plans and issue-tracking guides live here. Do not code from a plan u
 | [issues/001-hide-public-prices.md](issues/001-hide-public-prices.md) | Local brief for GitHub issue #1 |
 | [issues/002-supabase-env-crash.md](issues/002-supabase-env-crash.md) | Local brief for GitHub issue #2 (paused) |
 | [issues/003-remove-chatbot-button.md](issues/003-remove-chatbot-button.md) | Local brief for GitHub issue #3 |
+| [issues/004-remove-bolt-leftovers.md](issues/004-remove-bolt-leftovers.md) | Local brief for GitHub issue #4 |
 
 GitHub source of truth for issues: [gavinfung321/HKAAA-website/issues](https://github.com/gavinfung321/HKAAA-website/issues)
