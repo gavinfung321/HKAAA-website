@@ -134,6 +134,8 @@ export const ContactSection = () => {
                     <option value="Lead Generation">Lead Generation</option>
                     <option value="Chatbot Development">Chatbot Development</option>
                     <option value="Workflow Automation">Workflow Automation</option>
+                    <option value="Web Design">Web Design</option>
+                    <option value="SEO">SEO</option>
                   </select>
                 </div>
 

@@ -59,7 +59,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | `id` | UUID |
 | `name`, `email`, `message` | required |
 | `company` | optional in DB, required in the form |
-| `service` | required; only `Lead Generation`, `Chatbot Development`, `Workflow Automation` |
+| `service` | required; `Lead Generation`, `Chatbot Development`, `Workflow Automation`, `Web Design`, `SEO` |
 | `created_at` | timestamp |
 
 RLS is on. Anonymous visitors can **insert** only.
@@ -100,9 +100,10 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Contact form vs services**
 
-- [ ] Add Web Design, SEO, and Content Creation to the contact dropdown
-- [ ] Add the same three values to the `leads.service` check constraint (new migration)
-- [ ] Submit one test lead for a newly added service and confirm it lands in Supabase
+- [x] Add Web Design and SEO to the contact dropdown ([#6](https://github.com/gavinfung321/HKAAA-website/issues/6))
+- [ ] Add Content Creation to the contact dropdown (still on the six service cards; follow-up)
+- [x] Add Web Design and SEO to the `leads.service` check constraint (migration `20260916120000_leads_service_web_design_seo.sql`)
+- [x] Submit one test lead for a newly added service and confirm it lands in Supabase (Web Design + SEO inserts verified; test rows deleted)
 - [ ] Align DB `company` rules with the form (either make DB NOT NULL or stop marking the field required in the UI)
 
 **Code hygiene**
@@ -190,3 +191,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-15 | Pricing signed off. Issue #1 closed. Host: Netlify (`hkaiautomation.com`). |
 | 2026-09-15 | Chat widget plan drafted (remove Voiceflow button). Issue #3. No code. Issue #2 paused until that is done. |
 | 2026-09-16 | Repo hygiene: removed `.bolt`, rewrote README, renamed package to `hkaaa-website`. Issue #4. |
+| 2026-09-17 | Contact form: Web Design + SEO in dropdown; `leads.service` constraint migration applied; inserts verified (#6). Content Creation still open. |
