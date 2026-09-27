@@ -15,6 +15,7 @@ export default {
         'aurora': 'aurora 60s linear infinite',
         'beam-spin': 'beam-spin 3s linear infinite',
         'dots-move': 'dots-move 8s linear infinite',
+        'testimonial-marquee': 'testimonial-marquee 40s linear infinite',
       },
       keyframes: {
         aurora: {
@@ -31,6 +32,10 @@ export default {
         'dots-move': {
           '0%': { backgroundPosition: '0 0' },
           '100%': { backgroundPosition: '24px 24px' },
+        },
+        'testimonial-marquee': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
         },
       },
     },

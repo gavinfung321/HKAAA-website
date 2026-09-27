@@ -429,7 +429,7 @@ html {
     @apply w-14 h-14;
   }
 }
-/* GradientBeamCta � spinning border + drifting dots */
+/* GradientBeamCta  spinning border + drifting dots */
 @keyframes beam-spin {
   to {
     transform: rotate(360deg);
@@ -453,9 +453,139 @@ html {
   animation: dots-move 8s linear infinite;
 }
 
+/* Testimonials soft marquee — slow right → left */
+@keyframes testimonial-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.testimonial-marquee {
+  animation: testimonial-marquee 70s linear infinite;
+  will-change: transform;
+}
+
+/*
+ * DesignCode-style “3D” card chrome (not perspective transforms):
+ * dual-fill + gradient border via background-clip, multi-layer drop + inset
+ * shadows, top-left spotlight (::before), soft noise (::after).
+ */
+.testimonial-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background-image:
+    linear-gradient(rgba(17, 17, 19, 0.97), rgba(8, 8, 9, 0.984)),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.25),
+      rgba(255, 255, 255, 0.075) 34%,
+      rgba(255, 255, 255, 0.02) 70%,
+      rgba(255, 255, 255, 0.11)
+    );
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  box-shadow:
+    rgba(0, 0, 0, 0.62) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.72) 0 6px 12px -6px,
+    rgba(0, 0, 0, 0.94) 0 22px 38px -28px,
+    rgba(255, 255, 255, 0.086) 0 1px 0 0 inset,
+    rgba(0, 0, 0, 0.86) 0 -1px 0 0 inset;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.82;
+  background:
+    radial-gradient(
+      118% 112% at -8% -14%,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.1) 36%,
+      rgba(255, 255, 255, 0.027) 64%,
+      rgba(0, 0, 0, 0) 86%
+    ),
+    linear-gradient(
+      148deg,
+      rgba(255, 255, 255, 0.067) 0%,
+      rgba(255, 255, 255, 0.02) 48%,
+      rgba(0, 0, 0, 0) 76%
+    );
+}
+
+.testimonial-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='72' viewBox='0 0 96 72'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72 .86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='96' height='72' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.testimonial-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-card {
+  transition:
+    background-image 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.group\/card:hover .testimonial-card,
+.testimonial-card:hover {
+  background-image:
+    linear-gradient(rgba(48, 22, 72, 0.96), rgba(22, 10, 38, 0.98)),
+    linear-gradient(
+      145deg,
+      rgba(216, 180, 254, 0.45),
+      rgba(192, 132, 252, 0.22) 34%,
+      rgba(168, 85, 247, 0.12) 70%,
+      rgba(236, 72, 153, 0.28)
+    );
+  box-shadow:
+    rgba(168, 85, 247, 0.28) 0 0 0 1px,
+    rgba(0, 0, 0, 0.62) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.72) 0 6px 12px -6px,
+    rgba(0, 0, 0, 0.94) 0 22px 38px -28px,
+    rgba(255, 255, 255, 0.12) 0 1px 0 0 inset,
+    rgba(0, 0, 0, 0.86) 0 -1px 0 0 inset;
+}
+
+.group\/card:hover .testimonial-card::before {
+  background:
+    radial-gradient(
+      118% 112% at -8% -14%,
+      rgba(216, 180, 254, 0.35) 0%,
+      rgba(168, 85, 247, 0.16) 36%,
+      rgba(236, 72, 153, 0.06) 64%,
+      rgba(0, 0, 0, 0) 86%
+    ),
+    linear-gradient(
+      148deg,
+      rgba(192, 132, 252, 0.14) 0%,
+      rgba(168, 85, 247, 0.05) 48%,
+      rgba(0, 0, 0, 0) 76%
+    );
+}
+
 @media (prefers-reduced-motion: reduce) {
   .gradient-beam-spin,
-  .gradient-beam-dots {
+  .gradient-beam-dots,
+  .testimonial-marquee {
     animation: none;
   }
 }
