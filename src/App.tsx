@@ -9,7 +9,7 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { AuroraBackground } from './components/ui/aurora-background';
+import { CloudFieldBackground } from './components/effects/cloud-field/CloudFieldBackground';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -80,11 +80,23 @@ function App() {
       <Header scrollToSection={scrollToSection} />
 
       {/* Hero Section */}
-      <div id="hero-section" className="bg-zinc-900">
-        <AuroraBackground>
+      <div
+        id="hero-section"
+        className="relative min-h-[100svh] overflow-hidden bg-[#050510]"
+      >
+        <CloudFieldBackground />
+        <div
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 50% at 50% 55%, rgba(5,5,16,0.55) 0%, transparent 70%)',
+          }}
+          aria-hidden
+        />
+        <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-normal mb-6 leading-tight animate-[slideInRight_1s_ease-out] opacity-0 [animation-fill-mode:forwards]">
-              <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text inline-block hover:scale-105 hover:-rotate-1 transition-transform duration-300">Transform</span> Your Business 
+              <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text inline-block hover:scale-105 hover:-rotate-1 transition-transform duration-300">Transform</span> Your Business
               <span className="block">
                 With <span className="text-white">AI Automation</span>
               </span>
@@ -103,7 +115,7 @@ function App() {
               </a>
             </div>
           </div>
-        </AuroraBackground>
+        </div>
       </div>
 
       {/* Process Section */}
