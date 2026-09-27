@@ -96,7 +96,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [ ] Site-wide copy pass to match hero voice — follow [IMPLEMENTATION_PLAN_SITE_COPY.md](IMPLEMENTATION_PLAN_SITE_COPY.md) ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16)). Do not code until that plan is approved.
 - [x] Testimonials after hero (auto marquee, mixed faces) — follow [IMPLEMENTATION_PLAN_TESTIMONIALS.md](IMPLEMENTATION_PLAN_TESTIMONIALS.md) ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)).
 - [x] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits → done via [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)
-- [ ] Plans section visual + placement (match hero craft; Plans stays later than proof) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)). Do not code until that plan is approved.
+- [x] Plans section visual + placement (glass 3D cards; keep late after Services) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)).
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
 - [x] Remove the Voiceflow floating chat button — already removed in `f80e6cd`; [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed. Chatbot development service card and in-section demo kept.
 
@@ -219,5 +219,6 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | #16 paused (visuals first). #17: Process visual polish plan drafted. No code until Phase 0. |
 | 2026-09-27 | #17 signed off: left timeline, Matrix Junction laser (right focus), soft seams; legacy cards saved. |
 | 2026-09-27 | #18: Plans visual + placement plan drafted (offer shelf vs Process; recommend after hero). No code until Phase 0. |
+| 2026-09-27 | #18 signed off: centered header; glass 3D cards with cursor spotlight; keep late; Partner “Site plus automation.” |
 | 2026-09-27 | #19: Testimonials after hero plan drafted (DesignCode-inspired marquee; Asian faces; no company names). Plans post-hero idea dropped. |
 | 2026-09-27 | #19 signed off: marquee strip under hero; DesignCode cards; purple hover; soft seam; no Portal Field. |
