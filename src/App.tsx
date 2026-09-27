@@ -9,9 +9,7 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { CloudFieldBackground } from './components/effects/cloud-field/CloudFieldBackground';
-import { RotatingHeroPhrase } from './components/RotatingHeroPhrase';
-import { GradientBeamCta } from './components/ui/GradientBeamCta';
+import { HeroSection } from './components/HeroSection';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -81,40 +79,7 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-white">
       <Header scrollToSection={scrollToSection} />
 
-      {/* Hero Section */}
-      <div
-        id="hero-section"
-        className="relative min-h-[100svh] overflow-hidden bg-[#050510]"
-      >
-        <CloudFieldBackground />
-        <div
-          className="pointer-events-none absolute inset-0 z-[1]"
-          style={{
-            background:
-              'radial-gradient(ellipse 70% 50% at 50% 55%, rgba(5,5,16,0.55) 0%, transparent 70%)',
-          }}
-          aria-hidden
-        />
-        <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-normal mb-6 leading-tight animate-[slideInRight_1s_ease-out] opacity-0 [animation-fill-mode:forwards]">
-              <span className="block">
-                <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">Transform</span>
-                {' '}your business with better
-              </span>
-              <span className="mt-1 block">
-                <RotatingHeroPhrase />
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 animate-[fadeInLeft_1s_ease-out_0.3s] opacity-0 [animation-fill-mode:forwards]">
-              We start with a website you can be proud of, then help with the rest when you are ready.
-            </p>
-            <div className="flex justify-center animate-[scaleIn_1s_ease-out_0.6s] opacity-0 [animation-fill-mode:forwards]">
-              <GradientBeamCta />
-            </div>
-          </div>
-        </div>
-      </div>
+      <HeroSection />
 
       {/* Process Section */}
       <section id="process-section" className="pt-16 md:pt-24 pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

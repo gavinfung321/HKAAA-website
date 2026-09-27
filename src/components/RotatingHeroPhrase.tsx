@@ -1,16 +1,17 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-const PHRASES = ['Websites', 'SEO', 'Workflows', 'Outreach'] as const;
+const PHRASES = ['Websites', 'SEO', 'Chatbots', 'Automation'] as const;
 
-const INTERVAL_MS = 2500;
+const INTERVAL_MS = 2800;
 
 type RotatingHeroPhraseProps = {
   className?: string;
 };
 
 /**
- * Vertical blur/slide rotator for the hero middle phrase.
+ * Vertical slide rotator for the hero phrase.
+ * Clipped tightly so exit frames don’t ghost under the line above.
  * Freezes on the first phrase when prefers-reduced-motion is set.
  */
 export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
@@ -29,7 +30,10 @@ export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
 
   if (reduceMotion) {
     return (
-      <span className={className} aria-live="polite">
+      <span
+        className={`bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ${className ?? ''}`}
+        aria-live="polite"
+      >
         {PHRASES[0]}
       </span>
     );
@@ -37,25 +41,24 @@ export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
 
   return (
     <span
-      className={`relative inline-flex h-[1.15em] min-w-[9ch] items-center justify-center overflow-hidden align-bottom ${className ?? ''}`}
+      className={`relative inline-flex h-[1.15em] min-w-[11ch] items-center justify-start overflow-hidden align-bottom max-md:mx-auto max-md:justify-center ${className ?? ''}`}
       aria-live="polite"
       aria-atomic="true"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={phrase}
-          className="absolute inset-x-0 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
-          initial={{ y: '70%', opacity: 0, filter: 'blur(8px)' }}
-          animate={{ y: '0%', opacity: 1, filter: 'blur(0px)' }}
-          exit={{ y: '-70%', opacity: 0, filter: 'blur(8px)' }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute left-0 top-0 whitespace-nowrap bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent max-md:right-0 max-md:left-0 max-md:text-center"
+          initial={{ y: '100%', opacity: 0 }}
+          animate={{ y: '0%', opacity: 1 }}
+          exit={{ y: '-100%', opacity: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         >
           {phrase}
         </motion.span>
       </AnimatePresence>
-      {/* Reserve width for longest label so layout doesn’t jump */}
       <span className="invisible whitespace-nowrap" aria-hidden>
-        Workflows
+        Automation
       </span>
     </span>
   );
