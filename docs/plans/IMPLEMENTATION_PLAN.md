@@ -147,11 +147,11 @@ The public site is already on **Netlify**. DNS for `hkaiautomation.com` is Netli
 
 - [x] Host identified: Netlify (not Vercel, not GitHub Pages)
 - [x] Push to `gavinfung321/HKAAA-website` `main` triggered a Netlify production deploy (`hkaiautomation.com` asset hash updated)
-- [ ] Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as Netlify env vars (missing from the live JS bundle — contact form will fail until set)
+- [x] Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` as Netlify env vars (live production JS includes `*.supabase.co` — verified 2026-09-27)
 - [x] Production build reached the domain
 - [x] Live `hkaiautomation.com` includes Launch / Practice / Partner (no Stripe checkout on plans)
 - [x] Domain already points at Netlify
-- [ ] Recheck contact form on the live domain after env vars are set
+- [x] Recheck contact form on the live domain after env vars are set (env baked into bundle; `supabase` client guard + ContactSection null-safe — [#2](https://github.com/gavinfung321/HKAAA-website/issues/2))
 
 ---
 
@@ -195,6 +195,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-15 | Pricing signed off. Issue #1 closed. Host: Netlify (`hkaiautomation.com`). |
 | 2026-09-15 | Chat widget plan drafted (remove Voiceflow button). Issue #3. No code. Issue #2 paused until that is done. |
 | 2026-09-27 | #3 closed: Voiceflow already removed (`f80e6cd`). #2 unblocked. |
+| 2026-09-27 | #2 closed: live bundle has Supabase URL; client null-guard in place; site no longer white-screens. |
 | 2026-09-16 | Repo hygiene: removed `.bolt`, rewrote README, renamed package to `hkaaa-website`. Issue #4. |
 | 2026-09-17 | Contact form: Web Design + SEO in dropdown; `leads.service` constraint migration applied; inserts verified (#6). Content Creation still open. |
 | 2026-09-27 | Portal Field / cloud-field hero plan drafted (replace Aurora). No code until approved. |

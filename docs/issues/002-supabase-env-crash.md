@@ -4,14 +4,14 @@
 **Title:** Bug: Missing Supabase env vars crash the live site  
 **Labels:** `bug`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — unblocked (#3 closed; Voiceflow already removed)
+**Status:** Closed — 2026-09-27
 
-## Context
+## Outcome
 
-Live `hkaiautomation.com` white-screens because `createClient` throws when Netlify did not bake `VITE_SUPABASE_*` into the JS bundle. The contact form never mounts.
+- `src/lib/supabase.ts` skips `createClient` when env is missing (`supabase` is `null`)
+- `ContactSection` shows an error state instead of crashing when the client is null
+- Live `hkaiautomation.com` production JS includes a `*.supabase.co` URL (Netlify env vars are set)
 
-## Approach
+## Context (original)
 
-- Guard `src/lib/supabase.ts` so a missing URL/key does not throw
-- Contact form uses the existing error state when the client is unavailable
-- Form still inserts into `leads` when env vars are present
+Live site white-screened because `createClient` threw when Netlify had not baked `VITE_SUPABASE_*` into the build.
