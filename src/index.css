@@ -429,7 +429,7 @@ html {
     @apply w-14 h-14;
   }
 }
-/* GradientBeamCta  spinning border + drifting dots */
+/* GradientBeamCta Â spinning border + drifting dots */
 @keyframes beam-spin {
   to {
     transform: rotate(360deg);
@@ -453,7 +453,7 @@ html {
   animation: dots-move 8s linear infinite;
 }
 
-/* Testimonials soft marquee — slow right → left */
+/* Testimonials soft marquee â slow right â left */
 @keyframes testimonial-marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -469,7 +469,7 @@ html {
 }
 
 /*
- * DesignCode-style “3D” card chrome (not perspective transforms):
+ * DesignCode-style â3Dâ card chrome (not perspective transforms):
  * dual-fill + gradient border via background-clip, multi-layer drop + inset
  * shadows, top-left spotlight (::before), soft noise (::after).
  */
@@ -582,10 +582,106 @@ html {
     );
 }
 
+/*
+ * Plans glass cards — 3D chrome + cursor-following spotlight.
+ * --spot-x / --spot-y / --tilt-x / --tilt-y set from PricingSection.
+ */
+.plan-card {
+  --spot-x: 50%;
+  --spot-y: 0%;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  position: relative;
+  isolation: isolate;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  border: 1px solid transparent;
+  background-image:
+    linear-gradient(rgba(18, 18, 24, 0.72), rgba(10, 10, 15, 0.88)),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.28),
+      rgba(255, 255, 255, 0.08) 36%,
+      rgba(255, 255, 255, 0.03) 68%,
+      rgba(255, 255, 255, 0.14)
+    );
+  background-origin: padding-box, border-box;
+  background-clip: padding-box, border-box;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow:
+    rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.65) 0 8px 18px -10px,
+    rgba(0, 0, 0, 0.85) 0 28px 48px -28px,
+    rgba(255, 255, 255, 0.1) 0 1px 0 0 inset,
+    rgba(0, 0, 0, 0.75) 0 -1px 0 0 inset;
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  will-change: transform;
+}
+
+.plan-card--popular {
+  background-image:
+    linear-gradient(rgba(22, 16, 36, 0.78), rgba(12, 10, 22, 0.9)),
+    linear-gradient(
+      145deg,
+      rgba(216, 180, 254, 0.35),
+      rgba(192, 132, 252, 0.12) 40%,
+      rgba(236, 72, 153, 0.08) 70%,
+      rgba(255, 255, 255, 0.12)
+    );
+}
+
+.plan-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.95;
+  background: radial-gradient(
+    420px circle at var(--spot-x) var(--spot-y),
+    rgba(192, 132, 252, 0.28) 0%,
+    rgba(168, 85, 247, 0.12) 28%,
+    rgba(255, 255, 255, 0.04) 48%,
+    transparent 68%
+  );
+  transition: opacity 0.25s ease;
+}
+
+.plan-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.18;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='72' viewBox='0 0 96 72'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72 .86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='96' height='72' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.plan-card:hover {
+  box-shadow:
+    rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.7) 0 12px 24px -12px,
+    rgba(168, 85, 247, 0.18) 0 28px 56px -24px,
+    rgba(255, 255, 255, 0.14) 0 1px 0 0 inset,
+    rgba(0, 0, 0, 0.8) 0 -1px 0 0 inset;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .gradient-beam-spin,
   .gradient-beam-dots,
   .testimonial-marquee {
     animation: none;
+  }
+
+  .plan-card {
+    transform: none;
+    transition: box-shadow 0.35s ease;
   }
 }
