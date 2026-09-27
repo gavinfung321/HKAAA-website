@@ -4,7 +4,7 @@
 **Title:** Copy: Update hero headline and fix surcharge leads  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — in progress
+**Status:** Closed — merged [PR #10](https://github.com/gavinfung321/HKAAA-website/pull/10)
 
 ## Agreed copy
 
