@@ -4,7 +4,7 @@
 **Title:** Design: Portal Field cloud-field WebGL hero backdrop  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — visually signed off on `feat/issue-7-portal-field-hero`; merge pending
+**Status:** Closed — merged [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)
 
 ## Plan
 

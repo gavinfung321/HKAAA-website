@@ -1,6 +1,6 @@
 # Portal Field hero background — implementation plan
 
-**Status:** Implementation in progress on `feat/issue-7-portal-field-hero` — Phase 0 approved.  
+**Status:** Done — merged via [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8); [#7](https://github.com/gavinfung321/HKAAA-website/issues/7) closed.  
 **GitHub issue:** [#7](https://github.com/gavinfung321/HKAAA-website/issues/7)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / hero visual  
 **Scope:** Ambient WebGL field behind existing hero copy (not a 3D narrative scene).
@@ -92,7 +92,7 @@ Rules:
 - [x] `prefers-reduced-motion: reduce` → freeze time (single static frame)
 - [x] Pause loop when hero off-screen (IntersectionObserver) + tab hidden
 - [x] Mouse parallax; time-based drift when idle
-- [ ] Recheck mid-phone FPS after visual sign-off (optional trim)
+- [x] Recheck mid-phone FPS after visual sign-off (optional trim) — deferred; revisit only if mobile jank reported
 - [x] Context-loss: stop RAF on `webglcontextlost`
 
 ### Phase 4 — Polish + verify
@@ -141,7 +141,7 @@ Rules:
 - [x] Reduced-motion and off-screen pause behave correctly
 - [x] Desktop + mobile verified; no leaked RAF/listeners on teardown
 - [x] Strata/DesignCode marketing chrome not shipped
-- [ ] Issue closed with verification comment after merge
+- [x] Issue closed with verification comment after merge
 
 ---
 
@@ -157,3 +157,4 @@ Rules:
 | 2026-09-27 | Phase 0.4 approved: cloud-field only for v1. Implementation started. |
 | 2026-09-27 | Local `CloudFieldBackground` wired into hero (replace Aurora). Desktop WebGL verified. |
 | 2026-09-27 | Designer visual sign-off: cooler HK-night regrade kept. |
+| 2026-09-27 | Merged PR #8; issue #7 closed. Plan complete. |

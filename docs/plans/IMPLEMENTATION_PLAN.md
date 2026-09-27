@@ -100,7 +100,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Hero visual**
 
-- [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7)). Visual signed off on `feat/issue-7-portal-field-hero`; merge still pending.
+- [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7), [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)).
 
 **Contact form vs services**
 
@@ -200,3 +200,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | Closed #5 (cinematic Victoria Harbour hero) as not planned. Hero path is #7 only. |
 | 2026-09-27 | #7: cloud-field WebGL hero implemented on branch `feat/issue-7-portal-field-hero` (desktop verified; awaiting sign-off). |
 | 2026-09-27 | #7: designer visual sign-off (keep cooler regrade). Merge/close pending. |
+| 2026-09-27 | #7 closed via PR #8 merge — cloud-field WebGL hero on main. |
