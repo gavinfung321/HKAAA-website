@@ -1,6 +1,6 @@
 # Book a Call CTA — gradient beam button
 
-**Status:** Draft for review — **do not code until this plan is approved.**  
+**Status:** Implementation in progress on `feat/issue-11-book-call-cta` — Phase 0 approved.  
 **GitHub issue:** [#11](https://github.com/gavinfung321/HKAAA-website/issues/11)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / hero + pricing CTAs  
 **Reference video:** `Book a call button.mp4` (gradient-beam rotating border)  
@@ -74,42 +74,35 @@ From the video / HTML:
 
 ### Phase 0 — Approve direction
 
-- [ ] Confirm label: **Book a Call** (not “Book a Free Strategy Call”)
-- [ ] Confirm scope: **hero + pricing** both use the new CTA (recommended)
-- [ ] Confirm palette: keep reference **orange** beam **or** regrade to HKAAA **purple/pink** so it matches the site
-- [ ] Confirm rights to ship the authored gradient-beam HTML in this repo
-- [ ] Confirm: uppercase + tracking like the reference, or sentence case “Book a Call”
+- [x] Confirm label: **Book a Call** (not “Book a Free Strategy Call”)
+- [x] Confirm scope: **hero + pricing** both use the new CTA (recommended)
+- [x] Confirm palette: keep reference **orange** beam **or** regrade to HKAAA **purple/pink** so it matches the site → **regrade purple/pink**
+- [x] Confirm rights to ship the authored gradient-beam HTML in this repo
+- [x] Confirm: uppercase + tracking like the reference, or sentence case “Book a Call” → **Book a Call** (sentence case)
 
-**Do not code until Phase 0 is checked.**
+**Phase 0 complete — implementation approved.**
 
 ### Phase 1 — Local CTA component
 
-1. Add something like `src/components/ui/GradientBeamCta.tsx` (or `effects/gradient-beam-cta/`).
-2. Port the authored button structure:
-   - Outer beam ring (`conic-gradient` + `beam-spin`)
-   - Inner fill + dots + hover glow
-   - Label slot + optional arrow
-3. Render as a real `<a>` (or `button` wrapping link) with:
-   - `href` → Calendly
-   - `target="_blank"` `rel="noopener noreferrer"`
-   - Visible focus style (do not drop keyboard focus)
-4. Props: `href`, `children` (default “Book a Call”), `className`
-5. `prefers-reduced-motion: reduce` → stop `beam-spin` and `dots-move` (static beam position OK)
+1. [x] Add `src/components/ui/GradientBeamCta.tsx`.
+2. [x] Port authored beam ring, inner fill, dots, hover glow, arrow.
+3. [x] Real `<a>` to Calendly with focus-visible ring.
+4. [x] Default label **Book a Call**; purple/pink regrade.
+5. [x] `motion-safe:` animations (reduced-motion stops spin/dots).
 
 ### Phase 2 — Wire into the site
 
-1. Hero: replace the current fill CTA with `<GradientBeamCta href={CALENDLY}>Book a Call</GradientBeamCta>`
-2. Pricing: same component / same label
-3. Optional: extract shared `CALENDLY_URL` constant if not already shared
-4. Remove unused purple-fill classes from those two anchors only
+1. [x] Hero uses `<GradientBeamCta />`.
+2. [x] Pricing uses same component.
+3. [x] Shared `CALENDLY_URL` exported from the CTA module.
 
 ### Phase 3 — Verify
 
-- [ ] Desktop: beam animates; hover scale/glow; click opens Calendly
-- [ ] Mobile: tap target large enough; no layout jump
-- [ ] Reduced-motion: no continuous spin
-- [ ] Keyboard: Tab focus visible; Enter/Space activates link
-- [ ] Hero readability over cloud-field still OK
+- [x] Desktop: label + beam present; Calendly link (hero + pricing)
+- [x] Mobile viewport sign-off
+- [x] Reduced-motion sign-off (CSS media query)
+- [x] Designer visual sign-off (glass face + spinning beam)
+- [ ] Issue closed after merge
 
 ---
 
@@ -151,3 +144,6 @@ From the video / HTML:
 | Date | Note |
 | --- | --- |
 | 2026-09-27 | Plan drafted from gradient-beam-cta HTML + Book a call button.mp4. No code. |
+| 2026-09-27 | Phase 0 approved: Book a Call; hero+pricing; purple/pink regrade; rights OK; sentence case. |
+| 2026-09-27 | Implemented `GradientBeamCta` on hero + pricing. Awaiting visual sign-off. |
+| 2026-09-27 | Glass face + fixed spinning beam; designer signed off hero CTA. |

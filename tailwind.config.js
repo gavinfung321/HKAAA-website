@@ -13,6 +13,8 @@ export default {
       animation: {
         'glow': 'glow 1.5s ease-in-out infinite alternate',
         'aurora': 'aurora 60s linear infinite',
+        'beam-spin': 'beam-spin 3s linear infinite',
+        'dots-move': 'dots-move 8s linear infinite',
       },
       keyframes: {
         aurora: {
@@ -22,6 +24,13 @@ export default {
           to: {
             backgroundPosition: '350% 50%, 350% 50%',
           },
+        },
+        'beam-spin': {
+          to: { transform: 'rotate(360deg)' },
+        },
+        'dots-move': {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '24px 24px' },
         },
       },
     },
