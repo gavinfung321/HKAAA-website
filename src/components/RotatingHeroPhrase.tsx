@@ -41,14 +41,14 @@ export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
 
   return (
     <span
-      className={`relative inline-flex h-[1.15em] min-w-[11ch] items-center justify-start overflow-hidden align-bottom max-md:mx-auto max-md:justify-center ${className ?? ''}`}
+      className={`relative inline-flex h-[1.15em] min-w-[11ch] items-center justify-start overflow-hidden align-bottom ${className ?? ''}`}
       aria-live="polite"
       aria-atomic="true"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={phrase}
-          className="absolute left-0 top-0 whitespace-nowrap bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent max-md:right-0 max-md:left-0 max-md:text-center"
+          className="absolute left-0 top-0 whitespace-nowrap bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
           initial={{ y: '100%', opacity: 0 }}
           animate={{ y: '0%', opacity: 1 }}
           exit={{ y: '-100%', opacity: 0 }}
