@@ -41,7 +41,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Section | What it does today |
 | --- | --- |
 | Header | Fixed nav: Process, Why Us, Our Services, Pricing, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
-| Hero | “Transform your business with better” + rotating **Websites / SEO / Workflows / Outreach**. Subline: websites, SEO, workflow automation, AI outreach. CTA → Calendly. Backdrop: cloud-field WebGL. |
+| Hero | “Elevate with better” + rotating **Websites / SEO / Chatbots / Automation**. Brand lockup in hero; left/offset type; proof line; soft fade into Process. CTA → Calendly. Backdrop: cloud-field WebGL. |
 | Process | Discovery Call → Solution Design → Implementation. |
 | Why Choose Us | Proven Expertise, End-to-End Support, Cutting-Edge Technology. |
 | Services | Six cards: Workflow, Chatbot, Lead generation, Web Design, SEO, Content Creation. |
@@ -102,7 +102,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 - [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7), [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)).
 - [x] Book a Call gradient-beam CTA — follow [IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11), [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)).
-- [ ] Glass floating header + desktop spring — follow [IMPLEMENTATION_PLAN_GLASS_NAV.md](IMPLEMENTATION_PLAN_GLASS_NAV.md) ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). Do not code until that plan is approved.
+- [x] Hero craft pass (voice, composition, materials) — follow [IMPLEMENTATION_PLAN_HERO_CRAFT.md](IMPLEMENTATION_PLAN_HERO_CRAFT.md) ([#14](https://github.com/gavinfung321/HKAAA-website/issues/14)).
+- [ ] Glass floating header + desktop spring — follow [IMPLEMENTATION_PLAN_GLASS_NAV.md](IMPLEMENTATION_PLAN_GLASS_NAV.md) ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). *(Not planned — designer preferred original nav after trial.)*
 
 **Contact form vs services**
 
@@ -209,3 +210,5 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | #7: designer visual sign-off (keep cooler regrade). Merge/close pending. |
 | 2026-09-27 | #7 closed via PR #8 merge — cloud-field WebGL hero on main. |
 | 2026-09-27 | Hero copy: Web + AI headline; websites/SEO/automation/outreach subline (#9). |
+| 2026-09-27 | #14: hero craft pass plan drafted (voice / composition / materials vs DesignCode). No code until Phase 0. |
+| 2026-09-27 | #14 signed off: Elevate with better + rotator A; left/offset; deepen CTA; proof line; transparent nav; merge pending. |

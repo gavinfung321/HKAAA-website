@@ -23,7 +23,7 @@ export function Header({ scrollToSection }: HeaderProps) {
   return (
     <nav 
       className={`fixed w-full z-50 transition-colors duration-300 ${
-        isScrolled ? 'bg-black' : 'bg-black'
+        isScrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-6 py-4">
