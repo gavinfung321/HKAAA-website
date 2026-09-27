@@ -4,7 +4,7 @@
 **Title:** Design: Process section visual polish  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — plan drafted; awaiting Phase 0
+**Status:** Signed off — closing via PR merge
 
 ## Plan
 

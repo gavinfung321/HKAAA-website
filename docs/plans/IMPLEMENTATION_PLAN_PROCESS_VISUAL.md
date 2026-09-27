@@ -1,9 +1,9 @@
 # Process section visual polish — implementation plan
 
-**Status:** Draft for review — **do not code until Phase 0 is approved.**  
+**Status:** Complete — signed off; merge pending.  
 **GitHub issue:** [#17](https://github.com/gavinfung321/HKAAA-website/issues/17)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / visual tighten  
-**After:** Hero craft [#14](https://github.com/gavinfung321/HKAAA-website/issues/14)  
+**After:** Testimonials [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)  
 **Related:** Site copy [#16](https://github.com/gavinfung321/HKAAA-website/issues/16) (paused — visuals first)
 
 ---
@@ -63,33 +63,12 @@ Keep the three steps (Discovery → Design → Implementation) unless Phase 0 re
 ### Phase 0 — Approve direction
 
 - [x] Confirm direction: **A — Timeline**
-- [ ] Confirm nested demos: awaiting pick (recommendation below)
+- [x] Confirm nested demos: **remove all**
 - [x] Confirm section header: **one title + short support line**
-- [ ] Confirm alignment: awaiting pick (recommendation below)
-- [x] Confirm step labels: keep Discovery / Solution Design / Implementation for now
+- [x] Confirm alignment: **left** (designer preferred after right trial)
+- [x] Confirm step labels: keep Discovery Call / Solution Design / Implementation for now
 
-**Do not start Phase 1 until demos + alignment are confirmed.**
-
-#### Nested demos (item 2) — recommendation: **remove all**
-
-Today each step has a mini fake UI (expert grid / scrolling code / icon marquee). They add noise under the new hero and fight a clean timeline.
-
-| Choice | Effect |
-| --- | --- |
-| **Remove all (recommended)** | Timeline stays calm; craft matches hero |
-| Keep one | Pick a single visual for one step only (still a bit busy) |
-| Keep all | Smallest change; cliff stays |
-
-#### Alignment (item 4) — what this means
-
-Where the Process **title, support line, and steps** sit on the page:
-
-| Choice | Meaning |
-| --- | --- |
-| **Left (recommended)** | Same as the hero type column — one system top to bottom |
-| Centered | Classic section header; steps may still be left or centered under it |
-
-**Recommendation: left** so Process continues the hero’s left edge.
+**Phase 0 locked — start Phase 1.**
 
 ### Phase 1 — Structure
 
@@ -105,19 +84,19 @@ Where the Process **title, support line, and steps** sit on the page:
 
 ### Phase 3 — Verify
 
-- [ ] Desktop: no template-card cliff under hero
-- [ ] Mobile: stack/rail readable; left-aligned if chosen
-- [ ] Nav “Process” still scrolls correctly
-- [ ] Designer visual sign-off
+- [x] Desktop: no template-card cliff under hero / testimonials
+- [x] Mobile: stack/rail readable; left-aligned
+- [x] Nav “Process” still scrolls correctly
+- [x] Designer visual sign-off
 
 ---
 
 ## Acceptance criteria
 
-- [ ] Phase 0 approved
-- [ ] Process visual direction shipped
-- [ ] Nested demo chrome handled per Phase 0
-- [ ] Desktop + mobile verified
+- [x] Phase 0 approved
+- [x] Process visual direction shipped (left timeline + Matrix Junction laser)
+- [x] Nested demo chrome handled per Phase 0 (removed; legacy in `ProcessSection.legacy.tsx`)
+- [x] Desktop + mobile verified
 - [ ] Issue closed after sign-off + merge
 
 ---
@@ -127,3 +106,8 @@ Where the Process **title, support line, and steps** sit on the page:
 | Date | Note |
 | --- | --- |
 | 2026-09-27 | Plan drafted after hero merge; visuals-first priority. No code. Issue #17 opened. |
+| 2026-09-27 | Phase 0 locked after #19: Timeline A; remove all nested demos; left align; one title + support. Building. |
+| 2026-09-27 | Alignment flipped to **right**. Legacy animated cards saved in `ProcessSection.legacy.tsx` (not mounted). |
+| 2026-09-27 | Back to **left**. Stronger step hover: scale title + brighter gradient/glow on rail. |
+| 2026-09-27 | Matrix Junction laser behind Process; junction on **right**; cloud-field blue tint. |
+| 2026-09-27 | Soft top/bottom fades for section seams. Designer signed off. |
