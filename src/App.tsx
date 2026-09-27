@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Trophy, HeartHandshake, Cpu, Layout, Search, PenTool } from 'lucide-react';
+import { Layout, Search, PenTool } from 'lucide-react';
 import { Header } from './components/Header';
 import { WorkflowDemo } from './components/WorkflowDemo';
 import { ChatbotDemo } from './components/ChatbotDemo';
@@ -7,6 +7,7 @@ import { BusinessGraph } from './components/BusinessGraph';
 import { PricingSection } from './components/PricingSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { ProcessSection } from './components/ProcessSection';
+import { WhyUsSection } from './components/WhyUsSection';
 import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -50,98 +51,7 @@ function App() {
 
       <ProcessSection />
 
-      {/* Why Choose Us Section */}
-      <section id="why-us-section" className="pt-12 md:pt-24 pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-4xl md:text-6xl font-normal mb-6">
-              Why <span className="gradient-text">Choose Us</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              Experience the difference with our comprehensive AI solutions
-            </p>
-          </div>
-              
-          {/* Value Propositions */}
-          <div className="space-y-16">
-            {/* Proven Expertise */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="value-prop animate-on-scroll order-2 lg:order-1" data-index="1">
-                <div className="flex items-start gap-6">
-                  <div className="value-prop-icon">
-                    <Trophy className="w-8 h-8 text-purple-500" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-normal mb-2">Proven Expertise</h3>
-                    <p className="text-purple-400 font-medium mb-3">Tailored AI Solutions for Real Results</p>
-                    <p className="text-gray-400 leading-relaxed">
-                      We deliver custom AI automation designed for your unique business needs, backed by a track record of success.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="animate-on-scroll order-1 lg:order-2">
-                <img
-                  src="https://i.imgur.com/jAALHKy.png"
-                  alt="Team of experts collaborating"
-                  className="w-full h-auto max-w-[600px] mx-auto"
-                />
-              </div>
-            </div>
-
-            {/* End-to-End Support */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-on-scroll">
-                <img
-                  src="https://i.imgur.com/YOnKFr8.png"
-                  alt="Comprehensive support system"
-                  className="w-full h-auto max-w-[600px] mx-auto"
-                />
-              </div>
-              <div className="value-prop animate-on-scroll" data-index="2">
-                  <div className="flex items-start gap-6">
-                    <div className="value-prop-icon">
-                      <HeartHandshake className="w-8 h-8 text-purple-500" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-normal mb-2">End-to-End Support</h3>
-                      <p className="text-purple-400 font-medium mb-3">From Strategy to Success</p>
-                      <p className="text-gray-400 leading-relaxed">
-                        Our team handles everything—strategy, implementation, and ongoing support—ensuring seamless integration and maximum ROI.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            {/* Cutting-Edge Technology */}
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="value-prop animate-on-scroll order-2 lg:order-1" data-index="3">
-                <div className="flex items-start gap-6">
-                  <div className="value-prop-icon">
-                    <Cpu className="w-8 h-8 text-purple-500" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-normal mb-2">Cutting-Edge Technology</h3>
-                    <p className="text-purple-400 font-medium mb-3">Innovation at Your Fingertips</p>
-                    <p className="text-gray-400 leading-relaxed">
-                      We leverage the latest AI tools and frameworks to future-proof your business and keep you ahead of the competition.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            <div className="animate-on-scroll order-1 lg:order-2">
-              <img
-                src="https://i.imgur.com/PqoyZIl.png"
-                alt="Advanced AI technology visualization"
-                className="w-full h-auto max-w-[600px] mx-auto"
-              />
-            </div>
-          </div>
-          </div>
-
-        </div>
-      </section>
+      <WhyUsSection />
 
       {/* Services Section */}
  <section id="services-section" className="pt-12 md:pt-16 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
