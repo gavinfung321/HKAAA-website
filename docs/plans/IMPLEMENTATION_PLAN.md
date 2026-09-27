@@ -101,7 +101,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 **Hero visual**
 
 - [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7), [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)).
-- [ ] Book a Call gradient-beam CTA — follow [IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11)). Do not code until that plan is approved.
+- [x] Book a Call gradient-beam CTA — follow [IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11), [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)).
 
 **Contact form vs services**
 
@@ -198,6 +198,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | #3 closed: Voiceflow already removed (`f80e6cd`). #2 unblocked. |
 | 2026-09-27 | #2 closed: live bundle has Supabase URL; client null-guard in place; site no longer white-screens. |
 | 2026-09-27 | Book a Call gradient-beam CTA plan drafted (#11). No code until Phase 0 approved. |
+| 2026-09-27 | #11 closed via PR #12 — Book a Call glass gradient-beam CTA on main. |
 | 2026-09-16 | Repo hygiene: removed `.bolt`, rewrote README, renamed package to `hkaaa-website`. Issue #4. |
 | 2026-09-17 | Contact form: Web Design + SEO in dropdown; `leads.service` constraint migration applied; inserts verified (#6). Content Creation still open. |
 | 2026-09-27 | Portal Field / cloud-field hero plan drafted (replace Aurora). No code until approved. |

@@ -4,7 +4,7 @@
 **Title:** Design: Book a Call gradient-beam CTA  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — visually signed off; commit/PR pending
+**Status:** Closed — merged [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)
 
 ## Plan
 

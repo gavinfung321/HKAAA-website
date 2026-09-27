@@ -1,6 +1,6 @@
 # Book a Call CTA — gradient beam button
 
-**Status:** Implementation in progress on `feat/issue-11-book-call-cta` — Phase 0 approved.  
+**Status:** Done — merged via [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12); [#11](https://github.com/gavinfung321/HKAAA-website/issues/11) closed.  
 **GitHub issue:** [#11](https://github.com/gavinfung321/HKAAA-website/issues/11)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / hero + pricing CTAs  
 **Reference video:** `Book a call button.mp4` (gradient-beam rotating border)  
@@ -102,7 +102,7 @@ From the video / HTML:
 - [x] Mobile viewport sign-off
 - [x] Reduced-motion sign-off (CSS media query)
 - [x] Designer visual sign-off (glass face + spinning beam)
-- [ ] Issue closed after merge
+- [x] Issue closed after merge → [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12) / [#11](https://github.com/gavinfung321/HKAAA-website/issues/11)
 
 ---
 
