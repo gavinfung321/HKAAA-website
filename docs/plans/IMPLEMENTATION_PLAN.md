@@ -92,9 +92,11 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Copy and content**
 
-- [x] Fix hero line “surcharge leads” — rotating headline (Websites / SEO / Workflows / Outreach) + service subline ([#9](https://github.com/gavinfung321/HKAAA-website/issues/9))
-- [ ] Confirm all on-page copy is the language we want to ship (hero, process, services, pricing, team bios)
-- [ ] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits
+- [x] Fix hero line “surcharge leads” — rotating headline (Websites / SEO / Workflows / Outreach) + service subline ([#9](https://github.com/gavinfung321/HKAAA-website/issues/9)); later refined in [#14](https://github.com/gavinfung321/HKAAA-website/issues/14)
+- [ ] Site-wide copy pass to match hero voice — follow [IMPLEMENTATION_PLAN_SITE_COPY.md](IMPLEMENTATION_PLAN_SITE_COPY.md) ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16)). Do not code until that plan is approved.
+- [x] Testimonials after hero (auto marquee, mixed faces) — follow [IMPLEMENTATION_PLAN_TESTIMONIALS.md](IMPLEMENTATION_PLAN_TESTIMONIALS.md) ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)).
+- [x] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits → done via [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)
+- [ ] Plans section visual + placement (match hero craft; Plans stays later than proof) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)). Do not code until that plan is approved.
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
 - [x] Remove the Voiceflow floating chat button — already removed in `f80e6cd`; [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed. Chatbot development service card and in-section demo kept.
 
@@ -103,7 +105,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7), [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)).
 - [x] Book a Call gradient-beam CTA — follow [IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11), [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)).
 - [x] Hero craft pass (voice, composition, materials) — follow [IMPLEMENTATION_PLAN_HERO_CRAFT.md](IMPLEMENTATION_PLAN_HERO_CRAFT.md) ([#14](https://github.com/gavinfung321/HKAAA-website/issues/14)).
-- [ ] Glass floating header + desktop spring — follow [IMPLEMENTATION_PLAN_GLASS_NAV.md](IMPLEMENTATION_PLAN_GLASS_NAV.md) ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). *(Not planned — designer preferred original nav after trial.)*
+- [ ] Process section visual polish — follow [IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)). Do not code until that plan is approved.
+- [x] Glass floating header + desktop spring — closed not planned ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). Original nav kept; transparent-at-rest from #14.
 
 **Contact form vs services**
 
@@ -212,3 +215,8 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | Hero copy: Web + AI headline; websites/SEO/automation/outreach subline (#9). |
 | 2026-09-27 | #14: hero craft pass plan drafted (voice / composition / materials vs DesignCode). No code until Phase 0. |
 | 2026-09-27 | #14 signed off: Elevate with better + rotator A; left/offset; deepen CTA; proof line; transparent nav; merge pending. |
+| 2026-09-27 | #16: site-wide copy pass plan drafted (match hero voice). No code until Phase 0. |
+| 2026-09-27 | #16 paused (visuals first). #17: Process visual polish plan drafted. No code until Phase 0. |
+| 2026-09-27 | #18: Plans visual + placement plan drafted (offer shelf vs Process; recommend after hero). No code until Phase 0. |
+| 2026-09-27 | #19: Testimonials after hero plan drafted (DesignCode-inspired marquee; Asian faces; no company names). Plans post-hero idea dropped. |
+| 2026-09-27 | #19 signed off: marquee strip under hero; DesignCode cards; purple hover; soft seam; no Portal Field. |

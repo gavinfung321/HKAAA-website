@@ -24,7 +24,7 @@ export function HeroSection() {
       />
 
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-36 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent md:h-44"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-gray-900 from-20% via-gray-900/50 to-transparent md:h-52"
         aria-hidden
       />
 

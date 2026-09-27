@@ -81,6 +81,8 @@ function App() {
 
       <HeroSection />
 
+      <TestimonialsSection />
+
       {/* Process Section */}
       <section id="process-section" className="pt-16 md:pt-24 pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="space-y-16">
@@ -538,9 +540,6 @@ return (
     </div>
   </div>
 </section>
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
 
       {/* Pricing Section */}
       <PricingSection />
