@@ -41,7 +41,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Section | What it does today |
 | --- | --- |
 | Header | Fixed nav: Process, Why Us, Our Services, Pricing, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
-| Hero | “Transform Your Business With AI Automation.” CTA → Calendly. Backdrop: CSS Aurora today; planned Portal Field / cloud-field WebGL — see [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md). |
+| Hero | “Transform your business with better” + rotating **Websites / SEO / Workflows / Outreach**. Subline: websites, SEO, workflow automation, AI outreach. CTA → Calendly. Backdrop: cloud-field WebGL. |
 | Process | Discovery Call → Solution Design → Implementation. |
 | Why Choose Us | Proven Expertise, End-to-End Support, Cutting-Edge Technology. |
 | Services | Six cards: Workflow, Chatbot, Lead generation, Web Design, SEO, Content Creation. |
@@ -92,7 +92,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Copy and content**
 
-- [ ] Fix hero line “surcharge leads” (replace with agreed copy, e.g. “source” or “capture”)
+- [x] Fix hero line “surcharge leads” — rotating headline (Websites / SEO / Workflows / Outreach) + service subline ([#9](https://github.com/gavinfung321/HKAAA-website/issues/9))
 - [ ] Confirm all on-page copy is the language we want to ship (hero, process, services, pricing, team bios)
 - [ ] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
@@ -201,3 +201,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | #7: cloud-field WebGL hero implemented on branch `feat/issue-7-portal-field-hero` (desktop verified; awaiting sign-off). |
 | 2026-09-27 | #7: designer visual sign-off (keep cooler regrade). Merge/close pending. |
 | 2026-09-27 | #7 closed via PR #8 merge — cloud-field WebGL hero on main. |
+| 2026-09-27 | Hero copy: Web + AI headline; websites/SEO/automation/outreach subline (#9). |
