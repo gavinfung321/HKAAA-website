@@ -11,6 +11,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CloudFieldBackground } from './components/effects/cloud-field/CloudFieldBackground';
 import { RotatingHeroPhrase } from './components/RotatingHeroPhrase';
+import { GradientBeamCta } from './components/ui/GradientBeamCta';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -109,14 +110,7 @@ function App() {
               We start with a website you can be proud of, then help with the rest when you are ready.
             </p>
             <div className="flex justify-center animate-[scaleIn_1s_ease-out_0.6s] opacity-0 [animation-fill-mode:forwards]">
-              <a
-                href="https://calendly.com/hkaiautomationagency/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full text-lg font-medium flex items-center gap-2 hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90"
-              >
-                Book a Free Strategy Call
-              </a>
+              <GradientBeamCta />
             </div>
           </div>
         </div>

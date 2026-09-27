@@ -4,7 +4,7 @@
 **Title:** Design: Book a Call gradient-beam CTA  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — plan drafted; do not code until Phase 0 approved
+**Status:** Open — visually signed off; commit/PR pending
 
 ## Plan
 

@@ -429,3 +429,33 @@ html {
     @apply w-14 h-14;
   }
 }
+/* GradientBeamCta — spinning border + drifting dots */
+@keyframes beam-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dots-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 24px 24px;
+  }
+}
+
+.gradient-beam-spin {
+  animation: beam-spin 3s linear infinite;
+}
+
+.gradient-beam-dots {
+  animation: dots-move 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-beam-spin,
+  .gradient-beam-dots {
+    animation: none;
+  }
+}

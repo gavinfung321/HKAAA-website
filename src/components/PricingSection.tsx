@@ -1,7 +1,6 @@
 import React from 'react';
 import { Check, Zap } from 'lucide-react';
-
-const CALENDLY_URL = 'https://calendly.com/hkaiautomationagency/30min';
+import { CALENDLY_URL, GradientBeamCta } from './ui/GradientBeamCta';
 
 const plans = [
   {
@@ -96,14 +95,7 @@ export const PricingSection = () => {
 
         <div className="flex flex-col items-center gap-4 animate-on-scroll">
           <p className="text-gray-400 text-sm">Every plan is quoted to your scope.</p>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-full text-lg font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 hover:scale-105 transition-all duration-300"
-          >
-            Book a strategy call
-          </a>
+          <GradientBeamCta href={CALENDLY_URL} />
         </div>
       </div>
     </section>
