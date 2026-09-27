@@ -10,6 +10,7 @@ import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { CloudFieldBackground } from './components/effects/cloud-field/CloudFieldBackground';
+import { RotatingHeroPhrase } from './components/RotatingHeroPhrase';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -96,13 +97,16 @@ function App() {
         <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-normal mb-6 leading-tight animate-[slideInRight_1s_ease-out] opacity-0 [animation-fill-mode:forwards]">
-              <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text inline-block hover:scale-105 hover:-rotate-1 transition-transform duration-300">Transform</span> Your Business
               <span className="block">
-                With <span className="text-white">AI Automation</span>
+                <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">Transform</span>
+                {' '}your business with better
+              </span>
+              <span className="mt-1 block">
+                <RotatingHeroPhrase />
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 animate-[fadeInLeft_1s_ease-out_0.3s] opacity-0 [animation-fill-mode:forwards]">
-              Automate workflows, surcharge leads, and seamlessly integrate with your CRM - All in one place
+              We start with a website you can be proud of, then help with the rest when you are ready.
             </p>
             <div className="flex justify-center animate-[scaleIn_1s_ease-out_0.6s] opacity-0 [animation-fill-mode:forwards]">
               <a

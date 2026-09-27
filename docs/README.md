@@ -16,5 +16,6 @@ All project plans and issue-tracking guides live here. Do not code from a plan u
 | [issues/005-cinematic-harbour-hero.md](issues/005-cinematic-harbour-hero.md) | Local brief for GitHub issue #5 (closed — not planned) |
 | [issues/006-contact-web-design-seo.md](issues/006-contact-web-design-seo.md) | Local brief for GitHub issue #6 |
 | [issues/007-portal-field-hero.md](issues/007-portal-field-hero.md) | Local brief for GitHub issue #7 |
+| [issues/009-hero-copy.md](issues/009-hero-copy.md) | Local brief for GitHub issue #9 |
 
 GitHub source of truth for issues: [gavinfung321/HKAAA-website/issues](https://github.com/gavinfung321/HKAAA-website/issues)
