@@ -41,7 +41,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Section | What it does today |
 | --- | --- |
 | Header | Fixed nav: Process, Why Us, Our Services, Pricing, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
-| Hero | “Transform Your Business With AI Automation.” CTA → Calendly. |
+| Hero | “Transform Your Business With AI Automation.” CTA → Calendly. Backdrop: CSS Aurora today; planned Portal Field / cloud-field WebGL — see [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md). |
 | Process | Discovery Call → Solution Design → Implementation. |
 | Why Choose Us | Proven Expertise, End-to-End Support, Cutting-Edge Technology. |
 | Services | Six cards: Workflow, Chatbot, Lead generation, Web Design, SEO, Content Creation. |
@@ -97,6 +97,10 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [ ] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
 - [ ] Remove the Voiceflow floating chat button — follow [IMPLEMENTATION_PLAN_CHAT_WIDGET.md](IMPLEMENTATION_PLAN_CHAT_WIDGET.md). Do not code until that plan is approved. Keep the Chatbot development service card and in-section demo.
+
+**Hero visual**
+
+- [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7)). Visual signed off on `feat/issue-7-portal-field-hero`; merge still pending.
 
 **Contact form vs services**
 
@@ -192,3 +196,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-15 | Chat widget plan drafted (remove Voiceflow button). Issue #3. No code. Issue #2 paused until that is done. |
 | 2026-09-16 | Repo hygiene: removed `.bolt`, rewrote README, renamed package to `hkaaa-website`. Issue #4. |
 | 2026-09-17 | Contact form: Web Design + SEO in dropdown; `leads.service` constraint migration applied; inserts verified (#6). Content Creation still open. |
+| 2026-09-27 | Portal Field / cloud-field hero plan drafted (replace Aurora). No code until approved. |
+| 2026-09-27 | Closed #5 (cinematic Victoria Harbour hero) as not planned. Hero path is #7 only. |
+| 2026-09-27 | #7: cloud-field WebGL hero implemented on branch `feat/issue-7-portal-field-hero` (desktop verified; awaiting sign-off). |
+| 2026-09-27 | #7: designer visual sign-off (keep cooler regrade). Merge/close pending. |
