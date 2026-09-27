@@ -4,7 +4,7 @@
 **Title:** Bug: Missing Supabase env vars crash the live site  
 **Labels:** `bug`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — paused until issue #3 (remove Voiceflow button) is done
+**Status:** Open — unblocked (#3 closed; Voiceflow already removed)
 
 ## Context
 

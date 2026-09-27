@@ -1,10 +1,10 @@
 # Chat widget — remove the Voiceflow button
 
-**Status:** Implemented locally. Waiting on visual check.
-**GitHub issue:** [#3 — Remove the Voiceflow AI chatbot button](https://github.com/gavinfung321/HKAAA-website/issues/3)
-**Parent plan:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A
+**Status:** Done — Voiceflow removed (`f80e6cd`); [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed 2026-09-27.  
+**GitHub issue:** [#3 — Remove the Voiceflow AI chatbot button](https://github.com/gavinfung321/HKAAA-website/issues/3)  
+**Parent plan:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A  
 
-**Paused until this is done:** [#2](https://github.com/gavinfung321/HKAAA-website/issues/2) — live Supabase / `createClient` / Netlify env vars.
+**Unblocked:** [#2](https://github.com/gavinfung321/HKAAA-website/issues/2) — live Supabase / Netlify env vars.
 
 ---
 
