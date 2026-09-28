@@ -1,23 +1,33 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Send, CheckCircle, AlertCircle, MapPin, Phone, Mail } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
+const SERVICES = [
+  'Web Design',
+  'SEO',
+  'Chatbot Development',
+  'Workflow Automation',
+  'Lead Generation',
+] as const;
+
+/**
+ * Get in Touch (#32) — quiet plates, website-first form, muted info marks.
+ */
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     service: '',
-    message: ''
+    message: '',
   });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
-    
+
     if (!supabase) {
       setStatus('error');
       setErrorMessage('Something went wrong. Please try again.');
@@ -29,24 +39,20 @@ export const ContactSection = () => {
     }
 
     try {
-      const { error } = await supabase
-        .from('leads')
-        .insert([formData]);
+      const { error } = await supabase.from('leads').insert([formData]);
 
       if (error) throw error;
 
       setStatus('success');
       setFormData({ name: '', email: '', company: '', service: '', message: '' });
-      
-      // Reset form after 3 seconds
+
       setTimeout(() => {
         setStatus('idle');
       }, 3000);
-    } catch (error) {
+    } catch {
       setStatus('error');
       setErrorMessage('Something went wrong. Please try again.');
-      
-      // Reset error after 3 seconds
+
       setTimeout(() => {
         setStatus('idle');
         setErrorMessage('');
@@ -54,41 +60,52 @@ export const ContactSection = () => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
+  const fieldClass =
+    'w-full rounded-lg border border-white/10 bg-black/25 px-4 py-3 text-white placeholder:text-white/35 transition-colors focus:border-purple-400/45 focus:outline-none';
+
   return (
-    <section id="contact-section" className="pt-12 md:pt-16 pb-16 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="space-y-16">
-        <div className="space-y-6 text-center animate-on-scroll">
-          <h2 className="text-4xl md:text-6xl font-normal mb-6">
-            Get in <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text">Touch</span>
+    <section
+      id="contact-section"
+      className="relative isolate overflow-hidden bg-gray-900 px-6 py-16 md:px-10 md:py-24 lg:px-12"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-20 bg-gradient-to-b from-gray-900 via-gray-900/65 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="text-center animate-on-scroll">
+          <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
+            Get in{' '}
+            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Touch
+            </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Ready to transform your business with AI? Let's discuss how we can help you achieve your goals.
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/55 md:text-lg">
+            Tell us what you need. We&apos;ll come back with a clear next step.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="group relative bg-zinc-900/30 rounded-2xl p-8 border border-white/10 backdrop-blur-sm transition-all duration-500 hover:bg-zinc-900/40 hover:border-purple-500/20"
-          >
-            <div className="absolute -top-4 -right-4 bg-purple-500/10 w-24 h-24 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all duration-500" />
-            
-            <form onSubmit={handleSubmit} className="space-y-6 relative">
+        <div className="mt-12 grid items-start gap-6 md:mt-14 md:grid-cols-2 md:gap-8 animate-on-scroll">
+          <div className="contact-plate rounded-2xl p-6 md:p-8">
+            <form onSubmit={handleSubmit} className="relative space-y-5">
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                    Name <span className="text-red-400">*</span>
+                  <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/70">
+                    Name <span className="text-red-400/90">*</span>
                   </label>
                   <input
                     type="text"
@@ -97,14 +114,14 @@ export const ContactSection = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/50 transition-colors"
+                    className={fieldClass}
                     placeholder="Your name"
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                    Email <span className="text-red-400">*</span>
+                  <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/70">
+                    Email <span className="text-red-400/90">*</span>
                   </label>
                   <input
                     type="email"
@@ -113,14 +130,14 @@ export const ContactSection = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/50 transition-colors"
+                    className={fieldClass}
                     placeholder="your@email.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
-                    Service <span className="text-red-400">*</span>
+                  <label htmlFor="service" className="mb-2 block text-sm font-medium text-white/70">
+                    Service <span className="text-red-400/90">*</span>
                   </label>
                   <select
                     id="service"
@@ -128,20 +145,22 @@ export const ContactSection = () => {
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-500/50 transition-colors [&>option]:text-black"
+                    className={`${fieldClass} [&>option]:text-black`}
                   >
-                    <option value="" disabled>Select a service</option>
-                    <option value="Lead Generation">Lead Generation</option>
-                    <option value="Chatbot Development">Chatbot Development</option>
-                    <option value="Workflow Automation">Workflow Automation</option>
-                    <option value="Web Design">Web Design</option>
-                    <option value="SEO">SEO</option>
+                    <option value="" disabled>
+                      Select a service
+                    </option>
+                    {SERVICES.map((service) => (
+                      <option key={service} value={service}>
+                        {service}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                    Company <span className="text-red-400">*</span>
+                  <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/70">
+                    Company <span className="text-red-400/90">*</span>
                   </label>
                   <input
                     type="text"
@@ -150,14 +169,14 @@ export const ContactSection = () => {
                     required
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/50 transition-colors"
+                    className={fieldClass}
                     placeholder="Your company"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
-                    What specific problems are you looking to solve? <span className="text-red-400">*</span>
+                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/70">
+                    What do you need help with? <span className="text-red-400/90">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -166,8 +185,8 @@ export const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500/50 transition-colors resize-none"
-                    placeholder="Please describe your current challenges and desired outcomes"
+                    className={`${fieldClass} resize-none`}
+                    placeholder="A short note on your site, SEO, or automation goals"
                   />
                 </div>
               </div>
@@ -175,90 +194,81 @@ export const ContactSection = () => {
               <button
                 type="submit"
                 disabled={status === 'submitting'}
-                className={`w-full py-3 px-6 rounded-full text-white flex items-center justify-center gap-2 transition-all duration-300 ${
-                  status === 'submitting'
-                    ? 'bg-purple-500/50 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90'
+                className={`contact-submit inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium tracking-wide text-white transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400 ${
+                  status === 'submitting' ? 'cursor-not-allowed opacity-50' : 'hover:opacity-90'
                 }`}
               >
                 {status === 'submitting' ? (
                   <>Sending...</>
                 ) : status === 'success' ? (
                   <>
-                    <CheckCircle className="w-5 h-5" />
-                    Message Sent!
+                    <CheckCircle className="h-5 w-5" aria-hidden />
+                    Sent
                   </>
                 ) : (
                   <>
-                    <Send className="w-5 h-5" />
-                    Send Message
+                    <Send className="h-4 w-4" aria-hidden />
+                    Send enquiry
                   </>
                 )}
               </button>
 
               {status === 'error' && (
-                <div className="flex items-center gap-2 text-red-400 text-sm mt-2">
-                  <AlertCircle className="w-4 h-4" />
+                <div className="mt-2 flex items-center gap-2 text-sm text-red-400">
+                  <AlertCircle className="h-4 w-4 shrink-0" aria-hidden />
                   {errorMessage}
                 </div>
               )}
             </form>
-          </motion.div>
+          </div>
 
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-8"
-          >
-            <div className="group relative bg-zinc-900/30 rounded-2xl p-8 border border-white/10 backdrop-blur-sm transition-all duration-500 hover:bg-zinc-900/40 hover:border-purple-500/20">
-              <div className="absolute -top-4 -right-4 bg-purple-500/10 w-24 h-24 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all duration-500" />
-              
-              <h3 className="text-2xl font-normal mb-6">Contact Information</h3>
-              
-              <div className="space-y-6">
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
-                    <MapPin className="w-6 h-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium mb-2">Office Address</h4>
-                    <p className="text-gray-400">Room N, 9/F, Kwun Tong Industrial Centre, 460 Kwun Tong Road, Kowloon, Hong Kong</p>
-                  </div>
-                </div>
+          <aside className="contact-plate rounded-2xl p-6 md:p-8">
+            <h3 className="text-lg font-medium tracking-tight text-white md:text-xl">
+              Contact Information
+            </h3>
 
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
-                    <Phone className="w-6 h-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium mb-2">Phone</h4>
-                    <p className="text-gray-400">
-                      <a href="tel:+85291678204" className="hover:text-white transition-colors">
-                        +852 9167 8204
-                      </a>
-                    </p>
-                  </div>
+            <ul className="mt-6 space-y-6">
+              <li className="flex gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-white/45" aria-hidden />
+                <div>
+                  <h4 className="text-sm font-medium text-white">Office Address</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-white/60">
+                    Room N, 9/F, Kwun Tong Industrial Centre, 460 Kwun Tong Road, Kowloon, Hong Kong
+                  </p>
                 </div>
+              </li>
 
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
-                    <Mail className="w-6 h-6 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-medium mb-2">Email</h4>
-                    <p className="text-gray-400">
-                      <a href="mailto:info@hkaiautomation.com" className="hover:text-white transition-colors">
-                        info@hkaiautomation.com
-                      </a>
-                    </p>
-                  </div>
+              <li className="flex gap-3">
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-white/45" aria-hidden />
+                <div>
+                  <h4 className="text-sm font-medium text-white">Phone</h4>
+                  <p className="mt-1 text-sm text-white/60">
+                    <a
+                      href="tel:+85291678204"
+                      className="transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
+                    >
+                      +852 9167 8204
+                    </a>
+                  </p>
                 </div>
-              </div>
-            </div>
-          </motion.div>
+              </li>
+
+              <li className="flex gap-3">
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-white/45" aria-hidden />
+                <div>
+                  <h4 className="text-sm font-medium text-white">Email</h4>
+                  <p className="mt-1 text-sm text-white/60">
+                    <a
+                      href="mailto:info@hkaiautomation.com"
+                      className="transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
+                    >
+                      info@hkaiautomation.com
+                    </a>
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </aside>
         </div>
       </div>
     </section>
