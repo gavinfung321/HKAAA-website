@@ -49,7 +49,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18) signed off). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
 | Team | Gavin Fung + Natalie Tso only (join CTA removed). Quiet plates + Blaze backdrop ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31) signed off). |
 | Contact | Quiet plates + website-first form → Supabase `leads`. Address, phone, email ([#32](https://github.com/gavinfung321/HKAAA-website/issues/32) signed off). |
-| Footer | Logo, blurb, socials. Two empty columns. |
+| Footer | Brand / Explore / Connect over terrain wireframe ([#33](https://github.com/gavinfung321/HKAAA-website/issues/33) signed off). |
 | Chat | No floating chat widget. Chatbot development service card and in-section demo remain. |
 
 ### Lead capture
@@ -99,6 +99,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Plans section visual + placement (glass 3D cards; keep late after Services) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)).
 - [x] Team section visual polish — follow [IMPLEMENTATION_PLAN_TEAM_VISUAL.md](IMPLEMENTATION_PLAN_TEAM_VISUAL.md) ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31)). Signed off 2026-09-28.
 - [x] Contact / Get in Touch visual polish — follow [IMPLEMENTATION_PLAN_CONTACT_VISUAL.md](IMPLEMENTATION_PLAN_CONTACT_VISUAL.md) ([#32](https://github.com/gavinfung321/HKAAA-website/issues/32)). Signed off 2026-09-28.
+- [x] Footer visual polish + wireframe landscape — follow [IMPLEMENTATION_PLAN_FOOTER_VISUAL.md](IMPLEMENTATION_PLAN_FOOTER_VISUAL.md) ([#33](https://github.com/gavinfung321/HKAAA-website/issues/33)). Signed off 2026-09-29.
+- [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
 - [x] Remove the Voiceflow floating chat button — already removed in `f80e6cd`; [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed. Chatbot development service card and in-section demo kept.
 
@@ -128,7 +130,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [ ] Remove unused Spline viewer script from `index.html` if still unused
 - [ ] Remove unused plan / subscription state from `App.tsx`
 - [x] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps (left over from #23)
-- [ ] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished
+- [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
 
 **Repo hygiene**
 
@@ -238,3 +240,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-28 | #28: Testimonials vortex particle background — Three.js Points (no R3F); cool violet→blue; implementing. |
 | 2026-09-28 | #31 closed: Team two-up quiet plates + Blaze backdrop; join CTA removed; bios trimmed. |
 | 2026-09-28 | #32 closed: Contact quiet plates, website-first form, Send enquiry; footer still open. |
+| 2026-09-29 | #33 closed: Footer Brand/Explore/Connect + terrain-first wireframe landscape (pointer parallax). |
