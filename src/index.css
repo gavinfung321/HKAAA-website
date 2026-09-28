@@ -429,7 +429,7 @@ html {
     @apply w-14 h-14;
   }
 }
-/* GradientBeamCta ÃÂÃÂÃÂÃÂ spinning border + drifting dots */
+/* GradientBeamCta ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ spinning border + drifting dots */
 @keyframes beam-spin {
   to {
     transform: rotate(360deg);
@@ -453,7 +453,7 @@ html {
   animation: dots-move 8s linear infinite;
 }
 
-/* Testimonials soft marquee ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ slow right ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ left */
+/* Testimonials soft marquee ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ slow right ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ left */
 @keyframes testimonial-marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -468,13 +468,29 @@ html {
   will-change: transform;
 }
 
+/* Tools strip — slower than quote marquee (#29) */
+@keyframes tools-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.tools-marquee {
+  animation: tools-marquee 45s linear infinite;
+  will-change: transform;
+}
+
 /* Testimonials coverflow stage (#27 trial) */
 .testimonial-coverflow {
   overflow: visible;
 }
 
 .testimonial-coverflow__stage {
-  --cf-step: 28vw;
+  --cf-step: 12.5rem;
+  max-width: 68rem;
   perspective: 1400px;
   perspective-origin: 50% 42%;
   transform-style: preserve-3d;
@@ -483,13 +499,13 @@ html {
 
 @media (min-width: 768px) {
   .testimonial-coverflow__stage {
-    --cf-step: 24vw;
+    --cf-step: 15.5rem;
   }
 }
 
 @media (min-width: 1280px) {
   .testimonial-coverflow__stage {
-    --cf-step: 22vw;
+    --cf-step: 17rem;
   }
 }
 
@@ -513,23 +529,8 @@ html {
   }
 }
 
-/* Tools strip â slower than quote marquee (#29) */
-@keyframes tools-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.tools-marquee {
-  animation: tools-marquee 45s linear infinite;
-  will-change: transform;
-}
-
 /*
- * Testimonials â brand 3D plate (#27, Option A).
+ * Testimonials Ã¢ÂÂ brand 3D plate (#27, Option A).
  * Dark charcoal plate; violet reserved for bevel + sheen (not a purple wash).
  * No glass blur (distinct from Plans). ::before = sheen; ::after = grain.
  */
@@ -581,7 +582,7 @@ html {
   will-change: transform;
 }
 
-/* Brand pointer sheen â readable depth, not glass wash */
+/* Brand pointer sheen Ã¢ÂÂ readable depth, not glass wash */
 .testimonial-card::before {
   content: '';
   position: absolute;
@@ -641,7 +642,7 @@ html {
 }
 
 /*
- * Plans — iridescent glass cards (button outlook, dialed for readable offer shelf).
+ * Plans â iridescent glass cards (button outlook, dialed for readable offer shelf).
  * Rest quieter; Practice + hover keep punch. Soft static stage vignette in PricingSection.
  * --spot-x / --spot-y / --tilt-x / --tilt-y set from PricingSection.
  */
@@ -697,7 +698,7 @@ html {
   will-change: transform;
 }
 
-/* Practice — denser iris + bloom (hierarchy punch) */
+/* Practice â denser iris + bloom (hierarchy punch) */
 .plan-card--popular {
   border-color: rgba(196, 207, 229, 0.28);
   box-shadow:
@@ -711,7 +712,7 @@ html {
     inset 0 0 0 1px rgba(255, 255, 255, 0.07);
 }
 
-/* Iridescent caustics — quieter at rest (~25% down vs trial) */
+/* Iridescent caustics â quieter at rest (~25% down vs trial) */
 .plan-card::before {
   content: '';
   position: absolute;
@@ -782,7 +783,7 @@ html {
     );
 }
 
-/* Fresnel lip + fine glass grain — softer rest specular */
+/* Fresnel lip + fine glass grain â softer rest specular */
 .plan-card::after {
   content: '';
   position: absolute;
@@ -830,7 +831,45 @@ html {
 }
 
 /*
- * Services bento tiles (#25) Ã¢ÂÂ chrome rim adapted from threeui "chrome upload".
+ * Team (#31) — quiet photo plates (Plans rim family, no iris). Two-up centered.
+ */
+.team-card {
+  isolation: isolate;
+  border: 1px solid rgba(196, 207, 229, 0.14);
+  background: linear-gradient(
+    165deg,
+    rgba(14, 16, 24, 0.92) 0%,
+    rgba(8, 10, 16, 0.96) 100%
+  );
+  box-shadow:
+    rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.7) 0 14px 32px -14px,
+    inset 1px 2px 6px rgba(220, 232, 255, 0.12),
+    inset -1px -2px 6px rgba(5, 9, 24, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.team-card:hover {
+  border-color: rgba(196, 207, 229, 0.24);
+  box-shadow:
+    rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.75) 0 16px 36px -12px,
+    rgba(139, 92, 246, 0.08) 0 0 40px -14px,
+    inset 1px 2px 8px rgba(220, 232, 255, 0.16),
+    inset -1px -2px 6px rgba(5, 9, 24, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Unify Imgur portraits into the dark plate (esp. light studio backdrops). */
+.team-card__photo {
+  filter: brightness(0.92) contrast(1.06) saturate(0.88);
+}
+
+/*
+ * Services bento tiles (#25) ÃÂ¢ÃÂÃÂ chrome rim adapted from threeui "chrome upload".
  * Lit body + floor shadow here; rim, groove and drifting glint are layers in ServicesSection.
  */
 .service-tile {

@@ -10,7 +10,7 @@ const plans = [
     name: 'Launch',
     blurb: 'A professional website.',
     features: [
-      '5-page site (Home, About, Services, Team, Contact)',
+      '5-page site',
       'Enquiry form',
       'Built with you in working sessions',
     ],

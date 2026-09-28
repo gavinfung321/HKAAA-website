@@ -47,7 +47,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Why Choose Us | Centered header, three 3D glass cards (Proven delivery / One team through launch / Ready for what comes next) over violet background paths ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23)). |
 | Services | Two-row bento (website first), chrome tiles + one animated visual each ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)). |
 | Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18) signed off). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
-| Team | Gavin Fung, Natalie Tso, plus “Become Our Member?” → `info@hkaiautomation.com`. |
+| Team | Gavin Fung + Natalie Tso only (join CTA removed). Quiet plates + Blaze backdrop ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31) signed off). |
 | Contact | Form → Supabase `leads`. Address, phone, email. |
 | Footer | Logo, blurb, socials. Two empty columns. |
 | Chat | No floating chat widget. Chatbot development service card and in-section demo remain. |
@@ -97,6 +97,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Testimonials after hero (auto marquee, mixed faces) — follow [IMPLEMENTATION_PLAN_TESTIMONIALS.md](IMPLEMENTATION_PLAN_TESTIMONIALS.md) ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)).
 - [x] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits → done via [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)
 - [x] Plans section visual + placement (glass 3D cards; keep late after Services) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)).
+- [x] Team section visual polish — follow [IMPLEMENTATION_PLAN_TEAM_VISUAL.md](IMPLEMENTATION_PLAN_TEAM_VISUAL.md) ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31)). Signed off 2026-09-28.
 - [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
 - [x] Remove the Voiceflow floating chat button — already removed in `f80e6cd`; [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed. Chatbot development service card and in-section demo kept.
 
@@ -234,3 +235,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-28 | Removed unmounted `HongKongSkyline` and uninstalled `three` / `@types/three` (leftover from #23). Footer left for designer. |
 | 2026-09-28 | #27: Testimonials dark paper / vellum card polish plan drafted (CSS+SVG; no Three.js). No code until Phase 0. |
 | 2026-09-28 | #28: Testimonials vortex particle background — Three.js Points (no R3F); cool violet→blue; implementing. |
+| 2026-09-28 | #31 closed: Team two-up quiet plates + Blaze backdrop; join CTA removed; bios trimmed. |

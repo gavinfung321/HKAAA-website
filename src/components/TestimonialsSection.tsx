@@ -7,6 +7,7 @@ import {
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
 } from 'react';
+import { BlazeBackground } from './effects/blaze/BlazeBackground';
 
 type Testimonial = {
   name: string;
@@ -230,10 +231,36 @@ export const TestimonialsSection = () => {
   return (
     <section
       id="testimonials-section"
-      className="relative overflow-hidden bg-gray-900 py-16 md:py-20"
+      className="relative isolate overflow-hidden bg-gray-900 py-16 md:py-20"
       aria-label="Client testimonials"
     >
-      <div className="mx-auto mb-10 max-w-3xl px-6 text-center md:mb-14">
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+        <BlazeBackground
+          key="testimonials-blaze-v4"
+          height={0.97}
+          speed={0.3}
+          smoke={0}
+          sparks={0.45}
+          sparkDensity={0.75}
+          sparkSize={1.35}
+          layers={2}
+          glow={0.1}
+          fadeTop={0.9}
+          sparkFalloff={0.72}
+          sparkColor={[0.82, 0.38, 1]}
+          smokeColor={[0.55, 0.28, 0.95]}
+        />
+      </div>
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-12 bg-gradient-to-b from-gray-900 via-gray-900/40 to-transparent md:h-14"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-12 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"
+      />
+
+      <div className="relative z-10 mx-auto mb-10 max-w-3xl px-6 text-center md:mb-14">
         <h2 className="text-3xl font-normal leading-tight tracking-tight text-white/85 md:text-5xl md:leading-[1.15]">
           <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             Sites
@@ -248,11 +275,11 @@ export const TestimonialsSection = () => {
       </div>
 
       {reduceMotion ? (
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-5 px-6">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-wrap justify-center gap-5 px-6">
           {testimonials.map((item, i) => (
             <div
               key={item.name}
-              className="h-[18rem] w-[min(84vw,22rem)] md:h-[20rem] md:w-[24rem]"
+              className="h-[18rem] w-[min(84vw,18rem)] md:h-[20rem] md:w-[19rem]"
             >
               <TestimonialCardFace
                 item={item}
@@ -265,7 +292,7 @@ export const TestimonialsSection = () => {
         </div>
       ) : (
         <div
-          className="testimonial-coverflow relative w-full touch-pan-y"
+          className="testimonial-coverflow relative z-10 w-full touch-pan-y"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
           onPointerDown={onStagePointerDown}
@@ -297,7 +324,7 @@ export const TestimonialsSection = () => {
                     {
                       '--cf-offset': offset,
                       '--cf-abs': abs,
-                      width: 'min(72vw, 20rem)',
+                      width: 'min(72vw, 18rem)',
                       height: '100%',
                       zIndex: COUNT - abs,
                       opacity: hidden ? 0 : opacity,

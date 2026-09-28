@@ -53,7 +53,7 @@ Bring every major section’s language in line with the new hero so the page fee
 - [x] Confirm sections in scope: Process, Why Us, Services, Team, Contact, Footer
 - [x] Confirm voice rules (website-first, short, concrete, honest proof, don’t repeat rotator)
 - [x] Testimonials: **leave for now**; later Asian headshots (generate when ready)
-- [x] “Become Our Member?”: **leave as-is**
+- [x] “Become Our Member?”: **leave as-is** → superseded 2026-09-28: **removed** from Team in [#31](https://github.com/gavinfung321/HKAAA-website/issues/31)
 - [x] Workflow: **A — agent drafts options → designer picks** (when copy pass resumes)
 
 **Phase 0 mostly locked. Issue paused: visuals first; no copy implementation until designer unpauses.**

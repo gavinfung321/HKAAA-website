@@ -92,7 +92,7 @@ function ToolMark({ tool }: { tool: Tool }) {
 
 /**
  * Quiet mono tools marquee — “Stack we build with” (#29).
- * Sits between Hero and Testimonials; slower than the quote strip.
+ * Capped width (not full-bleed); marquee scrolls inside the shorter track.
  */
 export function ToolsStrip() {
   const reduceMotion = useReducedMotion();
@@ -109,23 +109,23 @@ export function ToolsStrip() {
       </p>
 
       {reduceMotion ? (
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-6">
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-4 px-6 md:gap-x-10">
           {tools.map((tool) => (
             <ToolMark key={tool.name} tool={tool} />
           ))}
         </div>
       ) : (
-        <div className="group/tools relative">
+        <div className="group/tools relative mx-auto max-w-5xl overflow-hidden">
           <div
-            className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-16 bg-gradient-to-r from-gray-900 to-transparent md:w-28"
+            className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-10 bg-gradient-to-r from-gray-900 to-transparent md:w-14"
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-16 bg-gradient-to-l from-gray-900 to-transparent md:w-28"
+            className="pointer-events-none absolute inset-y-0 right-0 z-[1] w-10 bg-gradient-to-l from-gray-900 to-transparent md:w-14"
             aria-hidden
           />
 
-          <div className="tools-marquee flex w-max items-center gap-10 pl-6 group-hover/tools:[animation-play-state:paused] md:gap-14 md:pl-10">
+          <div className="tools-marquee flex w-max items-center gap-10 pl-6 group-hover/tools:[animation-play-state:paused] md:gap-12 md:pl-8">
             {loop.map((tool, i) => (
               <ToolMark key={`${tool.name}-${i}`} tool={tool} />
             ))}
