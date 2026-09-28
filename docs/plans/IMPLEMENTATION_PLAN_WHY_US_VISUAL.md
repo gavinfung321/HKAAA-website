@@ -123,7 +123,7 @@ Phase 0 picked an editorial stack; review moved away from it because it looked t
 - Three **3D CSS glass cards** (`ui/GlassCard.tsx`) in a row: Delivery / Team / Future, with Lucide marks (PackageCheck / Users / Sparkles)
 - Mild hover tilt (~12°) so copy stays readable
 - Copy per the locked light rename + trim above
-- Tried and dropped: procedural Three.js HK skyline (kept unmounted in `effects/hong-kong-skyline/`), broken-glass shards, WebGL glass slabs, stacked hover deck
+- Tried and dropped: procedural Three.js HK skyline (removed after #25; `three` deps uninstalled), broken-glass shards, WebGL glass slabs, stacked hover deck
 
 ---
 

@@ -123,7 +123,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Remove unused `ServiceCard` component (or use it for the six service cards) — deleted in [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)
 - [ ] Remove unused Spline viewer script from `index.html` if still unused
 - [ ] Remove unused plan / subscription state from `App.tsx`
-- [ ] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps, unless a later WebGL pass uses them (left over from #23)
+- [x] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps (left over from #23)
 - [ ] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished
 
 **Repo hygiene**
@@ -229,3 +229,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-28 | #23 closed via PR #24: centered 3D glass cards over violet background paths; Imgur zig-zag removed. |
 | 2026-09-28 | #25: Our Services visual polish plan drafted (recommend bento grid, website first). No code until Phase 0. |
 | 2026-09-28 | #25 closed: two-row bento, website-first order, chrome tiles + six quiet visuals; designer signed off. |
+| 2026-09-28 | Removed unmounted `HongKongSkyline` and uninstalled `three` / `@types/three` (leftover from #23). Footer left for designer. |
