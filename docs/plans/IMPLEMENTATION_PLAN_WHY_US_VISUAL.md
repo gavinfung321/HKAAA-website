@@ -1,6 +1,6 @@
 # Why Choose Us — visual polish
 
-**Status:** Implementing — Phase 0 locked; building on `feat/issue-23-why-us-visual`.  
+**Status:** Closed — shipped via [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24); designer sign-off 2026-09-28.  
 **GitHub issue:** [#23](https://github.com/gavinfung321/HKAAA-website/issues/23)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / visual tighten  
 **After:** Process [#17](https://github.com/gavinfung321/HKAAA-website/issues/17), Plans [#18](https://github.com/gavinfung321/HKAAA-website/issues/18)  
@@ -108,20 +108,32 @@ Keep three reasons unless Phase 0 merges or renames them lightly. Full voice rew
 
 ### Phase 3 — Verify
 
-- [ ] Desktop: no template cliff under Process
-- [ ] Mobile: stack readable
-- [ ] Nav “Why Us” still scrolls correctly
-- [ ] Designer visual sign-off
+- [x] Desktop: no template cliff under Process
+- [x] Mobile: stack readable
+- [x] Nav “Why Us” still scrolls correctly
+- [x] Designer visual sign-off
+
+---
+
+## Shipped (final)
+
+Phase 0 picked an editorial stack; review moved away from it because it looked too much like Process. What shipped:
+
+- Centered header over animated violet **background paths** (`ui/background-paths.tsx`)
+- Three **3D CSS glass cards** (`ui/GlassCard.tsx`) in a row: Delivery / Team / Future, with Lucide marks (PackageCheck / Users / Sparkles)
+- Mild hover tilt (~12°) so copy stays readable
+- Copy per the locked light rename + trim above
+- Tried and dropped: procedural Three.js HK skyline (kept unmounted in `effects/hong-kong-skyline/`), broken-glass shards, WebGL glass slabs, stacked hover deck
 
 ---
 
 ## Acceptance criteria
 
-- [ ] Phase 0 approved
-- [ ] Why Choose Us visual direction shipped
-- [ ] Imagery handled per Phase 0 (no broken Imgur dependence if removed)
-- [ ] Desktop + mobile verified
-- [ ] Issue closed after sign-off + merge
+- [x] Phase 0 approved
+- [x] Why Choose Us visual direction shipped
+- [x] Imagery handled per Phase 0 (Imgur removed; legacy zig-zag kept unmounted)
+- [x] Desktop + mobile verified
+- [x] Issue closed after sign-off + merge
 
 ---
 
@@ -133,3 +145,5 @@ Keep three reasons unless Phase 0 merges or renames them lightly. Full voice rew
 | 2026-09-27 | Phase 0 locked: A editorial; drop Imgur; centered; light rename + trim. Legacy zig-zag in `WhyUsSection.legacy.tsx`. Building. |
 | 2026-09-28 | Layout shifted off Process look: split + word labels + glass rows; procedural Three.js HK skyline (no Meshy GLB). |
 | 2026-09-28 | Skyline unmounted (WebGL later). Eyebrow removed. Lighter copy. Single-column glass stack. |
+| 2026-09-28 | Background paths (violet) + 3D CSS glass cards; stacked deck trialled, then centered row chosen; Lucide marks; tilt eased to 12°. |
+| 2026-09-28 | Merged via PR #24. Designer sign-off. #23 closed. |
