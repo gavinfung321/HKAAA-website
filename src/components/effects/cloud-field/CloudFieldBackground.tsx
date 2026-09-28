@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type MutableRefObject } from 'react';
 import { cn } from '../../../lib/utils';
 import { CLOUD_FIELD_FRAGMENT, CLOUD_FIELD_VERTEX } from './cloudFieldShaders';
 
 type CloudFieldBackgroundProps = {
   className?: string;
+  /** 0–1 hero exit progress; read each frame (no re-render). */
+  scrollProgressRef?: MutableRefObject<number>;
 };
 
 function createShader(gl: WebGLRenderingContext, src: string, type: number) {
@@ -21,9 +23,14 @@ function createShader(gl: WebGLRenderingContext, src: string, type: number) {
 /**
  * Full-bleed cloud-field WebGL backdrop (authored strata shader, HK-night regrade).
  * pointer-events none — CTA stays clickable.
+ * Optional scrollProgressRef drives u_scroll (clouds approach left copy).
  */
-export function CloudFieldBackground({ className }: CloudFieldBackgroundProps) {
+export function CloudFieldBackground({
+  className,
+  scrollProgressRef,
+}: CloudFieldBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const progressRef = scrollProgressRef;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -60,11 +67,13 @@ export function CloudFieldBackground({ className }: CloudFieldBackgroundProps) {
     const uRes = gl.getUniformLocation(program, 'u_res');
     const uTime = gl.getUniformLocation(program, 'u_time');
     const uMouse = gl.getUniformLocation(program, 'u_mouse');
+    const uScroll = gl.getUniformLocation(program, 'u_scroll');
 
     let mx = 0.5;
     let my = 0.5;
     let smx = 0.5;
     let smy = 0.5;
+    let sScroll = 0;
     let raf = 0;
     let running = true;
     let inView = true;
@@ -90,9 +99,14 @@ export function CloudFieldBackground({ className }: CloudFieldBackgroundProps) {
     const draw = (tSec: number) => {
       smx += (mx - smx) * 0.04;
       smy += (my - smy) * 0.04;
+      const targetScroll = reduceMotion.matches
+        ? 0
+        : Math.min(1, Math.max(0, progressRef?.current ?? 0));
+      sScroll += (targetScroll - sScroll) * 0.10;
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uTime, tSec);
       gl.uniform2f(uMouse, smx, smy);
+      gl.uniform1f(uScroll, sScroll);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     };
 
@@ -124,6 +138,7 @@ export function CloudFieldBackground({ className }: CloudFieldBackgroundProps) {
       cancelAnimationFrame(raf);
       if (reduceMotion.matches) {
         frozenTime = 0;
+        sScroll = 0;
         raf = requestAnimationFrame(frame);
       } else {
         raf = requestAnimationFrame(frame);
@@ -171,7 +186,7 @@ export function CloudFieldBackground({ className }: CloudFieldBackgroundProps) {
       gl.deleteShader(vs);
       gl.deleteShader(fs);
     };
-  }, []);
+  }, [progressRef]);
 
   return (
     <canvas

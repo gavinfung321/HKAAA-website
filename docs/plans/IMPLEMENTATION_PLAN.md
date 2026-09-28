@@ -46,7 +46,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Process | Left timeline (Discovery Call → Solution Design → Implementation) over Matrix Junction laser ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)). |
 | Why Choose Us | Centered header, three 3D glass cards (Proven delivery / One team through launch / Ready for what comes next) over violet background paths ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23)). |
 | Services | Two-row bento (website first), chrome tiles + one animated visual each ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)). |
-| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
+| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18) signed off). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
 | Team | Gavin Fung, Natalie Tso, plus “Become Our Member?” → `info@hkaiautomation.com`. |
 | Contact | Form → Supabase `leads`. Address, phone, email. |
 | Footer | Logo, blurb, socials. Two empty columns. |

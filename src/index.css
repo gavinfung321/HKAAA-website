@@ -429,7 +429,7 @@ html {
     @apply w-14 h-14;
   }
 }
-/* GradientBeamCta ÃÂÃÂ spinning border + drifting dots */
+/* GradientBeamCta ÃÂÃÂÃÂÃÂ spinning border + drifting dots */
 @keyframes beam-spin {
   to {
     transform: rotate(360deg);
@@ -453,7 +453,7 @@ html {
   animation: dots-move 8s linear infinite;
 }
 
-/* Testimonials soft marquee ÃÂ¢ÃÂÃÂ slow right ÃÂ¢ÃÂÃÂ left */
+/* Testimonials soft marquee ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ slow right ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ left */
 @keyframes testimonial-marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -496,8 +496,9 @@ html {
 .testimonial-coverflow__item {
   transform-style: preserve-3d;
   transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.45s ease;
+    transform 1s cubic-bezier(0.33, 0.08, 0.2, 1),
+    opacity 0.9s cubic-bezier(0.33, 0.08, 0.2, 1),
+    filter 0.9s cubic-bezier(0.33, 0.08, 0.2, 1);
   will-change: transform, opacity;
   cursor: pointer;
 }
@@ -512,7 +513,7 @@ html {
   }
 }
 
-/* Tools strip — slower than quote marquee (#29) */
+/* Tools strip â slower than quote marquee (#29) */
 @keyframes tools-marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -528,7 +529,7 @@ html {
 }
 
 /*
- * Testimonials — brand 3D plate (#27, Option A).
+ * Testimonials â brand 3D plate (#27, Option A).
  * Dark charcoal plate; violet reserved for bevel + sheen (not a purple wash).
  * No glass blur (distinct from Plans). ::before = sheen; ::after = grain.
  */
@@ -580,7 +581,7 @@ html {
   will-change: transform;
 }
 
-/* Brand pointer sheen — readable depth, not glass wash */
+/* Brand pointer sheen â readable depth, not glass wash */
 .testimonial-card::before {
   content: '';
   position: absolute;
@@ -640,75 +641,148 @@ html {
 }
 
 /*
- * Plans glass cards Ã¢ÂÂ 3D chrome + cursor-following spotlight.
+ * Plans — iridescent glass cards (button outlook, dialed for readable offer shelf).
+ * Rest quieter; Practice + hover keep punch. Soft static stage vignette in PricingSection.
  * --spot-x / --spot-y / --tilt-x / --tilt-y set from PricingSection.
  */
+@keyframes plan-iris-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(22px) hue-rotate(0deg);
+  }
+  40% {
+    transform: translate3d(2.5%, -1.8%, 0) scale(1.04);
+    filter: blur(24px) hue-rotate(10deg);
+  }
+  70% {
+    transform: translate3d(-1.8%, 2.2%, 0) scale(1.02);
+    filter: blur(20px) hue-rotate(-8deg);
+  }
+}
+
 .plan-card {
-  --spot-x: 50%;
-  --spot-y: 0%;
+  --spot-x: 72%;
+  --spot-y: 28%;
   --tilt-x: 0deg;
   --tilt-y: 0deg;
   position: relative;
   isolation: isolate;
-  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-  transform-style: preserve-3d;
-  border: 1px solid transparent;
-  background-image:
-    linear-gradient(rgba(18, 18, 24, 0.72), rgba(10, 10, 15, 0.88)),
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.28),
-      rgba(255, 255, 255, 0.08) 36%,
-      rgba(255, 255, 255, 0.03) 68%,
-      rgba(255, 255, 255, 0.14)
-    );
-  background-origin: padding-box, border-box;
-  background-clip: padding-box, border-box;
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  overflow: hidden;
+  border: 1px solid rgba(196, 207, 229, 0.16);
+  background-color: rgba(8, 10, 18, 0.82);
+  background-image: linear-gradient(
+    165deg,
+    rgba(14, 16, 26, 0.86) 0%,
+    rgba(9, 11, 18, 0.9) 48%,
+    rgba(6, 8, 14, 0.94) 100%
+  );
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
   box-shadow:
     rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
-    rgba(0, 0, 0, 0.65) 0 8px 18px -10px,
-    rgba(0, 0, 0, 0.85) 0 28px 48px -28px,
-    rgba(255, 255, 255, 0.1) 0 1px 0 0 inset,
-    rgba(0, 0, 0, 0.75) 0 -1px 0 0 inset;
+    rgba(0, 0, 0, 0.72) 0 16px 36px -14px,
+    rgba(55, 142, 254, 0.08) 0 0 36px -12px,
+    rgba(249, 151, 112, 0.05) 0 0 56px -14px,
+    inset 1px 3px 8px rgba(220, 232, 255, 0.22),
+    inset -1px -3px 8px rgba(5, 9, 24, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y))
+    translateZ(0);
+  transform-style: preserve-3d;
   transition:
-    transform 0.18s ease-out,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
+    transform 0.25s ease-out,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
   will-change: transform;
 }
 
+/* Practice — denser iris + bloom (hierarchy punch) */
 .plan-card--popular {
-  background-image:
-    linear-gradient(rgba(22, 16, 36, 0.78), rgba(12, 10, 22, 0.9)),
-    linear-gradient(
-      145deg,
-      rgba(216, 180, 254, 0.35),
-      rgba(192, 132, 252, 0.12) 40%,
-      rgba(236, 72, 153, 0.08) 70%,
-      rgba(255, 255, 255, 0.12)
-    );
+  border-color: rgba(196, 207, 229, 0.28);
+  box-shadow:
+    rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.75) 0 18px 42px -14px,
+    rgba(55, 142, 254, 0.2) 0 0 52px -8px,
+    rgba(168, 85, 247, 0.14) 0 0 68px -10px,
+    rgba(249, 151, 112, 0.1) 0 0 80px -12px,
+    inset 1px 3px 10px rgba(220, 232, 255, 0.36),
+    inset -1px -3px 8px rgba(5, 9, 24, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07);
 }
 
+/* Iridescent caustics — quieter at rest (~25% down vs trial) */
 .plan-card::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -28%;
   z-index: 0;
   pointer-events: none;
   border-radius: inherit;
-  opacity: 0.95;
-  background: radial-gradient(
-    420px circle at var(--spot-x) var(--spot-y),
-    rgba(192, 132, 252, 0.28) 0%,
-    rgba(168, 85, 247, 0.12) 28%,
-    rgba(255, 255, 255, 0.04) 48%,
-    transparent 68%
-  );
-  transition: opacity 0.25s ease;
+  opacity: 0.72;
+  background:
+    radial-gradient(
+      ellipse 52% 46% at var(--spot-x) var(--spot-y),
+      rgba(55, 142, 254, 0.38) 0%,
+      rgba(99, 102, 241, 0.14) 34%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 48% 42% at 78% 18%,
+      rgba(168, 85, 247, 0.26) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 46% 40% at 22% 82%,
+      rgba(249, 151, 112, 0.2) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 40% 36% at 58% 92%,
+      rgba(34, 211, 238, 0.12) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 36% 32% at 12% 28%,
+      rgba(236, 72, 153, 0.1) 0%,
+      transparent 50%
+    );
+  animation: plan-iris-drift 16s ease-in-out infinite;
+  transition: opacity 0.35s ease;
 }
 
+.plan-card--popular::before {
+  opacity: 0.82;
+  background:
+    radial-gradient(
+      ellipse 52% 46% at var(--spot-x) var(--spot-y),
+      rgba(55, 142, 254, 0.42) 0%,
+      rgba(99, 102, 241, 0.16) 34%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 48% 42% at 78% 18%,
+      rgba(168, 85, 247, 0.28) 0%,
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 46% 40% at 22% 82%,
+      rgba(249, 151, 112, 0.2) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 40% 36% at 58% 92%,
+      rgba(34, 211, 238, 0.12) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 36% 32% at 12% 28%,
+      rgba(236, 72, 153, 0.1) 0%,
+      transparent 50%
+    );
+}
+
+/* Fresnel lip + fine glass grain — softer rest specular */
 .plan-card::after {
   content: '';
   position: absolute;
@@ -716,22 +790,47 @@ html {
   z-index: 0;
   pointer-events: none;
   border-radius: inherit;
-  opacity: 0.18;
+  opacity: 1;
   mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='72' viewBox='0 0 96 72'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72 .86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='96' height='72' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(220, 232, 255, 0.05) 14%,
+      transparent 36%,
+      transparent 72%,
+      rgba(255, 255, 255, 0.03) 100%
+    ),
+    radial-gradient(
+      120% 70% at 50% -10%,
+      rgba(255, 255, 255, 0.1),
+      transparent 55%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='72' viewBox='0 0 96 72'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72 .86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='96' height='72' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
 }
 
 .plan-card:hover {
+  border-color: rgba(196, 207, 229, 0.34);
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y))
+    translateZ(6px);
   box-shadow:
     rgba(0, 0, 0, 0.55) 0 1px 1px -0.5px,
-    rgba(0, 0, 0, 0.7) 0 12px 24px -12px,
-    rgba(168, 85, 247, 0.18) 0 28px 56px -24px,
-    rgba(255, 255, 255, 0.14) 0 1px 0 0 inset,
-    rgba(0, 0, 0, 0.8) 0 -1px 0 0 inset;
+    rgba(0, 0, 0, 0.75) 0 18px 42px -12px,
+    rgba(55, 142, 254, 0.26) 0 0 60px -6px,
+    rgba(168, 85, 247, 0.16) 0 0 76px -8px,
+    rgba(249, 151, 112, 0.12) 0 0 90px -10px,
+    inset 1px 3px 11px rgba(215, 237, 255, 0.44),
+    inset -1px -3px 8px rgba(5, 9, 24, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+}
+
+.plan-card:hover::before {
+  opacity: 1;
+  animation-duration: 10s;
 }
 
 /*
- * Services bento tiles (#25) â chrome rim adapted from threeui "chrome upload".
+ * Services bento tiles (#25) Ã¢ÂÂ chrome rim adapted from threeui "chrome upload".
  * Lit body + floor shadow here; rim, groove and drifting glint are layers in ServicesSection.
  */
 .service-tile {
@@ -813,7 +912,14 @@ html {
     animation: none;
   }
 
-  .plan-card {
+  .plan-card::before,
+  .plan-card:hover::before {
+    animation: none;
+    filter: blur(20px);
+  }
+
+  .plan-card,
+  .plan-card:hover {
     transform: none;
     transition: box-shadow 0.35s ease;
   }

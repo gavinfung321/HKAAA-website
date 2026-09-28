@@ -10,6 +10,7 @@ precision highp float;
 uniform vec2 u_res;
 uniform float u_time;
 uniform vec2 u_mouse;
+uniform float u_scroll;
 
 float hash(float n){ return fract(sin(n)*43758.5453123); }
 float hash2(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }
@@ -69,6 +70,13 @@ float stars(vec2 uv, float density){
 void main(){
     vec2 uv = gl_FragCoord.xy / u_res;
     float aspect = u_res.x / u_res.y;
+    float scroll = clamp(u_scroll, 0.0, 1.0);
+
+    // Zoom toward left copy + pull mid-field clouds left so the mass closes on the words
+    float zoom = 1.0 + scroll * 0.32;
+    vec2 anchor = vec2(0.28, 0.48);
+    uv = anchor + (uv - anchor) / zoom;
+    uv.x += scroll * 0.10;
 
     vec2 mouse = u_mouse * 2.0 - 1.0;
 
@@ -81,11 +89,11 @@ void main(){
     vec3 col = mix(skyBottom, skyMid, smoothstep(0.3, 0.6, skyGrad));
     col = mix(col, skyTop, smoothstep(0.6, 1.0, skyGrad));
 
-    float horizonY = 0.35;
+    float horizonY = 0.35 + scroll * 0.045;
     float horizonGlow = exp(-pow((uv.y - horizonY) * 3.8, 2.0));
     col += vec3(0.08, 0.12, 0.26) * horizonGlow * 0.8;
 
-    float centerGlow = exp(-pow((uv.x - 0.5) * 1.5, 2.0)) * exp(-pow((uv.y - horizonY) * 4.0, 2.0));
+    float centerGlow = exp(-pow((uv.x - (0.5 - scroll * 0.13)) * 1.5, 2.0)) * exp(-pow((uv.y - horizonY) * 4.0, 2.0));
     col += vec3(0.08, 0.12, 0.22) * centerGlow * 0.6;
 
     float starField = stars(uv * vec2(aspect, 1.0), 60.0)
@@ -98,10 +106,10 @@ void main(){
     vec3 ridge = vec3(0.12, 0.18, 0.34);
     vec3 ridgeAmb = vec3(0.08, 0.12, 0.22);
 
-    // Layer 0
+    // Layer 0 (far) — rises toward type
     lC = vec3(0.10, 0.12, 0.22);
-    xC = uv.x * aspect * 1.6 + u_time * 0.006 + mouse.x * 0.010;
-    yS = mouse.y * 0.003;
+    xC = uv.x * aspect * 1.6 + u_time * 0.006 + mouse.x * 0.010 - scroll * 0.05;
+    yS = mouse.y * 0.003 + scroll * 0.04;
     prof = fbm(xC, 5.0) * 0.10 + fbm(xC * 0.3 + 17.0, 3.0) * 0.07;
     mTop = 0.40 + prof + yS;
     mtn = smoothstep(mTop + 0.003, mTop - 0.001, uv.y);
@@ -115,8 +123,8 @@ void main(){
 
     // Layer 1
     lC = vec3(0.07, 0.09, 0.17);
-    xC = uv.x * aspect * 2.0 + u_time * 0.012 + mouse.x * 0.020;
-    yS = mouse.y * 0.006;
+    xC = uv.x * aspect * 2.0 + u_time * 0.012 + mouse.x * 0.020 - scroll * 0.09;
+    yS = mouse.y * 0.006 + scroll * 0.06;
     prof = fbm(xC, 5.0) * 0.13 + fbm(xC * 0.3 + 34.0, 3.0) * 0.091;
     mTop = 0.33 + prof + yS;
     mtn = smoothstep(mTop + 0.003, mTop - 0.001, uv.y);
@@ -130,8 +138,8 @@ void main(){
 
     // Layer 2
     lC = vec3(0.05, 0.06, 0.13);
-    xC = uv.x * aspect * 2.6 + u_time * 0.020 + mouse.x * 0.034;
-    yS = mouse.y * 0.010;
+    xC = uv.x * aspect * 2.6 + u_time * 0.020 + mouse.x * 0.034 - scroll * 0.13;
+    yS = mouse.y * 0.010 + scroll * 0.08;
     prof = fbm(xC, 5.0) * 0.16 + fbm(xC * 0.3 + 51.0, 3.0) * 0.112;
     mTop = 0.26 + prof + yS;
     mtn = smoothstep(mTop + 0.003, mTop - 0.001, uv.y);
@@ -145,8 +153,8 @@ void main(){
 
     // Layer 3
     lC = vec3(0.03, 0.04, 0.08);
-    xC = uv.x * aspect * 3.2 + u_time * 0.030 + mouse.x * 0.050;
-    yS = mouse.y * 0.015;
+    xC = uv.x * aspect * 3.2 + u_time * 0.030 + mouse.x * 0.050 - scroll * 0.17;
+    yS = mouse.y * 0.015 + scroll * 0.09;
     prof = fbm(xC, 5.0) * 0.14 + fbm(xC * 0.3 + 68.0, 3.0) * 0.098;
     mTop = 0.18 + prof + yS;
     mtn = smoothstep(mTop + 0.003, mTop - 0.001, uv.y);
@@ -156,10 +164,10 @@ void main(){
     col += ridge * rGlow;
     starMask *= (1.0 - mtn);
 
-    // Layer 4
+    // Layer 4 (near) — strongest approach toward the words
     lC = vec3(0.018, 0.022, 0.048);
-    xC = uv.x * aspect * 4.0 + u_time * 0.044 + mouse.x * 0.070;
-    yS = mouse.y * 0.021;
+    xC = uv.x * aspect * 4.0 + u_time * 0.044 + mouse.x * 0.070 - scroll * 0.22;
+    yS = mouse.y * 0.021 + scroll * 0.12;
     prof = fbm(xC, 5.0) * 0.11 + fbm(xC * 0.3 + 85.0, 3.0) * 0.077;
     mTop = 0.09 + prof + yS;
     mtn = smoothstep(mTop + 0.003, mTop - 0.001, uv.y);

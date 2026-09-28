@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
 const REST_SPOT = { x: '28%', y: '18%' };
 const TILT_X_MAX = 3;
 const TILT_Y_MAX = 4;
-const AUTO_MS = 5200;
+const AUTO_MS = 6200;
 const COUNT = testimonials.length;
 
 /** Shortest signed distance on a circular ring (−floor(n/2) … +floor(n/2)). */
@@ -320,7 +320,7 @@ export const TestimonialsSection = () => {
                   }}
                 >
                   <div
-                    className={`h-full w-full transition-[filter] duration-500 ${
+                    className={`h-full w-full transition-[filter] duration-1000 ease-[cubic-bezier(0.33,0.08,0.2,1)] ${
                       isActive ? '' : 'brightness-[0.7]'
                     }`}
                   >
