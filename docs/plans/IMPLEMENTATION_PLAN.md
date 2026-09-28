@@ -59,7 +59,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | `id` | UUID |
 | `name`, `email`, `message` | required |
 | `company` | optional in DB, required in the form |
-| `service` | required; `Lead Generation`, `Chatbot Development`, `Workflow Automation`, `Web Design`, `SEO` |
+| `service` | required; `Lead Generation`, `Chatbot Development`, `Workflow Automation`, `Web Design`, `SEO`, `Content Creation` (migration ready; apply when Supabase is unpaused) |
 | `created_at` | timestamp |
 
 RLS is on. Anonymous visitors can **insert** only.
@@ -112,23 +112,25 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Process section visual polish — follow [IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)).
 - [x] Why Choose Us visual polish — follow [IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23), [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24)).
 - [x] Our Services visual polish — follow [IMPLEMENTATION_PLAN_SERVICES_VISUAL.md](IMPLEMENTATION_PLAN_SERVICES_VISUAL.md) ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)).
-- [ ] Testimonials brand 3D plate polish — follow [IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md](IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md) ([#27](https://github.com/gavinfung321/HKAAA-website/issues/27)). Option A locked; implementing.
-- [ ] Testimonials vortex particle background — follow [IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md](IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md) ([#28](https://github.com/gavinfung321/HKAAA-website/issues/28)). Phase 0 locked; implementing.
+- [x] Testimonials brand 3D plate polish — closed not using ([#27](https://github.com/gavinfung321/HKAAA-website/issues/27)). Keep current testimonials look.
+- [x] Testimonials vortex particle background — closed not using ([#28](https://github.com/gavinfung321/HKAAA-website/issues/28)). Keep current background.
+- [x] Stack tools logo carousel above testimonials — closed; logos good as shipped ([#29](https://github.com/gavinfung321/HKAAA-website/issues/29)).
 - [x] Glass floating header + desktop spring — closed not planned ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). Original nav kept; transparent-at-rest from #14.
 
 **Contact form vs services**
 
 - [x] Add Web Design and SEO to the contact dropdown ([#6](https://github.com/gavinfung321/HKAAA-website/issues/6))
-- [ ] Add Content Creation to the contact dropdown (still on the six service cards; follow-up)
+- [x] Add Content Creation to the contact dropdown (matches six service cards)
 - [x] Add Web Design and SEO to the `leads.service` check constraint (migration `20260916120000_leads_service_web_design_seo.sql`)
+- [x] Add Content Creation to the `leads.service` check constraint (migration `20260929120000_leads_service_content_creation.sql` — apply when Supabase project is unpaused)
 - [x] Submit one test lead for a newly added service and confirm it lands in Supabase (Web Design + SEO inserts verified; test rows deleted)
 - [ ] Align DB `company` rules with the form (either make DB NOT NULL or stop marking the field required in the UI)
 
 **Code hygiene**
 
 - [x] Remove unused `ServiceCard` component (or use it for the six service cards) — deleted in [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)
-- [ ] Remove unused Spline viewer script from `index.html` if still unused
-- [ ] Remove unused plan / subscription state from `App.tsx`
+- [x] Remove unused Spline viewer script from `index.html`
+- [x] Remove unused plan / subscription state from `App.tsx` — already gone (no leftover Stripe/plan selection state)
 - [x] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps (left over from #23)
 - [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
 
@@ -241,3 +243,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-28 | #31 closed: Team two-up quiet plates + Blaze backdrop; join CTA removed; bios trimmed. |
 | 2026-09-28 | #32 closed: Contact quiet plates, website-first form, Send enquiry; footer still open. |
 | 2026-09-29 | #33 closed: Footer Brand/Explore/Connect + terrain-first wireframe landscape (pointer parallax). |
+| 2026-09-29 | Closed #27/#28/#29 (not using paper/vortex/carousel). Dropped unused Spline script. Content Creation added to contact dropdown + migration file. DB push blocked: Supabase project paused. Plan/subscription state already absent from App.tsx. |

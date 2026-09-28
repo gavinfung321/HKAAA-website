@@ -5,6 +5,7 @@ import { supabase } from '../lib/supabase';
 const SERVICES = [
   'Web Design',
   'SEO',
+  'Content Creation',
   'Chatbot Development',
   'Workflow Automation',
   'Lead Generation',

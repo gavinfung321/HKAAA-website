@@ -4,7 +4,7 @@
 **Title:** Design: Testimonials vortex particle background  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — implementing on `feat/issue-27-testimonials-paper`
+**Status:** Closed — not using (2026-09-29)
 
 ## Plan
 

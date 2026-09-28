@@ -1,7 +1,7 @@
 # Issue 029 — Stack tools logo carousel
 
 **GitHub:** https://github.com/gavinfung321/HKAAA-website/issues/29  
-**Status:** Open — implementing; awaiting visual review  
+**Status:** Closed — logos good as shipped (2026-09-29)  
 **Plan:** [IMPLEMENTATION_PLAN_TOOLS_STRIP.md](../plans/IMPLEMENTATION_PLAN_TOOLS_STRIP.md)
 
 ## Scope
