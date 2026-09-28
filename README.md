@@ -40,3 +40,5 @@ Netlify builds `main` and publishes `hkaiautomation.com`. Vite needs the two `VI
 ## Docs
 
 Plans and issue tracking live in [`docs/`](docs/README.md).
+
+Lead email on form submit: [`docs/ops/LEAD_EMAIL_NOTIFY.md`](docs/ops/LEAD_EMAIL_NOTIFY.md).

@@ -58,7 +58,7 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | --- | --- |
 | `id` | UUID |
 | `name`, `email`, `message` | required |
-| `company` | optional in DB, required in the form |
+| `company` | optional in DB; **removed from the public form** (2026-09-29) |
 | `service` | required; `Lead Generation`, `Chatbot Development`, `Workflow Automation`, `Web Design`, `SEO`, `Content Creation` (migration ready; apply when Supabase is unpaused) |
 | `created_at` | timestamp |
 
@@ -124,7 +124,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Add Web Design and SEO to the `leads.service` check constraint (migration `20260916120000_leads_service_web_design_seo.sql`)
 - [x] Add Content Creation to the `leads.service` check constraint (migration `20260929120000_leads_service_content_creation.sql` — apply when Supabase project is unpaused)
 - [x] Submit one test lead for a newly added service and confirm it lands in Supabase (Web Design + SEO inserts verified; test rows deleted)
-- [ ] Align DB `company` rules with the form (either make DB NOT NULL or stop marking the field required in the UI)
+- [x] Align DB `company` rules with the form — company removed from the public form (DB column stays optional)
 
 **Code hygiene**
 
@@ -151,11 +151,11 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 Stop depending on Imgur (and other hotlinked hosts) for brand-critical images.
 
-- [ ] Move logo into the repo or Supabase Storage; update header, footer, favicon, and Open Graph tags
+- [x] Move logo into the repo or Supabase Storage; update header, footer, favicon, and Open Graph tags — `public/brand/logo.png`
 - [x] Move “Why Us” images into owned hosting — not needed: images removed in [#23](https://github.com/gavinfung321/HKAAA-website/issues/23)
-- [ ] Move team photos into owned hosting
-- [ ] Confirm every remaining remote image is intentional (or replace it)
-- [ ] Recheck favicon, apple-touch-icon, and social preview after the move
+- [x] Move team photos into owned hosting — `public/team/gavin.png`, `public/team/natalie.png`
+- [x] Confirm every remaining remote image is intentional (or replace it) — brand/team off Imgur; legacy Why Us Imgur only in unmounted file
+- [x] Recheck favicon, apple-touch-icon, and social preview after the move — points at `/brand/logo.png` / absolute OG URLs
 
 ---
 
@@ -177,10 +177,10 @@ The public site is already on **Netlify**. DNS for `hkaiautomation.com` is Netli
 
 A reliable way to see and act on new leads.
 
-- [ ] Decide the lead inbox: Supabase Table Editor, email alert, Slack, or a private admin view
-- [ ] Implement the chosen inbox
+- [ ] Decide the lead inbox: Supabase Table Editor, email alert, Slack, or a private admin view — email to info@ chosen; Table Editor still works
+- [ ] Implement the chosen inbox — Edge Function + Resend; follow [docs/ops/LEAD_EMAIL_NOTIFY.md](../ops/LEAD_EMAIL_NOTIFY.md) (needs Resend API key + webhook)
 - [ ] Confirm a new form submit shows up there
-- [ ] Optional: email/Slack notify on insert
+- [ ] Optional: email/Slack notify on insert — in progress via `notify-lead` function
 - [ ] Optional: basic spam protection (honeypot or rate limit) if the form starts getting junk
 
 ---
@@ -247,3 +247,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | Closed #27/#28/#29 (not using paper/vortex/carousel). Dropped unused Spline script. Content Creation added to contact dropdown + migration file. DB push blocked: Supabase project paused. Plan/subscription state already absent from App.tsx. |
 | 2026-09-29 | #34 closed: mobile burger uses scrolled chrome while open; quiet-fill Contact Us. |
 | 2026-09-29 | #16 closed: site-wide copy pass (Process → Footer) to match hero voice; no em dashes. |
+| 2026-09-29 | Company field removed from form. Logo + team photos moved to `public/`. Lead email notify function drafted (Resend → info@); needs secrets + webhook. |

@@ -60,7 +60,7 @@ export const Footer = () => {
               className="inline-flex items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
             >
               <img
-                src="https://i.imgur.com/ixZQlZJ.png"
+                src="/brand/logo.png"
                 alt=""
                 className="h-8 w-auto"
               />

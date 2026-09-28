@@ -18,7 +18,6 @@ export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
     service: '',
     message: '',
   });
@@ -45,7 +44,7 @@ export const ContactSection = () => {
       if (error) throw error;
 
       setStatus('success');
-      setFormData({ name: '', email: '', company: '', service: '', message: '' });
+      setFormData({ name: '', email: '', service: '', message: '' });
 
       setTimeout(() => {
         setStatus('idle');
@@ -157,22 +156,6 @@ export const ContactSection = () => {
                       </option>
                     ))}
                   </select>
-                </div>
-
-                <div>
-                  <label htmlFor="company" className="mb-2 block text-sm font-medium text-white/70">
-                    Company <span className="text-red-400/90">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    required
-                    value={formData.company}
-                    onChange={handleChange}
-                    className={fieldClass}
-                    placeholder="Your company"
-                  />
                 </div>
 
                 <div>

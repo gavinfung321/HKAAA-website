@@ -5,7 +5,7 @@ const teamMembers = [
   {
     name: 'Gavin Fung',
     role: 'Co-founder',
-    image: 'https://i.imgur.com/ZrLavkA.jpeg',
+    image: '/team/gavin.png',
     description:
       'Builds the sites, automations, and outreach clients actually run.',
     linkedin: 'https://www.linkedin.com/in/gavin-fung-48811539/',
@@ -13,7 +13,7 @@ const teamMembers = [
   {
     name: 'Natalie Tso',
     role: 'Co-founder',
-    image: 'https://i.imgur.com/zn9uZhz.jpeg',
+    image: '/team/natalie.png',
     description:
       'Writes and edits the posts, stories, and video behind the brand.',
     linkedin: 'https://www.linkedin.com/in/natalie-tso-b6b204a0/',
