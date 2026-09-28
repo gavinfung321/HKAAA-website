@@ -5,17 +5,17 @@ const steps = [
   {
     number: '01',
     title: 'Discovery Call',
-    body: 'Schedule a discovery call to discuss your needs and explore how we can help transform your ideas into reality.',
+    body: 'We map your site, traffic, and what “done” looks like. Then we decide if AI belongs in v1.',
   },
   {
     number: '02',
     title: 'Solution Design',
-    body: 'Our experts work with you to design the perfect solution that meets your specific needs and requirements.',
+    body: 'A clear scope: pages, SEO, and only the automations you’ll actually use.',
   },
   {
     number: '03',
     title: 'Implementation',
-    body: 'Our highly skilled team implements your solution using cutting-edge technologies and industry best practices.',
+    body: 'We build, launch, and hand over. Bilingual-ready when you need it.',
   },
 ] as const;
 
@@ -56,7 +56,7 @@ export function ProcessSection() {
             </span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">
-            Three clear steps from first call to launch — scope first, then build.
+            Three clear steps from first call to launch. Scope first, then build.
           </p>
         </div>
 

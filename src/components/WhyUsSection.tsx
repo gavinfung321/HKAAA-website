@@ -8,21 +8,21 @@ const reasons = [
     label: 'Delivery',
     title: 'Proven delivery',
     subhead: 'Real results, not slide decks',
-    body: 'We ship websites and systems that fit how you actually work — with a track record that holds up in Hong Kong.',
+    body: 'We ship sites and systems you can run, built for how Hong Kong teams actually work.',
     icon: PackageCheck,
   },
   {
     label: 'Team',
     title: 'One team through launch',
     subhead: 'Strategy, build, and support',
-    body: 'From first call to live site and beyond — clear ownership, no handoff fog between brief and launch.',
+    body: 'Same people from first call to go-live. No agency handoff between brief and launch.',
     icon: Users,
   },
   {
     label: 'Future',
     title: 'Ready for what comes next',
     subhead: "Website first, AI when you're ready",
-    body: 'Solid foundations first; chatbots, workflows, and outreach when the business is ready for them.',
+    body: 'Nail the site and SEO first. Add chatbots and workflows when you’re ready.',
     icon: Sparkles,
   },
 ] as const;
@@ -57,7 +57,7 @@ export function WhyUsSection() {
             </span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-gray-400 md:text-lg">
-            Clear ownership. Real delivery. Room to grow after the site ships.
+            Clear ownership. Real delivery. Room to grow after launch.
           </p>
         </div>
 

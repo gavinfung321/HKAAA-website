@@ -4,7 +4,7 @@
 **Title:** Copy: Site-wide pass to match hero voice  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — paused (visuals first); Phase 0 mostly locked; workflow A when resumed
+**Status:** Closed — signed off 2026-09-29
 
 ## Plan
 

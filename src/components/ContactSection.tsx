@@ -96,7 +96,7 @@ export const ContactSection = () => {
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/55 md:text-lg">
-            Tell us what you need. We&apos;ll come back with a clear next step.
+            Tell us about your site or next project. We&apos;ll reply with a clear next step.
           </p>
         </div>
 

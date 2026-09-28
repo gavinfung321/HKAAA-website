@@ -29,12 +29,12 @@ type Service = {
 };
 
 const services: Service[] = [
-  { name: 'Web Design', headline: 'A website that wins you customers', visual: WebDesignVisual, span: 'lg:col-span-4' },
+  { name: 'Web Design', headline: 'A site that wins you customers', visual: WebDesignVisual, span: 'lg:col-span-4' },
   { name: 'SEO', headline: 'Get found on Google', visual: SeoVisual, span: 'lg:col-span-3' },
-  { name: 'Content', headline: 'Posts, blogs and videos, handled', visual: ContentVisual, span: 'lg:col-span-3' },
+  { name: 'Content', headline: 'Posts, blogs, and videos handled', visual: ContentVisual, span: 'lg:col-span-3' },
   { name: 'Chatbot', headline: "Answers customers while you're busy", visual: ChatbotVisual, span: 'lg:col-span-3' },
-  { name: 'Workflow', headline: 'Busywork done automatically', visual: WorkflowVisual, span: 'lg:col-span-4' },
-  { name: 'Lead gen', headline: 'A steady stream of new enquiries', visual: LeadGenVisual, span: 'lg:col-span-3' },
+  { name: 'Workflow', headline: 'Busywork, done for you', visual: WorkflowVisual, span: 'lg:col-span-4' },
+  { name: 'Lead gen', headline: 'A steady stream of enquiries', visual: LeadGenVisual, span: 'lg:col-span-3' },
 ];
 
 const BORDER_MASK: CSSProperties = {
@@ -262,7 +262,7 @@ export function ServicesSection() {
             </span>
           </h2>
           <p className="max-w-md text-base leading-relaxed text-gray-400 md:pb-2 md:text-lg">
-            Everything your business needs online, from one team.
+            Websites first. AI and outreach when you need them.
           </p>
         </div>
 

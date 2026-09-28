@@ -7,7 +7,7 @@ const teamMembers = [
     role: 'Co-founder',
     image: 'https://i.imgur.com/ZrLavkA.jpeg',
     description:
-      'Builds the websites, automations, and AI outreach clients actually run on.',
+      'Builds the sites, automations, and outreach clients actually run.',
     linkedin: 'https://www.linkedin.com/in/gavin-fung-48811539/',
   },
   {
@@ -15,7 +15,7 @@ const teamMembers = [
     role: 'Co-founder',
     image: 'https://i.imgur.com/zn9uZhz.jpeg',
     description:
-      'Writes and edits the posts, stories, and video that sit behind the brand.',
+      'Writes and edits the posts, stories, and video behind the brand.',
     linkedin: 'https://www.linkedin.com/in/natalie-tso-b6b204a0/',
   },
 ] as const;

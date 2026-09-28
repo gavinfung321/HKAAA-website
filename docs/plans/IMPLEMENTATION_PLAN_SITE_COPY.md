@@ -1,6 +1,6 @@
 # Site-wide copy pass — implementation plan
 
-**Status:** Paused — designer prioritizing below-fold **visual** work first. Copy drafts later (workflow A: agent options → designer pick).  
+**Status:** Signed off 2026-09-29 ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16))  
 **GitHub issue:** [#16](https://github.com/gavinfung321/HKAAA-website/issues/16)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / Copy and content  
 **Voice reference:** Hero (#14) — website-first, Hong Kong, clear scope; Elevate with better + Websites / SEO / Chatbots / Automation
@@ -17,7 +17,7 @@ Bring every major section’s language in line with the new hero so the page fee
 - Short sentences; cut filler (“cutting-edge”, “transform your ideas into reality”, “comprehensive AI solutions”)
 - Concrete over vague
 - No fake named proof unless designer supplies it
-- No service laundry lists that repeat the hero rotator in every section
+- No em dashes or en dashes (reads AI). Prefer periods, commas, or a new sentence.
 
 ---
 
@@ -95,21 +95,21 @@ How we produce the new words:
 
 ### Phase 3 — Verify
 
-- [ ] Read-through top to bottom: one voice
-- [ ] Desktop + mobile: no awkward wraps on new lines
-- [ ] No accidental hero/pricing regressions
-- [ ] Designer sign-off
-- [ ] Parent checklist ticked; issue closed after merge
+- [x] Read-through top to bottom: one voice
+- [x] Desktop + mobile: no awkward wraps on new lines
+- [x] No accidental hero/pricing regressions
+- [x] Designer sign-off
+- [x] Parent checklist ticked; issue closed after merge
 
 ---
 
 ## Acceptance criteria
 
-- [ ] Phase 0 approved
-- [ ] Locked copy shipped for every in-scope section
-- [ ] Voice matches hero (website-first, HK, concrete)
-- [ ] Testimonials handled per Phase 0 decision
-- [ ] Issue closed after visual/copy sign-off + merge
+- [x] Phase 0 approved
+- [x] Locked copy shipped for every in-scope section
+- [x] Voice matches hero (website-first, HK, concrete)
+- [x] Testimonials handled per Phase 0 decision
+- [x] Issue closed after visual/copy sign-off + merge
 
 ---
 
@@ -119,3 +119,10 @@ How we produce the new words:
 | --- | --- |
 | 2026-09-27 | Plan drafted after #14 hero craft merge. No code. Issue #16 opened. |
 | 2026-09-27 | Phase 0: sections + voice + leave testimonials/member CTA; workflow A. **Paused** — visuals first. |
+| 2026-09-29 | Unpaused. Process draft options for designer pick. No code until locked. |
+| 2026-09-29 | Process locked **A** (header kept; step bodies replaced). Why Us next. |
+| 2026-09-29 | Process revised: no em dashes (designer feedback). |
+| 2026-09-29 | Why Us locked **A** (tighter bodies, no dashes; sub trimmed). Services next. |
+| 2026-09-29 | Services locked **A** (headlines + sub). Team / Contact / Footer next. |
+| 2026-09-29 | Team + Contact locked **A**; Footer blurb kept. Full #16 draft pass in code; awaiting designer read-through / sign-off. |
+| 2026-09-29 | Designer sign-off. Issue closed. |

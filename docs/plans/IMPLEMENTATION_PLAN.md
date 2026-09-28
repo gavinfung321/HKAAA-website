@@ -93,7 +93,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 **Copy and content**
 
 - [x] Fix hero line “surcharge leads” — rotating headline (Websites / SEO / Workflows / Outreach) + service subline ([#9](https://github.com/gavinfung321/HKAAA-website/issues/9)); later refined in [#14](https://github.com/gavinfung321/HKAAA-website/issues/14)
-- [ ] Site-wide copy pass to match hero voice — follow [IMPLEMENTATION_PLAN_SITE_COPY.md](IMPLEMENTATION_PLAN_SITE_COPY.md) ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16)). Do not code until that plan is approved.
+- [x] Site-wide copy pass to match hero voice — follow [IMPLEMENTATION_PLAN_SITE_COPY.md](IMPLEMENTATION_PLAN_SITE_COPY.md) ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16)). Signed off 2026-09-29.
 - [x] Testimonials after hero (auto marquee, mixed faces) — follow [IMPLEMENTATION_PLAN_TESTIMONIALS.md](IMPLEMENTATION_PLAN_TESTIMONIALS.md) ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)).
 - [x] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits → done via [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)
 - [x] Plans section visual + placement (glass 3D cards; keep late after Services) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)).
@@ -246,3 +246,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | #33 closed: Footer Brand/Explore/Connect + terrain-first wireframe landscape (pointer parallax). |
 | 2026-09-29 | Closed #27/#28/#29 (not using paper/vortex/carousel). Dropped unused Spline script. Content Creation added to contact dropdown + migration file. DB push blocked: Supabase project paused. Plan/subscription state already absent from App.tsx. |
 | 2026-09-29 | #34 closed: mobile burger uses scrolled chrome while open; quiet-fill Contact Us. |
+| 2026-09-29 | #16 closed: site-wide copy pass (Process → Footer) to match hero voice; no em dashes. |
