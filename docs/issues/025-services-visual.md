@@ -4,7 +4,7 @@
 **Title:** Design: Our Services visual polish  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — plan drafted, waiting on Phase 0 (no code yet)
+**Status:** Open — Phase 0 approved, building for review
 
 ## Plan
 
@@ -13,8 +13,9 @@
 ## Scope (v1)
 
 - Restyle Our Services to match Process / Why Us / Plans craft
-- Avoid a third row of glass cards between Why Us and Plans (recommend bento grid)
-- Make the six service visuals one consistent set
+- Bento, two rows of three, website-first order (Web Design → SEO → Content → Chatbot → Workflow → Lead gen)
+- Each tile: service name + one-line headline + one quiet animated visual; no description paragraphs
+- Retire `ChatbotDemo`, `BusinessGraph` and the static mockups
 - Full copy rewrite stays paused in #16
 
 ## Related

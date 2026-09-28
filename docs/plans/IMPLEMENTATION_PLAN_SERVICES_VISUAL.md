@@ -1,6 +1,6 @@
 # Our Services — visual polish
 
-**Status:** Draft — no code until Phase 0 is approved.  
+**Status:** Phase 0 approved — building for review.  
 **GitHub issue:** [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / visual tighten  
 **After:** Process [#17](https://github.com/gavinfung321/HKAAA-website/issues/17), Why Us [#23](https://github.com/gavinfung321/HKAAA-website/issues/23), Plans [#18](https://github.com/gavinfung321/HKAAA-website/issues/18)  
@@ -65,7 +65,30 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 
 ---
 
-## Content model (v1 — keep unless Phase 0 trims)
+## Chosen direction (Phase 0 result)
+
+**Bento, two rows of three**, based on the designer's reference video (`bento.mp4`): six tiles, slightly different widths, each with one short line of text and one quiet animated visual. Simpler than the big-tile map first proposed; the website-first order keeps Web Design top-left.
+
+**Each tile:** small violet service name, a one-line headline, one visual. **No description paragraph.** No hover-only text (phones can't hover).
+
+| Position | Service name | Headline (draft — final wording in #16) | Visual |
+| --- | --- | --- | --- |
+| Row 1, left | Web Design | A website that wins you customers | Browser window with a mini site building in |
+| Row 1, middle | SEO | Get found on Google | Search box; "your site" slides into the #1 spot |
+| Row 1, right | Content | Posts, blogs and videos, handled | Curved row of content-type icons drifting past |
+| Row 2, left | Chatbot | Answers customers while you're busy | Chat bubbles typing in ("Open Saturday?" → booking reply) |
+| Row 2, middle | Workflow | Busywork done automatically | Hub-and-branch: form → Airtable → email |
+| Row 2, right | Lead gen | A steady stream of new enquiries | Dot travelling a dashed path: visitor → lead → booked call |
+
+**Styling:** dark tiles, thin `white/10` borders, violet/pink for lines, glows and dots (not the reference's grey). Motion starts when a tile scrolls into view; static under `prefers-reduced-motion`.
+
+**Header (trial, swap on review):** left-aligned "Our Services" with one support line: *Everything your business needs online, from one team.* Alternative: centered like Why Us / Plans.
+
+**Retired:** `ChatbotDemo` (stock photo, fake input, dated copy), `BusinessGraph` (fake "+30%"), the three static browser mockups. `WorkflowDemo` is replaced by a tile-sized hub diagram.
+
+---
+
+## Content model (before — for reference)
 
 | Service | Visual today | Body today |
 | --- | --- | --- |
@@ -84,9 +107,9 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 
 - [x] Confirm layout option: **A — Bento grid**
 - [x] Confirm order: **website first** (Web Design → SEO → Content → Chatbot → Workflow → Lead gen)
-- [ ] Confirm visuals: which live demos stay, and what replaces the three static browser mockups
-- [ ] Confirm section header: centered or left, and whether to add one support line
-- [ ] Confirm copy: leave as is (#16) or light trim of card bodies now
+- [x] Confirm visuals: **one quiet visual per tile** (see Chosen direction); old demos retired
+- [x] Confirm section header: **left-aligned + support line** as a trial; revisit on review
+- [x] Confirm copy: **drop the paragraphs**; service name + one-line headline per tile
 
 ### Phase 1 — Structure
 
@@ -128,3 +151,4 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 | --- | --- |
 | 2026-09-28 | Plan drafted after #23 closed. Issue #25 opened. No code until Phase 0. |
 | 2026-09-28 | Phase 0 partial: bento grid (A) + website-first order locked. Visuals, header and copy still open. |
+| 2026-09-28 | Phase 0 approved: two-rows-of-three bento from designer reference; service name + headline + one visual per tile, no paragraphs. Header trial: left-aligned. Building for review. |
