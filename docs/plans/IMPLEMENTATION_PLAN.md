@@ -131,6 +131,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Remove unused `ServiceCard` component (or use it for the six service cards) — deleted in [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)
 - [x] Remove unused Spline viewer script from `index.html`
 - [x] Remove unused plan / subscription state from `App.tsx` — already gone (no leftover Stripe/plan selection state)
+- [x] Mobile burger menu readable on hero — follow [IMPLEMENTATION_PLAN_MOBILE_NAV.md](IMPLEMENTATION_PLAN_MOBILE_NAV.md) ([#34](https://github.com/gavinfung321/HKAAA-website/issues/34)). Option A + quiet-fill Contact Us; signed off 2026-09-29.
 - [x] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps (left over from #23)
 - [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
 
@@ -244,3 +245,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-28 | #32 closed: Contact quiet plates, website-first form, Send enquiry; footer still open. |
 | 2026-09-29 | #33 closed: Footer Brand/Explore/Connect + terrain-first wireframe landscape (pointer parallax). |
 | 2026-09-29 | Closed #27/#28/#29 (not using paper/vortex/carousel). Dropped unused Spline script. Content Creation added to contact dropdown + migration file. DB push blocked: Supabase project paused. Plan/subscription state already absent from App.tsx. |
+| 2026-09-29 | #34 closed: mobile burger uses scrolled chrome while open; quiet-fill Contact Us. |
