@@ -9,6 +9,7 @@ import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
+import { ToolsStrip } from './components/ToolsStrip';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -43,6 +44,8 @@ function App() {
       <Header scrollToSection={scrollToSection} />
 
       <HeroSection />
+
+      <ToolsStrip />
 
       <TestimonialsSection />
 

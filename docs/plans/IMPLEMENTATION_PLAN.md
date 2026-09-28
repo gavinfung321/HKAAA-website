@@ -42,11 +42,11 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | --- | --- |
 | Header | Fixed nav: Process, Why Us, Our Services, Plans, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
 | Hero | “Elevate with better” + rotating **Websites / SEO / Chatbots / Automation**. Brand lockup in hero; left/offset type; proof line. CTA → Calendly. Backdrop: cloud-field WebGL. |
-| Testimonials | Auto marquee strip under the hero ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)). |
+| Testimonials | Auto marquee strip under the hero ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)); brand 3D plate polish ([#27](https://github.com/gavinfung321/HKAAA-website/issues/27)); vortex backdrop ([#28](https://github.com/gavinfung321/HKAAA-website/issues/28)). |
 | Process | Left timeline (Discovery Call → Solution Design → Implementation) over Matrix Junction laser ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)). |
 | Why Choose Us | Centered header, three 3D glass cards (Proven delivery / One team through launch / Ready for what comes next) over violet background paths ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23)). |
 | Services | Two-row bento (website first), chrome tiles + one animated visual each ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)). |
-| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
+| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18) signed off). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
 | Team | Gavin Fung, Natalie Tso, plus “Become Our Member?” → `info@hkaiautomation.com`. |
 | Contact | Form → Supabase `leads`. Address, phone, email. |
 | Footer | Logo, blurb, socials. Two empty columns. |
@@ -108,6 +108,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Process section visual polish — follow [IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)).
 - [x] Why Choose Us visual polish — follow [IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23), [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24)).
 - [x] Our Services visual polish — follow [IMPLEMENTATION_PLAN_SERVICES_VISUAL.md](IMPLEMENTATION_PLAN_SERVICES_VISUAL.md) ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)).
+- [ ] Testimonials brand 3D plate polish — follow [IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md](IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md) ([#27](https://github.com/gavinfung321/HKAAA-website/issues/27)). Option A locked; implementing.
+- [ ] Testimonials vortex particle background — follow [IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md](IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md) ([#28](https://github.com/gavinfung321/HKAAA-website/issues/28)). Phase 0 locked; implementing.
 - [x] Glass floating header + desktop spring — closed not planned ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). Original nav kept; transparent-at-rest from #14.
 
 **Contact form vs services**
@@ -230,3 +232,5 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-28 | #25: Our Services visual polish plan drafted (recommend bento grid, website first). No code until Phase 0. |
 | 2026-09-28 | #25 closed: two-row bento, website-first order, chrome tiles + six quiet visuals; designer signed off. |
 | 2026-09-28 | Removed unmounted `HongKongSkyline` and uninstalled `three` / `@types/three` (leftover from #23). Footer left for designer. |
+| 2026-09-28 | #27: Testimonials dark paper / vellum card polish plan drafted (CSS+SVG; no Three.js). No code until Phase 0. |
+| 2026-09-28 | #28: Testimonials vortex particle background — Three.js Points (no R3F); cool violet→blue; implementing. |

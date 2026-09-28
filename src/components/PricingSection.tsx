@@ -1,6 +1,9 @@
 import { useRef, type CSSProperties, type PointerEvent } from 'react';
 import { Check } from 'lucide-react';
-import { CALENDLY_URL, GradientBeamCta } from './ui/GradientBeamCta';
+import { GradientBeamCta } from './ui/GradientBeamCta';
+
+const TILT_X_MAX = 2.5;
+const TILT_Y_MAX = 3.5;
 
 const plans = [
   {
@@ -12,8 +15,7 @@ const plans = [
       'Built with you in working sessions',
     ],
     isPopular: false,
-    /** Resting spotlight — bottom-left so cards differ at rest */
-    restSpot: { x: '12%', y: '88%' },
+    restSpot: { x: '78%', y: '32%' },
   },
   {
     name: 'Practice',
@@ -25,7 +27,7 @@ const plans = [
       'Optional site chatbot',
     ],
     isPopular: true,
-    restSpot: { x: '50%', y: '8%' },
+    restSpot: { x: '70%', y: '24%' },
   },
   {
     name: 'Partner',
@@ -36,16 +38,11 @@ const plans = [
       'Workflows, chatbot, and AI outreach',
     ],
     isPopular: false,
-    /** Resting spotlight — top-right */
-    restSpot: { x: '88%', y: '12%' },
+    restSpot: { x: '22%', y: '70%' },
   },
 ];
 
-function PlanCard({
-  plan,
-}: {
-  plan: (typeof plans)[number];
-}) {
+function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
   const cardRef = useRef<HTMLElement>(null);
 
   const resetSpot = () => {
@@ -66,11 +63,10 @@ function PlanCard({
     el.style.setProperty('--spot-x', `${x}%`);
     el.style.setProperty('--spot-y', `${y}%`);
 
-    // Soft 3D tilt toward cursor (stronger on hover)
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.setProperty('--tilt-x', `${(-py * 14).toFixed(2)}deg`);
-    el.style.setProperty('--tilt-y', `${(px * 18).toFixed(2)}deg`);
+    el.style.setProperty('--tilt-x', `${(-py * TILT_X_MAX * 2).toFixed(2)}deg`);
+    el.style.setProperty('--tilt-y', `${(px * TILT_Y_MAX * 2).toFixed(2)}deg`);
   };
 
   return (
@@ -78,7 +74,7 @@ function PlanCard({
       ref={cardRef}
       onPointerMove={onPointerMove}
       onPointerLeave={resetSpot}
-      className={`plan-card group relative flex flex-col overflow-hidden rounded-2xl p-7 md:p-8 ${
+      className={`plan-card group relative flex h-full flex-col overflow-hidden rounded-[1.15rem] p-7 md:p-8 ${
         plan.isPopular ? 'plan-card--popular' : ''
       }`}
       style={
@@ -91,11 +87,11 @@ function PlanCard({
       }
     >
       <div className="relative z-[1] mb-5 flex items-center justify-between gap-3">
-        <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-gray-300/90">
+        <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/45">
           {plan.name}
         </h3>
         {plan.isPopular && (
-          <span className="shrink-0 rounded-full border border-purple-400/30 bg-purple-500/15 px-2.5 py-1 text-[11px] font-medium tracking-wide text-purple-200">
+          <span className="shrink-0 rounded-md border border-white/12 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium tracking-wide text-white/70">
             Most chosen
           </span>
         )}
@@ -109,10 +105,14 @@ function PlanCard({
         {plan.features.map((feature) => (
           <li
             key={feature}
-            className="flex items-start gap-3 text-sm leading-relaxed text-gray-300/90 md:text-[15px]"
+            className={`flex items-start gap-3 text-sm leading-relaxed md:text-[15px] ${
+              plan.isPopular ? 'text-white/90' : 'text-white/75'
+            }`}
           >
             <Check
-              className="mt-0.5 h-4 w-4 shrink-0 text-purple-300"
+              className={`mt-0.5 h-4 w-4 shrink-0 ${
+                plan.isPopular ? 'text-violet-200' : 'text-violet-300/80'
+              }`}
               strokeWidth={1.75}
               aria-hidden
             />
@@ -120,21 +120,23 @@ function PlanCard({
           </li>
         ))}
       </ul>
+
+      {/* Equal-height fill sits under the list, not between blurb and rule */}
+      <div className="relative z-[1] min-h-0 flex-1" aria-hidden />
     </article>
   );
 }
 
 /**
- * Plans — centered header, glass 3D cards with cursor spotlight (#18).
+ * Plans — dialed glass shelf, white title, one Book a Call.
  */
 export const PricingSection = () => {
   return (
     <section
       id="pricing-section"
-      className="bg-gray-900 px-6 py-16 md:px-10 md:py-24 lg:px-12"
-      style={{ perspective: '1200px' }}
+      className="relative isolate overflow-hidden bg-gray-900 px-6 py-16 md:px-10 md:py-24 lg:px-12"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="relative mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-4 text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
@@ -147,15 +149,31 @@ export const PricingSection = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 md:gap-7 animate-on-scroll">
-          {plans.map((plan) => (
-            <PlanCard key={plan.name} plan={plan} />
-          ))}
+        <div className="relative mt-14 md:mt-16 animate-on-scroll">
+          {/* Soft static stage — no motion; lifts glass off flat gray */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[120%] w-[115%] max-w-none -translate-x-1/2 -translate-y-[46%] rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(55,142,254,0.07)_0%,rgba(99,102,241,0.04)_38%,transparent_68%)]"
+          />
+          <div className="relative z-[1] grid grid-cols-1 items-stretch gap-6 md:grid-cols-3 md:gap-5 lg:gap-6">
+            {plans.map((plan) => (
+              <div
+                key={plan.name}
+                className={
+                  plan.isPopular
+                    ? 'h-full md:-translate-y-5 md:z-[1]'
+                    : 'h-full md:opacity-[0.9]'
+                }
+              >
+                <PlanCard plan={plan} />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-4 animate-on-scroll md:mt-14">
+        <div className="mt-14 flex flex-col items-center gap-3 animate-on-scroll md:mt-16">
           <p className="text-sm text-gray-400">Every plan is quoted to your scope.</p>
-          <GradientBeamCta href={CALENDLY_URL} />
+          <GradientBeamCta />
         </div>
       </div>
     </section>
