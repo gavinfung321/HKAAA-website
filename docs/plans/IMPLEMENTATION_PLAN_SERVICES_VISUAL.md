@@ -1,6 +1,6 @@
 # Our Services — visual polish
 
-**Status:** Phase 0 approved — building for review.  
+**Status:** Done — designer signed off; shipping via PR.  
 **GitHub issue:** [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A / visual tighten  
 **After:** Process [#17](https://github.com/gavinfung321/HKAAA-website/issues/17), Why Us [#23](https://github.com/gavinfung321/HKAAA-website/issues/23), Plans [#18](https://github.com/gavinfung321/HKAAA-website/issues/18)  
@@ -127,21 +127,21 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 
 ### Phase 3 — Verify
 
-- [ ] Desktop: no template cliff between Why Us and Plans
-- [ ] Mobile: readable, and noticeably shorter than today's ~3,000px
-- [ ] Nav "Our Services" still scrolls correctly
-- [ ] Live demos still animate; nothing clipped
-- [ ] Designer visual sign-off
+- [x] Desktop: no template cliff between Why Us and Plans
+- [x] Mobile: readable, and noticeably shorter than today's ~3,000px (~1,970px stacked)
+- [x] Nav "Our Services" still scrolls correctly (`#services-section`)
+- [x] Live demos still animate; nothing clipped
+- [x] Designer visual sign-off
 
 ---
 
 ## Acceptance criteria
 
-- [ ] Phase 0 approved
-- [ ] Services visual direction shipped
-- [ ] Six visuals read as one set
-- [ ] Desktop + mobile verified
-- [ ] Issue closed after sign-off + merge
+- [x] Phase 0 approved
+- [x] Services visual direction shipped
+- [x] Six visuals read as one set
+- [x] Desktop + mobile verified
+- [x] Issue closed after sign-off + merge
 
 ---
 
@@ -152,3 +152,6 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 | 2026-09-28 | Plan drafted after #23 closed. Issue #25 opened. No code until Phase 0. |
 | 2026-09-28 | Phase 0 partial: bento grid (A) + website-first order locked. Visuals, header and copy still open. |
 | 2026-09-28 | Phase 0 approved: two-rows-of-three bento from designer reference; service name + headline + one visual per tile, no paragraphs. Header trial: left-aligned. Building for review. |
+| 2026-09-28 | First build reviewed. Service name promoted to the purple title, headline demoted to grey support line. Added cursor spotlight + border glow, visual parallax, focus/dim of other tiles, and per-tile hover replays (tap on touch). |
+| 2026-09-28 | Chrome tiles (adapted from threeui "chrome upload", CSS only): metal rim + inner groove, top-lit body, floor shadow, brand-tinted glints drifting slowly around each rim (staggered, 18s lap, speed up on hover, paused off-screen), blurred bloom, sparkles on hover only. Reduced motion: static rim, no sparkles. |
+| 2026-09-28 | Designer signed off. Extracted `ServicesSection`, deleted unused `ServiceCard`, kept demos only via legacy. Closing #25 via PR. |

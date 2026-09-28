@@ -4,7 +4,7 @@
 **Title:** Design: Our Services visual polish  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — Phase 0 approved, building for review
+**Status:** Closed — designer signed off; shipped on `feat/issue-25-services-visual`
 
 ## Plan
 
