@@ -82,8 +82,8 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 
 ### Phase 0 — Approve direction
 
-- [ ] Confirm layout option (A / B / C / D)
-- [ ] Confirm order: website first (Web Design → SEO → Content → Chatbot → Workflow → Lead gen) or keep current
+- [x] Confirm layout option: **A — Bento grid**
+- [x] Confirm order: **website first** (Web Design → SEO → Content → Chatbot → Workflow → Lead gen)
 - [ ] Confirm visuals: which live demos stay, and what replaces the three static browser mockups
 - [ ] Confirm section header: centered or left, and whether to add one support line
 - [ ] Confirm copy: leave as is (#16) or light trim of card bodies now
@@ -127,3 +127,4 @@ Keep all six services unless Phase 0 merges or reorders them. Full voice rewrite
 | Date | Note |
 | --- | --- |
 | 2026-09-28 | Plan drafted after #23 closed. Issue #25 opened. No code until Phase 0. |
+| 2026-09-28 | Phase 0 partial: bento grid (A) + website-first order locked. Visuals, header and copy still open. |
