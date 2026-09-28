@@ -1,10 +1,11 @@
 # Testimonials after hero — implementation plan
 
-**Status:** Complete — signed off; merge pending.  
+**Status:** Complete — signed off and merged.  
 **GitHub issue:** [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)  
 **Parent:** [IMPLEMENTATION_PLAN.md](IMPLEMENTATION_PLAN.md) → Phase A  
 **Reference:** [designcode.io](https://designcode.io/) post-hero proof strip (method only)  
-**After:** Hero craft [#14](https://github.com/gavinfung321/HKAAA-website/issues/14)
+**After:** Hero craft [#14](https://github.com/gavinfung321/HKAAA-website/issues/14)  
+**Follow-up:** Dark paper / vellum card material — [#27](https://github.com/gavinfung321/HKAAA-website/issues/27) / [IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md](IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md)
 
 ---
 

@@ -14,6 +14,8 @@ All project plans and issue-tracking guides live here. Do not code from a plan u
 | [plans/IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](plans/IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) | Process section visual polish |
 | [plans/IMPLEMENTATION_PLAN_PLANS_VISUAL.md](plans/IMPLEMENTATION_PLAN_PLANS_VISUAL.md) | Plans section visual + placement |
 | [plans/IMPLEMENTATION_PLAN_TESTIMONIALS.md](plans/IMPLEMENTATION_PLAN_TESTIMONIALS.md) | Testimonials after hero (auto marquee) |
+| [plans/IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md](plans/IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md) | Testimonials brand 3D plate polish |
+| [plans/IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md](plans/IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md) | Testimonials vortex particle background |
 | [plans/IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](plans/IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) | Why Choose Us visual polish (closed) |
 | [plans/IMPLEMENTATION_PLAN_SERVICES_VISUAL.md](plans/IMPLEMENTATION_PLAN_SERVICES_VISUAL.md) | Our Services visual polish |
 | [plans/IMPLEMENTATION_PLAN_GLASS_NAV.md](plans/IMPLEMENTATION_PLAN_GLASS_NAV.md) | Glass floating header + desktop spring (closed — not planned) |
@@ -35,5 +37,7 @@ All project plans and issue-tracking guides live here. Do not code from a plan u
 | [issues/019-testimonials.md](issues/019-testimonials.md) | Local brief for GitHub issue #19 |
 | [issues/023-why-us-visual.md](issues/023-why-us-visual.md) | Local brief for GitHub issue #23 (closed) |
 | [issues/025-services-visual.md](issues/025-services-visual.md) | Local brief for GitHub issue #25 |
+| [issues/027-testimonials-paper.md](issues/027-testimonials-paper.md) | Local brief for GitHub issue #27 |
+| [issues/028-testimonials-vortex.md](issues/028-testimonials-vortex.md) | Local brief for GitHub issue #28 |
 
 GitHub source of truth for issues: [gavinfung321/HKAAA-website/issues](https://github.com/gavinfung321/HKAAA-website/issues)
