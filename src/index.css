@@ -429,7 +429,7 @@ html {
     @apply w-14 h-14;
   }
 }
-/* GradientBeamCta Â spinning border + drifting dots */
+/* GradientBeamCta ÃÂ spinning border + drifting dots */
 @keyframes beam-spin {
   to {
     transform: rotate(360deg);
@@ -453,7 +453,7 @@ html {
   animation: dots-move 8s linear infinite;
 }
 
-/* Testimonials soft marquee â slow right â left */
+/* Testimonials soft marquee Ã¢ÂÂ slow right Ã¢ÂÂ left */
 @keyframes testimonial-marquee {
   from {
     transform: translate3d(0, 0, 0);
@@ -469,7 +469,7 @@ html {
 }
 
 /*
- * DesignCode-style â3Dâ card chrome (not perspective transforms):
+ * DesignCode-style Ã¢ÂÂ3DÃ¢ÂÂ card chrome (not perspective transforms):
  * dual-fill + gradient border via background-clip, multi-layer drop + inset
  * shadows, top-left spotlight (::before), soft noise (::after).
  */
@@ -583,7 +583,7 @@ html {
 }
 
 /*
- * Plans glass cards — 3D chrome + cursor-following spotlight.
+ * Plans glass cards â 3D chrome + cursor-following spotlight.
  * --spot-x / --spot-y / --tilt-x / --tilt-y set from PricingSection.
  */
 .plan-card {
@@ -671,6 +671,81 @@ html {
     rgba(168, 85, 247, 0.18) 0 28px 56px -24px,
     rgba(255, 255, 255, 0.14) 0 1px 0 0 inset,
     rgba(0, 0, 0, 0.8) 0 -1px 0 0 inset;
+}
+
+/*
+ * Services bento tiles (#25) — chrome rim adapted from threeui "chrome upload".
+ * Lit body + floor shadow here; rim, groove and drifting glint are layers in ServicesSection.
+ */
+.service-tile {
+  --rim: 1.5px;
+  background:
+    radial-gradient(120% 55% at 50% 0%, rgba(255, 255, 255, 0.07), transparent 65%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.02) 45%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  box-shadow:
+    rgba(0, 0, 0, 0.6) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.7) 0 10px 20px -10px,
+    rgba(0, 0, 0, 0.9) 0 32px 48px -28px;
+}
+
+.service-tile--hovered {
+  box-shadow:
+    rgba(0, 0, 0, 0.6) 0 1px 1px -0.5px,
+    rgba(0, 0, 0, 0.7) 0 14px 24px -12px,
+    rgba(168, 85, 247, 0.22) 0 30px 60px -24px;
+}
+
+.service-tile__ring {
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.service-tile__rim {
+  padding: var(--rim);
+  background: linear-gradient(
+    180deg,
+    rgba(228, 230, 250, 0.55) 0%,
+    rgba(142, 144, 170, 0.28) 35%,
+    rgba(70, 72, 94, 0.3) 65%,
+    rgba(182, 184, 212, 0.42) 100%
+  );
+}
+
+.service-tile__bloom {
+  padding: 3px;
+}
+
+.service-tile__glint {
+  width: 160%;
+  aspect-ratio: 1;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg 38deg,
+    rgba(168, 85, 247, 0.5) 50deg,
+    rgba(216, 180, 254, 0.95) 60deg,
+    #fff 67deg,
+    rgba(244, 114, 182, 0.9) 74deg,
+    rgba(236, 72, 153, 0.35) 84deg,
+    transparent 96deg 196deg,
+    rgba(255, 255, 255, 0.55) 210deg,
+    rgba(216, 180, 254, 0.6) 218deg,
+    transparent 232deg 360deg
+  );
+}
+
+.service-tile__groove {
+  inset: var(--rim);
+  border-radius: calc(1.5rem - var(--rim));
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 1px rgba(255, 255, 255, 0.07);
 }
 
 @media (prefers-reduced-motion: reduce) {

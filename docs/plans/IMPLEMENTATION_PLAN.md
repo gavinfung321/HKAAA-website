@@ -33,20 +33,20 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | Payments | Stripe Payment Links exist; they will leave the public pricing UI (Plan A — see pricing plan) |
 | Booking | Calendly (`hkaiautomationagency/30min`) |
 | Chat | None on the marketing site (Voiceflow floating button removed — [#3](https://github.com/gavinfung321/HKAAA-website/issues/3)). Chatbot remains a service card + in-section demo. |
-| Assets | Imgur (logo, team, “Why Us” images) — to be replaced |
+| Assets | Imgur (logo, team photos) — to be replaced. “Why Us” images removed in [#23](https://github.com/gavinfung321/HKAAA-website/issues/23). |
 | Source | GitHub `main` |
 
 ### Page sections
 
 | Section | What it does today |
 | --- | --- |
-| Header | Fixed nav: Process, Why Us, Our Services, Pricing, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
-| Hero | “Elevate with better” + rotating **Websites / SEO / Chatbots / Automation**. Brand lockup in hero; left/offset type; proof line; soft fade into Process. CTA → Calendly. Backdrop: cloud-field WebGL. |
-| Process | Discovery Call → Solution Design → Implementation. |
-| Why Choose Us | Proven Expertise, End-to-End Support, Cutting-Edge Technology. |
-| Services | Six cards: Workflow, Chatbot, Lead generation, Web Design, SEO, Content Creation. |
-| Testimonials | Carousel. Mix of named quotes and stock-style photos. |
-| Pricing | Launch / Practice / Partner, no public prices, one Calendly CTA, no named niche. Heading **Plans for your business**. See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
+| Header | Fixed nav: Process, Why Us, Our Services, Plans, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
+| Hero | “Elevate with better” + rotating **Websites / SEO / Chatbots / Automation**. Brand lockup in hero; left/offset type; proof line. CTA → Calendly. Backdrop: cloud-field WebGL. |
+| Testimonials | Auto marquee strip under the hero ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)). |
+| Process | Left timeline (Discovery Call → Solution Design → Implementation) over Matrix Junction laser ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)). |
+| Why Choose Us | Centered header, three 3D glass cards (Proven delivery / One team through launch / Ready for what comes next) over violet background paths ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23)). |
+| Services | Two-row bento (website first), chrome tiles + one animated visual each ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)). |
+| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
 | Team | Gavin Fung, Natalie Tso, plus “Become Our Member?” → `info@hkaiautomation.com`. |
 | Contact | Form → Supabase `leads`. Address, phone, email. |
 | Footer | Logo, blurb, socials. Two empty columns. |
@@ -106,7 +106,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Book a Call gradient-beam CTA — follow [IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11), [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)).
 - [x] Hero craft pass (voice, composition, materials) — follow [IMPLEMENTATION_PLAN_HERO_CRAFT.md](IMPLEMENTATION_PLAN_HERO_CRAFT.md) ([#14](https://github.com/gavinfung321/HKAAA-website/issues/14)).
 - [x] Process section visual polish — follow [IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)).
-- [ ] Why Choose Us visual polish — follow [IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23)). Do not code until that plan is approved.
+- [x] Why Choose Us visual polish — follow [IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23), [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24)).
+- [x] Our Services visual polish — follow [IMPLEMENTATION_PLAN_SERVICES_VISUAL.md](IMPLEMENTATION_PLAN_SERVICES_VISUAL.md) ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)).
 - [x] Glass floating header + desktop spring — closed not planned ([#13](https://github.com/gavinfung321/HKAAA-website/issues/13)). Original nav kept; transparent-at-rest from #14.
 
 **Contact form vs services**
@@ -119,9 +120,10 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Code hygiene**
 
-- [ ] Remove unused `ServiceCard` component (or use it for the six service cards)
+- [x] Remove unused `ServiceCard` component (or use it for the six service cards) — deleted in [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)
 - [ ] Remove unused Spline viewer script from `index.html` if still unused
 - [ ] Remove unused plan / subscription state from `App.tsx`
+- [ ] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps, unless a later WebGL pass uses them (left over from #23)
 - [ ] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished
 
 **Repo hygiene**
@@ -141,7 +143,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 Stop depending on Imgur (and other hotlinked hosts) for brand-critical images.
 
 - [ ] Move logo into the repo or Supabase Storage; update header, footer, favicon, and Open Graph tags
-- [ ] Move “Why Us” images into owned hosting
+- [x] Move “Why Us” images into owned hosting — not needed: images removed in [#23](https://github.com/gavinfung321/HKAAA-website/issues/23)
 - [ ] Move team photos into owned hosting
 - [ ] Confirm every remaining remote image is intentional (or replace it)
 - [ ] Recheck favicon, apple-touch-icon, and social preview after the move
@@ -224,3 +226,6 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-27 | #23: Why Choose Us visual polish plan drafted. No code until Phase 0. |
 | 2026-09-27 | #19: Testimonials after hero plan drafted (DesignCode-inspired marquee; Asian faces; no company names). Plans post-hero idea dropped. |
 | 2026-09-27 | #19 signed off: marquee strip under hero; DesignCode cards; purple hover; soft seam; no Portal Field. |
+| 2026-09-28 | #23 closed via PR #24: centered 3D glass cards over violet background paths; Imgur zig-zag removed. |
+| 2026-09-28 | #25: Our Services visual polish plan drafted (recommend bento grid, website first). No code until Phase 0. |
+| 2026-09-28 | #25 closed: two-row bento, website-first order, chrome tiles + six quiet visuals; designer signed off. |

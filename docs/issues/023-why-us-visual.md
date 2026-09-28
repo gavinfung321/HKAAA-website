@@ -4,7 +4,7 @@
 **Title:** Design: Why Choose Us visual polish  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Open — implementing on `feat/issue-23-why-us-visual`
+**Status:** Closed 2026-09-28 — merged via [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24); see the [closing comment](https://github.com/gavinfung321/HKAAA-website/issues/23)
 
 ## Plan
 
