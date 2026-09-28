@@ -4,7 +4,7 @@
 **Title:** Design: Our Services visual polish  
 **Labels:** `design`  
 **Milestone:** v1.1 — Tighten the current site  
-**Status:** Closed — designer signed off; shipped on `feat/issue-25-services-visual`
+**Status:** Closed — designer signed off; [PR #26](https://github.com/gavinfung321/HKAAA-website/pull/26)
 
 ## Plan
 
