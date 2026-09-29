@@ -313,8 +313,7 @@ function WorkGridCard({
           src={card.thumbnail}
           alt=""
           className={cn(
-            'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
-            card.videoObjectClass ?? 'object-center',
+            'absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300',
             showVideo ? 'opacity-0' : 'opacity-100',
           )}
           draggable={false}
