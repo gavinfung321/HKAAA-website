@@ -1,6 +1,6 @@
 import { Linkedin } from 'lucide-react';
 import { BlazeBackground } from './effects/blaze/BlazeBackground';
-import { useMessages } from '../i18n';
+import { headingJoinGap, useLocale, useMessages } from '../i18n';
 
 const MEMBER_META = [
   {
@@ -18,6 +18,8 @@ const MEMBER_META = [
  */
 export const TeamSection = () => {
   const t = useMessages();
+  const { locale } = useLocale();
+  const gap = headingJoinGap(locale);
   const teamMembers = t.team.members.map((m, i) => ({
     ...m,
     role: t.team.role,
@@ -45,7 +47,7 @@ export const TeamSection = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
-            {t.team.h2Before}{' '}
+            {t.team.h2Before}{gap}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
               {t.team.h2Highlight}
             </span>

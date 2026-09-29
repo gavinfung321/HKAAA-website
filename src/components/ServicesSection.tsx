@@ -11,7 +11,7 @@ import {
   type AnimationPlaybackControls,
 } from 'framer-motion';
 import { cn } from '../lib/utils';
-import { useMessages } from '../i18n';
+import { headingJoinGap, useLocale, useMessages } from '../i18n';
 import {
   ChatbotVisual,
   ContentVisual,
@@ -243,6 +243,8 @@ function ServiceTile({ service, index, hovered, dimmed, onHoverChange }: Service
  */
 export function ServicesSection() {
   const t = useMessages();
+  const { locale } = useLocale();
+  const gap = headingJoinGap(locale);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const services: Service[] = t.services.items.map((item, i) => ({
@@ -263,7 +265,7 @@ export function ServicesSection() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-3 animate-on-scroll md:flex-row md:items-end md:justify-between md:gap-10">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-[3.25rem]">
-            {t.services.h2Before}{' '}
+            {t.services.h2Before}{gap}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
               {t.services.h2Highlight}
             </span>

@@ -20,6 +20,10 @@ export function localeFromPathname(pathname: string): Locale {
   return 'en';
 }
 
+export function headingJoinGap(locale: Locale) {
+  return locale === 'en' ? ' ' : '';
+}
+
 export function pathForLocale(locale: Locale, hash = ''): string {
   const base = LOCALE_PATH[locale];
   const h = hash && !hash.startsWith('#') ? `#${hash}` : hash;

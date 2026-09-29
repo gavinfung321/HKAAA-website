@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { PackageCheck, Sparkles, Users } from 'lucide-react';
 import { BackgroundPaths } from './ui/background-paths';
 import { GlassCard } from './ui/GlassCard';
-import { useMessages } from '../i18n';
+import { headingJoinGap, useLocale, useMessages } from '../i18n';
 
 const ICONS = [PackageCheck, Users, Sparkles] as const;
 
@@ -12,6 +12,8 @@ const ICONS = [PackageCheck, Users, Sparkles] as const;
  */
 export function WhyUsSection() {
   const t = useMessages();
+  const { locale } = useLocale();
+  const gap = headingJoinGap(locale);
 
   return (
     <section
@@ -32,7 +34,7 @@ export function WhyUsSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-[3.25rem]">
-            {t.whyUs.h2Before}{' '}
+            {t.whyUs.h2Before}{gap}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
               {t.whyUs.h2Highlight}
             </span>

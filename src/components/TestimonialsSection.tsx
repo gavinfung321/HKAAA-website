@@ -9,7 +9,7 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import { BlazeBackground } from './effects/blaze/BlazeBackground';
-import { useMessages } from '../i18n';
+import { headingJoinGap, useLocale, useMessages } from '../i18n';
 
 type Testimonial = {
   name: string;
@@ -138,6 +138,8 @@ function TestimonialCardFace({
  */
 export const TestimonialsSection = () => {
   const t = useMessages();
+  const { locale } = useLocale();
+  const gap = headingJoinGap(locale);
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -239,12 +241,14 @@ export const TestimonialsSection = () => {
         <h2 className="text-3xl font-normal leading-tight tracking-tight text-white/85 md:text-5xl md:leading-[1.15]">
           <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             {t.testimonials.h2aHighlight}
-          </span>{' '}
+          </span>
+          {gap}
           {t.testimonials.h2aRest}
           <br />
           <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
             {t.testimonials.h2bHighlight}
-          </span>{' '}
+          </span>
+          {gap}
           {t.testimonials.h2bRest}
         </h2>
       </div>

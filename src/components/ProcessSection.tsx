@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { LaserMatrixBackground } from './effects/laser-matrix/LaserMatrixBackground';
-import { useMessages } from '../i18n';
+import { headingJoinGap, useLocale, useMessages } from '../i18n';
 
 /**
  * Process timeline — left-aligned (#17) over Matrix Junction laser (focus on right).
@@ -8,6 +8,8 @@ import { useMessages } from '../i18n';
  */
 export function ProcessSection() {
   const t = useMessages();
+  const { locale } = useLocale();
+  const gap = headingJoinGap(locale);
 
   return (
     <section
@@ -33,7 +35,7 @@ export function ProcessSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="max-w-xl text-left animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
-            {t.process.h2Before}{' '}
+            {t.process.h2Before}{gap}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
               {t.process.h2Highlight}
             </span>

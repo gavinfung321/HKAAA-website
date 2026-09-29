@@ -1,13 +1,15 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Send, CheckCircle, AlertCircle, MapPin, Phone, Mail } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { useMessages } from '../i18n';
+import { headingJoinGap, useLocale, useMessages } from '../i18n';
 
 /**
  * Get in Touch (#32) — quiet plates, website-first form, muted info marks.
  */
 export const ContactSection = () => {
   const t = useMessages();
+  const { locale } = useLocale();
+  const gap = headingJoinGap(locale);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -87,7 +89,7 @@ export const ContactSection = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
-            {t.contact.h2Before}{' '}
+            {t.contact.h2Before}{gap}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
               {t.contact.h2Highlight}
             </span>
