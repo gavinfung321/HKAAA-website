@@ -28,9 +28,9 @@ export const zhHant: Messages = {
   },
   testimonials: {
     h2aHighlight: '可靠',
-    h2aRest: '網站。',
+    h2aRest: '網站',
     h2bHighlight: '客人',
-    h2bRest: '信任。',
+    h2bRest: '信任',
     aria: '客戶評價',
     items: [
       {
