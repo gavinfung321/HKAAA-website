@@ -42,8 +42,98 @@ function useIsDesktop() {
 }
 
 /**
+ * On mobile, observe video cards and play only the one closest to viewport center.
+ */
+function useMostVisibleCardId(enabled: boolean, cardIds: string[]) {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const elementsRef = useRef<Map<string, HTMLElement>>(new Map());
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const idsKey = cardIds.join('|');
+
+  useEffect(() => {
+    if (!enabled) {
+      setActiveId(null);
+      observerRef.current?.disconnect();
+      observerRef.current = null;
+      return;
+    }
+
+    const pick = () => {
+      const midY = window.innerHeight / 2;
+      let bestId: string | null = null;
+      let bestDist = Number.POSITIVE_INFINITY;
+
+      elementsRef.current.forEach((el, id) => {
+        const rect = el.getBoundingClientRect();
+        // Must have a meaningful slice on screen
+        const visible =
+          rect.bottom > 48 && rect.top < window.innerHeight - 48 && rect.height > 0;
+        if (!visible) return;
+
+        const cardMid = rect.top + rect.height / 2;
+        const dist = Math.abs(cardMid - midY);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestId = id;
+        }
+      });
+
+      setActiveId((prev) => (prev === bestId ? prev : bestId));
+    };
+
+    const io = new IntersectionObserver(
+      () => {
+        pick();
+      },
+      { threshold: [0, 0.15, 0.35, 0.5, 0.65, 0.85, 1] },
+    );
+    observerRef.current = io;
+    elementsRef.current.forEach((el) => io.observe(el));
+
+    window.addEventListener('scroll', pick, { passive: true });
+    window.addEventListener('resize', pick);
+    pick();
+
+    return () => {
+      io.disconnect();
+      observerRef.current = null;
+      window.removeEventListener('scroll', pick);
+      window.removeEventListener('resize', pick);
+    };
+  }, [enabled, idsKey]);
+
+  const register = (id: string) => (el: HTMLLIElement | null) => {
+    const prev = elementsRef.current.get(id);
+    const io = observerRef.current;
+    if (prev && prev !== el) {
+      io?.unobserve(prev);
+      elementsRef.current.delete(id);
+    }
+    if (el) {
+      el.dataset.workId = id;
+      elementsRef.current.set(id, el);
+      io?.observe(el);
+    }
+  };
+
+  return { activeId, register };
+}
+
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => setReduced(mq.matches);
+    onChange();
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  return reduced;
+}
+
+/**
  * Photo grid with Framer layoutId expand on desktop (Aceternity pattern).
- * Mobile opens a viewport-fixed bottom sheet instead (grid cards stay put).
+ * Mobile: viewport-fixed modal + muted scroll video while the card is on screen.
  * Desktop hover plays muted scroll preview when `video` is set.
  */
 export function LayoutGrid({ cards, selectedId, onSelect, closeLabel }: LayoutGridProps) {
@@ -53,6 +143,12 @@ export function LayoutGrid({ cards, selectedId, onSelect, closeLabel }: LayoutGr
   const closeRef = useRef<HTMLButtonElement>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const isDesktop = useIsDesktop();
+  const reduceMotion = usePrefersReducedMotion();
+  const videoIds = cards.filter((c) => c.video).map((c) => c.id);
+  const { activeId: mobileVideoId, register: registerMobileCard } = useMostVisibleCardId(
+    !isDesktop && !reduceMotion && selectedId == null,
+    videoIds,
+  );
 
   if (selected) lastSelectedRef.current = selected;
   const lastSelected = lastSelectedRef.current;
@@ -82,87 +178,24 @@ export function LayoutGrid({ cards, selectedId, onSelect, closeLabel }: LayoutGr
   return (
     <div className="relative mx-auto w-full max-w-7xl">
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-4">
-        {cards.map((card) => {
-          const isSelected = selectedId === card.id;
-          // Desktop-only: morph card into expand overlay. Mobile keeps the tile in-grid.
-          const expandInGrid = isSelected && isDesktop;
-          const showVideo = !isSelected && hoveredId === card.id && Boolean(card.video);
-          return (
-            <li
-              key={card.id}
-              className={cn('min-h-[16rem] list-none md:min-h-[20rem]', card.className)}
-            >
-              <motion.div
-                layoutId={isDesktop ? `card-${card.id}` : undefined}
-                onClick={() => {
-                  if (isDesktop) {
-                    onSelect(isSelected ? null : card.id);
-                    return;
-                  }
-                  if (!isSelected) onSelect(card.id);
-                }}
-                onPointerEnter={(e) => {
-                  if (e.pointerType !== 'mouse' || isSelected || !card.video) return;
-                  setHoveredId(card.id);
-                }}
-                onPointerLeave={() => {
-                  if (hoveredId === card.id) setHoveredId(null);
-                }}
-                role={expandInGrid ? 'dialog' : undefined}
-                aria-modal={expandInGrid || undefined}
-                aria-labelledby={expandInGrid ? titleId : undefined}
-                className={cn(
-                  'relative overflow-hidden rounded-2xl',
-                  expandInGrid
-                    ? // unchanged desktop expand sizing
-                      'absolute inset-0 z-50 m-auto flex h-[min(72vh,34rem)] w-[min(92vw,38rem)] cursor-default flex-col md:h-[min(70vh,36rem)] md:w-[min(48vw,40rem)]'
-                    : cn(
-                        'h-full w-full cursor-pointer bg-gray-950',
-                        lastSelected?.id === card.id ? 'z-40' : 'z-0',
-                      ),
-                )}
-              >
-                <motion.img
-                  layoutId={isDesktop ? `image-${card.id}` : undefined}
-                  src={card.thumbnail}
-                  alt=""
-                  className={cn(
-                    'absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300',
-                    showVideo ? 'opacity-0' : 'opacity-100',
-                  )}
-                  draggable={false}
-                />
-
-                {card.video && !expandInGrid && (
-                  <HoverVideo src={card.video} active={showVideo} />
-                )}
-
-                {!expandInGrid && (
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-4 pb-4 pt-16">
-                    <p className="text-base font-medium tracking-tight text-white md:text-lg">
-                      {card.title}
-                    </p>
-                    {card.tag ? (
-                      <p className="mt-0.5 text-xs uppercase tracking-[0.14em] text-white/55">
-                        {card.tag}
-                      </p>
-                    ) : null}
-                  </div>
-                )}
-
-                {expandInGrid && (
-                  <SelectedCard
-                    card={card}
-                    titleId={titleId}
-                    closeLabel={closeLabel}
-                    closeRef={closeRef}
-                    onClose={() => onSelect(null)}
-                  />
-                )}
-              </motion.div>
-            </li>
-          );
-        })}
+        {cards.map((card) => (
+          <WorkGridCard
+            key={card.id}
+            card={card}
+            isDesktop={isDesktop}
+            reduceMotion={reduceMotion}
+            selectedId={selectedId}
+            hoveredId={hoveredId}
+            mobileVideoId={mobileVideoId}
+            registerMobileCard={registerMobileCard}
+            lastSelectedId={lastSelected?.id ?? null}
+            titleId={titleId}
+            closeLabel={closeLabel}
+            closeRef={closeRef}
+            onSelect={onSelect}
+            setHoveredId={setHoveredId}
+          />
+        ))}
       </ul>
 
       {/* Desktop-only dimmer (absolute over the grid). Mobile modal has its own backdrop. */}
@@ -198,6 +231,116 @@ export function LayoutGrid({ cards, selectedId, onSelect, closeLabel }: LayoutGr
           )
         : null}
     </div>
+  );
+}
+
+function WorkGridCard({
+  card,
+  isDesktop,
+  reduceMotion,
+  selectedId,
+  hoveredId,
+  mobileVideoId,
+  registerMobileCard,
+  lastSelectedId,
+  titleId,
+  closeLabel,
+  closeRef,
+  onSelect,
+  setHoveredId,
+}: {
+  card: WorkCard;
+  isDesktop: boolean;
+  reduceMotion: boolean;
+  selectedId: string | null;
+  hoveredId: string | null;
+  mobileVideoId: string | null;
+  registerMobileCard: (id: string) => (el: HTMLLIElement | null) => void;
+  lastSelectedId: string | null;
+  titleId: string;
+  closeLabel: string;
+  closeRef: React.RefObject<HTMLButtonElement | null>;
+  onSelect: (id: string | null) => void;
+  setHoveredId: (id: string | null) => void;
+}) {
+  const isSelected = selectedId === card.id;
+  const expandInGrid = isSelected && isDesktop;
+
+  const showVideo =
+    Boolean(card.video) &&
+    !expandInGrid &&
+    !reduceMotion &&
+    (isDesktop ? hoveredId === card.id && !isSelected : mobileVideoId === card.id);
+
+  return (
+    <li
+      ref={card.video ? registerMobileCard(card.id) : undefined}
+      className={cn('min-h-[16rem] list-none md:min-h-[20rem]', card.className)}
+    >
+      <motion.div
+        layoutId={isDesktop ? `card-${card.id}` : undefined}
+        onClick={() => {
+          if (isDesktop) {
+            onSelect(isSelected ? null : card.id);
+            return;
+          }
+          if (!isSelected) onSelect(card.id);
+        }}
+        onPointerEnter={(e) => {
+          if (e.pointerType !== 'mouse' || isSelected || !card.video) return;
+          setHoveredId(card.id);
+        }}
+        onPointerLeave={() => {
+          if (hoveredId === card.id) setHoveredId(null);
+        }}
+        role={expandInGrid ? 'dialog' : undefined}
+        aria-modal={expandInGrid || undefined}
+        aria-labelledby={expandInGrid ? titleId : undefined}
+        className={cn(
+          'relative overflow-hidden rounded-2xl',
+          expandInGrid
+            ? 'absolute inset-0 z-50 m-auto flex h-[min(72vh,34rem)] w-[min(92vw,38rem)] cursor-default flex-col md:h-[min(70vh,36rem)] md:w-[min(48vw,40rem)]'
+            : cn(
+                'h-full w-full cursor-pointer bg-gray-950',
+                lastSelectedId === card.id ? 'z-40' : 'z-0',
+              ),
+        )}
+      >
+        <motion.img
+          layoutId={isDesktop ? `image-${card.id}` : undefined}
+          src={card.thumbnail}
+          alt=""
+          className={cn(
+            'absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300',
+            showVideo ? 'opacity-0' : 'opacity-100',
+          )}
+          draggable={false}
+        />
+
+        {card.video && !expandInGrid && <HoverVideo src={card.video} active={showVideo} />}
+
+        {!expandInGrid && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-4 pb-4 pt-16">
+            <p className="text-base font-medium tracking-tight text-white md:text-lg">
+              {card.title}
+            </p>
+            {card.tag ? (
+              <p className="mt-0.5 text-xs uppercase tracking-[0.14em] text-white/55">{card.tag}</p>
+            ) : null}
+          </div>
+        )}
+
+        {expandInGrid && (
+          <SelectedCard
+            card={card}
+            titleId={titleId}
+            closeLabel={closeLabel}
+            closeRef={closeRef}
+            onClose={() => onSelect(null)}
+          />
+        )}
+      </motion.div>
+    </li>
   );
 }
 
@@ -290,7 +433,7 @@ function HoverVideo({ src, active }: { src: string; active: boolean }) {
     const el = ref.current;
     if (!el) return;
     if (active) {
-      el.load();
+      if (el.readyState < 2) el.load();
       const tryPlay = () => {
         el.currentTime = 0;
         const play = el.play();
@@ -307,7 +450,6 @@ function HoverVideo({ src, active }: { src: string; active: boolean }) {
       }
     } else {
       el.pause();
-      if (el.readyState >= 1) el.currentTime = 0;
     }
   }, [active, src]);
 
