@@ -193,7 +193,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 - [x] Privacy policy — `/privacy` · `/zh/privacy`. HK PDPO. Copy: [LEGAL_COPY_DRAFT.md](LEGAL_COPY_DRAFT.md)
 - [x] Terms of use — `/terms` · `/zh/terms`. HK governing law. Same draft.
 - [x] Sitemap — `public/sitemap.xml` + `robots.txt` (EN/`zh` home, privacy, terms + hreflang)
-- [ ] Case studies / work samples
+- [x] Case studies / work samples — Work section after Services: LayoutGrid expand, hover/in-view scroll videos, EN/繁 stories; mobile centered modal.
 - [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Shipped.
 - [x] **SEO / AEO / GEO pass** — soft body + prerender + Organization/WebSite + Search Console sitemap (6 URLs). FAQ dropped. Copy: [SEO_COPY_DRAFT.md](SEO_COPY_DRAFT.md).
 
@@ -269,3 +269,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | FAQ removed after review. K4 → D. SEO plan refocused on prerender + Organization + dual keywords. |
 | 2026-09-29 | Docs cleanup: removed completed section plans + issue briefs; dropped unused legacy demos, aurora, vortex. |
 | 2026-09-30 | Work showcase live: LayoutGrid after Services, hover scroll videos, EN/繁 stories. Phase E case-studies tick deferred pending mobile review. |
+| 2026-09-30 | Phase E complete: case studies / work samples signed off (mobile modal + in-view video reviewed). |
