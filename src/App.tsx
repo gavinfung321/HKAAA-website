@@ -5,6 +5,7 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { ProcessSection } from './components/ProcessSection';
 import { WhyUsSection } from './components/WhyUsSection';
 import { ServicesSection } from './components/ServicesSection';
+import { WorkSection } from './components/WorkSection';
 import { TeamSection } from './components/TeamSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -80,6 +81,8 @@ function App() {
       <WhyUsSection />
 
       <ServicesSection />
+
+      <WorkSection />
 
       <PricingSection />
 

@@ -7,6 +7,7 @@ const EXPLORE = [
   { key: 'process' as const, href: '#process-section' },
   { key: 'whyUs' as const, href: '#why-us-section' },
   { key: 'services' as const, href: '#services-section' },
+  { key: 'work' as const, href: '#work-section' },
   { key: 'plans' as const, href: '#pricing-section' },
   { key: 'team' as const, href: '#team-section' },
   { key: 'contact' as const, href: '#contact-section' },

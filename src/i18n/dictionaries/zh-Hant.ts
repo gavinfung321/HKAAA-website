@@ -11,6 +11,7 @@ export const zhHant: Messages = {
     process: '流程',
     whyUs: '優勢',
     services: '服務',
+    work: '作品',
     plans: '方案',
     team: '團隊',
     contact: '聯絡我們',
@@ -140,6 +141,50 @@ export const zhHant: Messages = {
     leadBooked: '已預約',
     leadToast: '+1 查詢',
   },
+  work: {
+    h2Before: '我們的',
+    h2Highlight: '作品',
+    h2After: '',
+    sub: '客戶網站與品牌內容實例。',
+    close: '關閉',
+    items: {
+      speedy: {
+        title: 'Speedy Move',
+        tag: '清拆搬運',
+        blurb:
+          'Speedy 要的是跟他們一樣快、一樣可靠的網站。我們做出清晰的香港清拆搬運主頁，讓客人一眼看出服務、信任品牌，並輕鬆提出報價，不用到處找聯絡方式。',
+        visit: '查看網站',
+      },
+      choco: {
+        title: 'Chocolate Avenue',
+        tag: '電子商務',
+        blurb:
+          '高級朱古力店，網站也要夠高級。我們打造電商體驗，突出品牌質感、讓瀏覽更流暢，並把下單路徑做得乾淨直接。',
+        visit: '查看網站',
+      },
+      mayer: {
+        title: '美亞自動閘門',
+        tag: '工業工程',
+        blurb:
+          '美亞深耕閘門與自動門多年，網站要配得上這份專業。我們交付雙語公司網站，清楚展示產品、工程案例與聯絡途徑，呈現穩重的工程公司形象。',
+        visit: '查看網站',
+      },
+      cpa: {
+        title: 'Meridian CPA',
+        tag: '專業服務',
+        blurb:
+          '會計師行靠信任贏客戶。我們為 Meridian 建立專業的香港 CPA 網站，清楚說明審計、稅務與顧問服務，介紹團隊，並讓預約諮詢成為自然下一步。',
+        visit: '查看網站',
+      },
+      petite: {
+        title: 'Petite Home Kitchen',
+        tag: '內容品牌',
+        blurb:
+          '不是每個品牌一開始都需要完整網站。我們幫 Petite 在 Instagram 建立溫暖的烹飪形象——像家常一樣的食物、容易記住的內容，讓品牌在貼文之間也能留下印象。',
+        visit: '查看 Instagram',
+      },
+    },
+  },
   tools: {
     label: '我們採用的技術',
   },
@@ -237,6 +282,7 @@ export const zhHant: Messages = {
       process: '流程',
       whyUs: '優勢',
       services: '服務',
+      work: '作品',
       plans: '方案',
       team: '團隊',
       contact: '聯絡',

@@ -11,6 +11,7 @@ const NAV_SECTION_IDS = [
   { key: 'process' as const, sectionId: 'process-section' },
   { key: 'whyUs' as const, sectionId: 'why-us-section' },
   { key: 'services' as const, sectionId: 'services-section' },
+  { key: 'work' as const, sectionId: 'work-section' },
   { key: 'plans' as const, sectionId: 'pricing-section' },
   { key: 'team' as const, sectionId: 'team-section' },
 ];

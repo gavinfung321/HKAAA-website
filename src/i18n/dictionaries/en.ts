@@ -9,6 +9,7 @@ export const en = {
     process: 'Process',
     whyUs: 'Why Us',
     services: 'Services',
+    work: 'Work',
     plans: 'Plans',
     team: 'Team',
     contact: 'Contact Us',
@@ -141,6 +142,50 @@ export const en = {
     leadBooked: 'Booked',
     leadToast: '+1 enquiry',
   },
+  work: {
+    h2Before: 'Our',
+    h2Highlight: 'Work',
+    h2After: '',
+    sub: 'Sites and content we’ve shipped.',
+    close: 'Close',
+    items: {
+      speedy: {
+        title: 'Speedy Move',
+        tag: 'Junk removal',
+        blurb:
+          'Speedy needed a site that feels as fast as their crew. We built a clear Hong Kong junk-removal and moving homepage so customers can see the service, trust the brand, and request a quote without hunting.',
+        visit: 'Visit site',
+      },
+      choco: {
+        title: 'Chocolate Avenue',
+        tag: 'E-commerce',
+        blurb:
+          'A luxury chocolate shop needs to look as premium as the boxes it sells. We designed an e-commerce experience that showcases high-end brands, makes browsing feel effortless, and keeps the path to purchase clean.',
+        visit: 'Visit site',
+      },
+      mayer: {
+        title: 'Mayer Autogate',
+        tag: 'Industrial',
+        blurb:
+          'Mayer has decades of gate and door expertise — their site had to show it. We delivered a bilingual company site that presents products, project cases, and contact paths with the clarity of a serious engineering firm.',
+        visit: 'Visit site',
+      },
+      cpa: {
+        title: 'Meridian CPA',
+        tag: 'Professional services',
+        blurb:
+          'Compliance firms win on trust. We built Meridian a polished Hong Kong CPA site that explains audit, tax, and advisory clearly, introduces the team, and makes booking a consultation the obvious next step.',
+        visit: 'Visit site',
+      },
+      petite: {
+        title: 'Petite Home Kitchen',
+        tag: 'Content brand',
+        blurb:
+          'Not every brand starts with a full website. For Petite, we shaped a warm cooking presence on Instagram — food that feels homemade, content that builds recognition, and a brand people remember between posts.',
+        visit: 'View on Instagram',
+      },
+    },
+  },
   tools: {
     label: 'Stack we build with',
   },
@@ -242,6 +287,7 @@ export const en = {
       process: 'Process',
       whyUs: 'Why Us',
       services: 'Services',
+      work: 'Work',
       plans: 'Plans',
       team: 'Team',
       contact: 'Contact',

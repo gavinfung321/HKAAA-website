@@ -15,6 +15,7 @@ dist-ssr
 .env.*
 !.env.example
 .supabase-db-password.tmp
+public/work/_scroll-tmp/
 
 # Editor directories and files
 .vscode/*

@@ -268,3 +268,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | K7 done: Search Console sitemap Success, 6 discovered URLs. SEO/AEO/GEO pass complete for this phase. |
 | 2026-09-29 | FAQ removed after review. K4 → D. SEO plan refocused on prerender + Organization + dual keywords. |
 | 2026-09-29 | Docs cleanup: removed completed section plans + issue briefs; dropped unused legacy demos, aurora, vortex. |
+| 2026-09-30 | Work showcase live: LayoutGrid after Services, hover scroll videos, EN/繁 stories. Phase E case-studies tick deferred pending mobile review. |
