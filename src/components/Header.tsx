@@ -115,10 +115,10 @@ export function Header({ scrollToSection }: HeaderProps) {
             <img
               src="/brand/logo.png"
               alt="HKAAA Logo"
-              className="h-8 w-auto object-contain md:h-10"
+              className="h-7 w-auto object-contain md:h-10"
               loading="eager"
             />
-            <div className="gradient-text text-2xl font-bold">HKAAA</div>
+            <div className="gradient-text text-xl font-bold md:text-2xl">HKAAA</div>
           </button>
 
           <div className="hidden items-center space-x-8 md:flex">
