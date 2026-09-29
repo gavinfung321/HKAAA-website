@@ -143,8 +143,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 
 **Verify**
 
-- [ ] Walk the full page on desktop: nav, hero CTA, pricing/plans CTAs, contact submit (no Voiceflow button once #3 is done)
-- [ ] Walk the same flows on a mobile viewport
+- [x] Walk the full page on desktop: nav, hero CTA, pricing/plans CTAs, contact submit — done 2026-09-29 (local walk)
+- [x] Walk the same flows on a mobile viewport — done 2026-09-29 (390×844)
 
 ---
 
@@ -178,11 +178,11 @@ The public site is already on **Netlify**. DNS for `hkaiautomation.com` is Netli
 
 A reliable way to see and act on new leads.
 
-- [ ] Decide the lead inbox: Supabase Table Editor, email alert, Slack, or a private admin view — email to info@ chosen; Table Editor still works
-- [ ] Implement the chosen inbox — Edge Function + Resend; follow [docs/ops/LEAD_EMAIL_NOTIFY.md](../ops/LEAD_EMAIL_NOTIFY.md) (needs Resend API key + webhook)
-- [ ] Confirm a new form submit shows up there
-- [ ] Optional: email/Slack notify on insert — in progress via `notify-lead` function
-- [ ] Optional: basic spam protection (honeypot or rate limit) if the form starts getting junk
+- [x] Decide the lead inbox: email to info@hkaiautomation.com (Resend) + Supabase Table Editor
+- [x] Implement the chosen inbox — `notify-lead` Edge Function + pg_net trigger; see [docs/ops/LEAD_EMAIL_NOTIFY.md](../ops/LEAD_EMAIL_NOTIFY.md)
+- [x] Confirm a new form submit shows up there — page-walk insert verified 2026-09-29 (test row deleted)
+- [x] Optional: email/Slack notify on insert — Resend → info@ live
+- [x] Optional: basic spam protection — client honeypot on contact form (fake success, no insert); rate limit still open if needed later
 
 ---
 
@@ -195,7 +195,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 - [ ] Sitemap
 - [ ] Case studies / work samples
 - [ ] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — later; do not code until prioritized. Scope sketch: header/nav toggle, translate all public marketing copy (hero through footer), keep one URL or `/zh` TBD in Phase 0, contact form labels + success/error strings, meta/OG locale. Out of scope until then: Instantly/outreach mail, admin tools.
-- [ ] Richer SEO beyond the current meta tags and schema
+- [ ] **SEO / AEO / GEO pass** — later; do not code until prioritized. Includes richer SEO beyond current meta/schema (titles, sitemap/robots, headings, CWV), AEO (answer-ready copy, honest FAQ/HowTo + structured data), and GEO (citeable who/where/what, org entity, pages models can summarize accurately). Phase 0 will scope pages and schema; no fake proof.
 
 ---
 
@@ -252,3 +252,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | Backlog: Traditional Chinese (繁體) language switcher noted under Phase E. No code until prioritized. |
 | 2026-09-29 | #35: Nav polish plan drafted (labels / scroll-spy / Contact / a11y). Phase 0; no code until locked. |
 | 2026-09-29 | #35 closed: Services label, scroll-spy, quiet Contact, soft hover plate (no hover underline). |
+| 2026-09-29 | Full page walk desktop + mobile (390): nav/CTAs/form OK; no Voiceflow; owned assets; lead insert verified. Meta description still old AI voice. |
+| 2026-09-29 | Meta/OG/Twitter copy aligned to hero voice. Natalie photo compressed (~10MB PNG → ~100KB JPEG). Burger aria-label added. |
+| 2026-09-29 | Backlog: SEO / AEO / GEO pass noted under Phase E (with 繁體 switcher). No code until prioritized. |
+| 2026-09-29 | Contact honeypot: hidden website field; filled = fake success, no leads insert. |

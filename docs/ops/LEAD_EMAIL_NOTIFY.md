@@ -2,20 +2,7 @@
 
 When someone submits the contact form, a row lands in Supabase `leads`. The `notify-lead` Edge Function emails via [Resend](https://resend.com).
 
-**Status (2026-09-29):** Function deployed. DB trigger live. Resend testing mode can only send to `gavinfung321@gmail.com` until `hkaiautomation.com` is verified — so `LEAD_NOTIFY_TO` is set to that Gmail for now.
-
-## Switch to info@hkaiautomation.com
-
-1. In Resend → Domains, add and verify `hkaiautomation.com` (DNS records they show).
-2. Then run:
-
-```bash
-npx supabase secrets set LEAD_NOTIFY_TO=info@hkaiautomation.com LEAD_NOTIFY_FROM="HKAAA Leads <noreply@hkaiautomation.com>" --project-ref mjufvzqgsigbfjcchzmb
-```
-
-3. Submit a test enquiry and confirm mail at info@.
-
-## Already done
+**Status (2026-09-29):** Function deployed. DB trigger live. Domain verified; `LEAD_NOTIFY_TO=info@hkaiautomation.com`, from `noreply@hkaiautomation.com`.
 
 - Secrets: `RESEND_API_KEY`, `LEAD_NOTIFY_TO`, `LEAD_NOTIFY_FROM`
 - Function: `notify-lead` deployed (`--no-verify-jwt`)

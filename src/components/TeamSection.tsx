@@ -13,7 +13,7 @@ const teamMembers = [
   {
     name: 'Natalie Tso',
     role: 'Co-founder',
-    image: '/team/natalie.png',
+    image: '/team/natalie.jpg',
     description:
       'Writes and edits the posts, stories, and video behind the brand.',
     linkedin: 'https://www.linkedin.com/in/natalie-tso-b6b204a0/',

@@ -21,12 +21,22 @@ export const ContactSection = () => {
     service: '',
     message: '',
   });
+  // Honeypot: bots fill this; humans never see it. Never sent to Supabase.
+  const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
+
+    if (website.trim()) {
+      setStatus('success');
+      setFormData({ name: '', email: '', service: '', message: '' });
+      setWebsite('');
+      setTimeout(() => setStatus('idle'), 3000);
+      return;
+    }
 
     if (!supabase) {
       setStatus('error');
@@ -45,6 +55,7 @@ export const ContactSection = () => {
 
       setStatus('success');
       setFormData({ name: '', email: '', service: '', message: '' });
+      setWebsite('');
 
       setTimeout(() => {
         setStatus('idle');
@@ -102,6 +113,22 @@ export const ContactSection = () => {
         <div className="mt-12 grid items-start gap-6 md:mt-14 md:grid-cols-2 md:gap-8 animate-on-scroll">
           <div className="contact-plate rounded-2xl p-6 md:p-8">
             <form onSubmit={handleSubmit} className="relative space-y-5">
+              <div
+                aria-hidden
+                className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+              >
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div className="space-y-4">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/70">
