@@ -6,6 +6,7 @@ const WORK_META: {
   id: string;
   thumbnail: string;
   video?: string;
+  videoObjectClass?: string;
   className: string;
   href: string;
 }[] = [
@@ -34,6 +35,8 @@ const WORK_META: {
     id: 'petite',
     thumbnail: '/work/petite.jpg',
     video: '/work/petite-hover.mp4',
+    // Vertical reel — food sits lower; bias crop so the pan is in frame
+    videoObjectClass: 'object-[center_68%]',
     className: 'md:col-span-1',
     href: 'https://www.instagram.com/petite.home.kitchen/',
   },
@@ -70,6 +73,7 @@ export function WorkSection() {
       id: meta.id,
       thumbnail: meta.thumbnail,
       video: meta.video,
+      videoObjectClass: meta.videoObjectClass,
       className: meta.className,
       title: item.title,
       blurb: item.blurb,

@@ -7,6 +7,8 @@ export type WorkCard = {
   id: string;
   thumbnail: string;
   video?: string;
+  /** Tailwind object-position for hover video (vertical clips often need a lower crop). */
+  videoObjectClass?: string;
   className: string;
   title: string;
   blurb: string;
@@ -311,13 +313,20 @@ function WorkGridCard({
           src={card.thumbnail}
           alt=""
           className={cn(
-            'absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-300',
+            'absolute inset-0 h-full w-full object-cover transition-opacity duration-300',
+            card.videoObjectClass ?? 'object-center',
             showVideo ? 'opacity-0' : 'opacity-100',
           )}
           draggable={false}
         />
 
-        {card.video && !expandInGrid && <HoverVideo src={card.video} active={showVideo} />}
+        {card.video && !expandInGrid && (
+          <HoverVideo
+            src={card.video}
+            active={showVideo}
+            objectClass={card.videoObjectClass}
+          />
+        )}
 
         {!expandInGrid && (
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-4 pb-4 pt-16">
@@ -425,7 +434,15 @@ function MobileWorkSheet({
   );
 }
 
-function HoverVideo({ src, active }: { src: string; active: boolean }) {
+function HoverVideo({
+  src,
+  active,
+  objectClass,
+}: {
+  src: string;
+  active: boolean;
+  objectClass?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -464,7 +481,8 @@ function HoverVideo({ src, active }: { src: string; active: boolean }) {
       onLoadedData={() => setReady(true)}
       onCanPlay={() => setReady(true)}
       className={cn(
-        'pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover object-top transition-opacity duration-300',
+        'pointer-events-none absolute inset-0 z-[1] h-full w-full object-cover transition-opacity duration-300',
+        objectClass ?? 'object-top',
         active && ready ? 'opacity-100' : 'opacity-0',
       )}
     />
