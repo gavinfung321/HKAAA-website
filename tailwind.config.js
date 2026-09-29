@@ -12,20 +12,11 @@ export default {
       },
       animation: {
         'glow': 'glow 1.5s ease-in-out infinite alternate',
-        'aurora': 'aurora 60s linear infinite',
         'beam-spin': 'beam-spin 3s linear infinite',
         'dots-move': 'dots-move 8s linear infinite',
         'testimonial-marquee': 'testimonial-marquee 40s linear infinite',
       },
       keyframes: {
-        aurora: {
-          from: {
-            backgroundPosition: '50% 50%, 50% 50%',
-          },
-          to: {
-            backgroundPosition: '350% 50%, 350% 50%',
-          },
-        },
         'beam-spin': {
           to: { transform: 'rotate(360deg)' },
         },

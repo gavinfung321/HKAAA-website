@@ -3,8 +3,7 @@ import { LaserMatrixBackground } from './effects/laser-matrix/LaserMatrixBackgro
 import { headingJoinGap, useLocale, useMessages } from '../i18n';
 
 /**
- * Process timeline — left-aligned (#17) over Matrix Junction laser (focus on right).
- * Animated card version kept in `ProcessSection.legacy.tsx` (not mounted).
+ * Process timeline — left-aligned over Matrix Junction laser.
  */
 export function ProcessSection() {
   const t = useMessages();

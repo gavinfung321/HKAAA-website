@@ -5,7 +5,7 @@
 **Repo:** [github.com/gavinfung321/HKAAA-website](https://github.com/gavinfung321/HKAAA-website)
 **How we work:** Build properly, then tick the checklist in this file. Do not mark an item done until it is verified (browser, form submit, or deploy — whichever applies).
 
-Plans and issue guides live under `docs/`. Section-specific work gets its own plan in `docs/plans/` and a local brief in `docs/issues/`.
+Living checklist lives here. Copy drafts and the issue guide: [docs/README.md](../README.md). Completed section plans and issue briefs were removed 2026-09-29 (history is in git).
 
 ---
 
@@ -30,10 +30,10 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | App | React 18 + TypeScript, Vite |
 | Styling | Tailwind CSS, Framer Motion, custom CSS animations |
 | Backend | Supabase (`leads` table, anon insert only) |
-| Payments | Stripe Payment Links exist; they will leave the public pricing UI (Plan A — see pricing plan) |
+| Payments | Stripe Payment Links exist; not shown on public Plans UI |
 | Booking | Calendly (`hkaiautomationagency/30min`) |
-| Chat | None on the marketing site (Voiceflow floating button removed — [#3](https://github.com/gavinfung321/HKAAA-website/issues/3)). Chatbot remains a service card + in-section demo. |
-| Assets | Imgur (logo, team photos) — to be replaced. “Why Us” images removed in [#23](https://github.com/gavinfung321/HKAAA-website/issues/23). |
+| Chat | No floating widget ([#3](https://github.com/gavinfung321/HKAAA-website/issues/3)). Chatbot is a Services tile only. |
+| Assets | `public/brand`, `public/team` (owned). |
 | Source | GitHub `main` |
 
 ### Page sections
@@ -42,15 +42,15 @@ Single-page marketing site. Navigation jumps to sections (no separate routes). G
 | --- | --- |
 | Header | Fixed nav: Process, Why Us, Our Services, Plans, Team, Contact. Mobile menu. Logo + HKAAA wordmark. |
 | Hero | “Elevate with better” + rotating **Websites / SEO / Chatbots / Automation**. Brand lockup in hero; left/offset type; proof line. CTA → Calendly. Backdrop: cloud-field WebGL. |
-| Testimonials | Auto marquee strip under the hero ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)); brand 3D plate polish ([#27](https://github.com/gavinfung321/HKAAA-website/issues/27)); vortex backdrop ([#28](https://github.com/gavinfung321/HKAAA-website/issues/28)). |
+| Testimonials | Auto marquee strip under the hero ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)). |
 | Process | Left timeline (Discovery Call → Solution Design → Implementation) over Matrix Junction laser ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)). |
 | Why Choose Us | Centered header, three 3D glass cards (Proven delivery / One team through launch / Ready for what comes next) over violet background paths ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23)). |
 | Services | Two-row bento (website first), chrome tiles + one animated visual each ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)). |
-| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18) signed off). See [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md). |
+| Plans | Launch / Practice / Partner glass 3D cards, no public prices, one Calendly CTA. Heading **Plans for your business** ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18) signed off). |
 | Team | Gavin Fung + Natalie Tso only (join CTA removed). Quiet plates + Blaze backdrop ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31) signed off). |
 | Contact | Quiet plates + website-first form → Supabase `leads`. Address, phone, email ([#32](https://github.com/gavinfung321/HKAAA-website/issues/32) signed off). |
 | Footer | Brand / Explore / Connect over terrain wireframe ([#33](https://github.com/gavinfung321/HKAAA-website/issues/33) signed off). |
-| Chat | No floating chat widget. Chatbot development service card and in-section demo remain. |
+| Chat | No floating chat widget. Chatbot development is a Services tile. |
 
 ### Lead capture
 
@@ -93,25 +93,25 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 **Copy and content**
 
 - [x] Fix hero line “surcharge leads” — rotating headline (Websites / SEO / Workflows / Outreach) + service subline ([#9](https://github.com/gavinfung321/HKAAA-website/issues/9)); later refined in [#14](https://github.com/gavinfung321/HKAAA-website/issues/14)
-- [x] Site-wide copy pass to match hero voice — follow [IMPLEMENTATION_PLAN_SITE_COPY.md](IMPLEMENTATION_PLAN_SITE_COPY.md) ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16)). Signed off 2026-09-29.
-- [x] Testimonials after hero (auto marquee, mixed faces) — follow [IMPLEMENTATION_PLAN_TESTIMONIALS.md](IMPLEMENTATION_PLAN_TESTIMONIALS.md) ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)).
+- [x] Site-wide copy pass to match hero voice ([#16](https://github.com/gavinfung321/HKAAA-website/issues/16)). Signed off 2026-09-29.
+- [x] Testimonials after hero (auto marquee, mixed faces) ([#19](https://github.com/gavinfung321/HKAAA-website/issues/19)).
 - [x] Confirm testimonials: keep only real quotes; remove Unsplash / placeholder portraits → done via [#19](https://github.com/gavinfung321/HKAAA-website/issues/19)
-- [x] Plans section visual + placement (glass 3D cards; keep late after Services) — follow [IMPLEMENTATION_PLAN_PLANS_VISUAL.md](IMPLEMENTATION_PLAN_PLANS_VISUAL.md) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)).
-- [x] Team section visual polish — follow [IMPLEMENTATION_PLAN_TEAM_VISUAL.md](IMPLEMENTATION_PLAN_TEAM_VISUAL.md) ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31)). Signed off 2026-09-28.
-- [x] Contact / Get in Touch visual polish — follow [IMPLEMENTATION_PLAN_CONTACT_VISUAL.md](IMPLEMENTATION_PLAN_CONTACT_VISUAL.md) ([#32](https://github.com/gavinfung321/HKAAA-website/issues/32)). Signed off 2026-09-28.
-- [x] Footer visual polish + wireframe landscape — follow [IMPLEMENTATION_PLAN_FOOTER_VISUAL.md](IMPLEMENTATION_PLAN_FOOTER_VISUAL.md) ([#33](https://github.com/gavinfung321/HKAAA-website/issues/33)). Signed off 2026-09-29.
+- [x] Plans section visual + placement (glass 3D cards; keep late after Services) ([#18](https://github.com/gavinfung321/HKAAA-website/issues/18)).
+- [x] Team section visual polish ([#31](https://github.com/gavinfung321/HKAAA-website/issues/31)). Signed off 2026-09-28.
+- [x] Contact / Get in Touch visual polish ([#32](https://github.com/gavinfung321/HKAAA-website/issues/32)). Signed off 2026-09-28.
+- [x] Footer visual polish + wireframe landscape ([#33](https://github.com/gavinfung321/HKAAA-website/issues/33)). Signed off 2026-09-29.
 - [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
-- [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote — follow [IMPLEMENTATION_PLAN_PRICING.md](IMPLEMENTATION_PLAN_PRICING.md)
-- [x] Remove the Voiceflow floating chat button — already removed in `f80e6cd`; [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed. Chatbot development service card and in-section demo kept.
+- [x] Pricing Plan A: Launch / Practice / Partner, no public prices, one section CTA, website-first with automation still in the quote
+- [x] Remove the Voiceflow floating chat button — already removed in `f80e6cd`; [#3](https://github.com/gavinfung321/HKAAA-website/issues/3) closed. Chatbot remains a Services tile.
 
 **Hero visual**
 
-- [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) — follow [IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7), [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)).
-- [x] Book a Call gradient-beam CTA — follow [IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11), [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)).
-- [x] Hero craft pass (voice, composition, materials) — follow [IMPLEMENTATION_PLAN_HERO_CRAFT.md](IMPLEMENTATION_PLAN_HERO_CRAFT.md) ([#14](https://github.com/gavinfung321/HKAAA-website/issues/14)).
-- [x] Process section visual polish — follow [IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)).
-- [x] Why Choose Us visual polish — follow [IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23), [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24)).
-- [x] Our Services visual polish — follow [IMPLEMENTATION_PLAN_SERVICES_VISUAL.md](IMPLEMENTATION_PLAN_SERVICES_VISUAL.md) ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)).
+- [x] Portal Field / cloud-field WebGL behind the hero (replace Aurora) ([#7](https://github.com/gavinfung321/HKAAA-website/issues/7), [PR #8](https://github.com/gavinfung321/HKAAA-website/pull/8)).
+- [x] Book a Call gradient-beam CTA ([#11](https://github.com/gavinfung321/HKAAA-website/issues/11), [PR #12](https://github.com/gavinfung321/HKAAA-website/pull/12)).
+- [x] Hero craft pass (voice, composition, materials) ([#14](https://github.com/gavinfung321/HKAAA-website/issues/14)).
+- [x] Process section visual polish ([#17](https://github.com/gavinfung321/HKAAA-website/issues/17)).
+- [x] Why Choose Us visual polish ([#23](https://github.com/gavinfung321/HKAAA-website/issues/23), [PR #24](https://github.com/gavinfung321/HKAAA-website/pull/24)).
+- [x] Our Services visual polish ([#25](https://github.com/gavinfung321/HKAAA-website/issues/25)).
 - [x] Testimonials brand 3D plate polish — closed not using ([#27](https://github.com/gavinfung321/HKAAA-website/issues/27)). Keep current testimonials look.
 - [x] Testimonials vortex particle background — closed not using ([#28](https://github.com/gavinfung321/HKAAA-website/issues/28)). Keep current background.
 - [x] Stack tools logo carousel above testimonials — closed; logos good as shipped ([#29](https://github.com/gavinfung321/HKAAA-website/issues/29)).
@@ -131,8 +131,8 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Remove unused `ServiceCard` component (or use it for the six service cards) — deleted in [#25](https://github.com/gavinfung321/HKAAA-website/issues/25)
 - [x] Remove unused Spline viewer script from `index.html`
 - [x] Remove unused plan / subscription state from `App.tsx` — already gone (no leftover Stripe/plan selection state)
-- [x] Mobile burger menu readable on hero — follow [IMPLEMENTATION_PLAN_MOBILE_NAV.md](IMPLEMENTATION_PLAN_MOBILE_NAV.md) ([#34](https://github.com/gavinfung321/HKAAA-website/issues/34)). Option A + quiet-fill Contact Us; signed off 2026-09-29.
-- [x] Nav bar polish (labels, active section, Contact) — follow [IMPLEMENTATION_PLAN_NAV.md](IMPLEMENTATION_PLAN_NAV.md) ([#35](https://github.com/gavinfung321/HKAAA-website/issues/35)). Soft hover plate; signed off 2026-09-29.
+- [x] Mobile burger menu readable on hero ([#34](https://github.com/gavinfung321/HKAAA-website/issues/34)). Option A + quiet-fill Contact Us; signed off 2026-09-29.
+- [x] Nav bar polish (labels, active section, Contact) ([#35](https://github.com/gavinfung321/HKAAA-website/issues/35)). Soft hover plate; signed off 2026-09-29.
 - [x] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps (left over from #23)
 - [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
 
@@ -155,7 +155,7 @@ Stop depending on Imgur (and other hotlinked hosts) for brand-critical images.
 - [x] Move logo into the repo or Supabase Storage; update header, footer, favicon, and Open Graph tags — `public/brand/logo.png`
 - [x] Move “Why Us” images into owned hosting — not needed: images removed in [#23](https://github.com/gavinfung321/HKAAA-website/issues/23)
 - [x] Move team photos into owned hosting — `public/team/gavin.png`, `public/team/natalie.png`
-- [x] Confirm every remaining remote image is intentional (or replace it) — brand/team off Imgur; legacy Why Us Imgur only in unmounted file
+- [x] Confirm every remaining remote image is intentional (or replace it) — brand/team under `public/`; no Imgur
 - [x] Recheck favicon, apple-touch-icon, and social preview after the move — points at `/brand/logo.png` / absolute OG URLs
 
 ---
@@ -194,8 +194,8 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 - [x] Terms of use — `/terms` · `/zh/terms`. HK governing law. Same draft.
 - [x] Sitemap — `public/sitemap.xml` + `robots.txt` (EN/`zh` home, privacy, terms + hreflang)
 - [ ] Case studies / work samples
-- [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; see [IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md). Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Prerender follow-up still under SEO/AEO/GEO.
-- [x] **SEO / AEO / GEO pass** — soft body + prerender + Organization/WebSite + Search Console sitemap (6 URLs). FAQ dropped. Copy: [SEO_COPY_DRAFT.md](SEO_COPY_DRAFT.md). Plan: [IMPLEMENTATION_PLAN_SEO_AEO_GEO.md](IMPLEMENTATION_PLAN_SEO_AEO_GEO.md).
+- [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Shipped.
+- [x] **SEO / AEO / GEO pass** — soft body + prerender + Organization/WebSite + Search Console sitemap (6 URLs). FAQ dropped. Copy: [SEO_COPY_DRAFT.md](SEO_COPY_DRAFT.md).
 
 ---
 
@@ -256,14 +256,15 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | Meta/OG/Twitter copy aligned to hero voice. Natalie photo compressed (~10MB PNG → ~100KB JPEG). Burger aria-label added. |
 | 2026-09-29 | Backlog: SEO / AEO / GEO pass noted under Phase E (with 繁體 switcher). No code until prioritized. |
 | 2026-09-29 | Contact honeypot: hidden website field; filled = fake success, no leads insert. |
-| 2026-09-29 | Phase 0: Traditional Chinese switcher plan drafted ([IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md)). Awaiting locks. |
+| 2026-09-29 | Phase 0: Traditional Chinese switcher plan drafted. Awaiting locks. |
 | 2026-09-29 | I18n locks: 1A 2A 3A 4-table 5B 6A 7A. 繁體 copy draft for review: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). |
 | 2026-09-29 | I18n lock **1 revised A→B**: `/zh` slug for ranking; Netlify SPA + hreflang in this pass; prerender may follow in SEO pass. |
 | 2026-09-29 | 繁體 copy draft marked ready for v1 (meta/hero/testimonials edits). Awaiting go to implement switcher. |
 | 2026-09-29 | I18n implement: LocaleProvider, `/`·`/zh`, EN\|繁 toggle, dictionaries, Netlify SPA `_redirects`, hreflang/meta. |
 | 2026-09-29 | Privacy + Terms live: `/privacy` `/terms` and `/zh` twins. HK PDPO / implied services terms. No amount cap. Name: HKAAA. |
 | 2026-09-29 | Sitemap + robots.txt: six indexable URLs with hreflang alternates. |
-| 2026-09-29 | SEO/AEO/GEO Phase 0 drafted ([IMPLEMENTATION_PLAN_SEO_AEO_GEO.md](IMPLEMENTATION_PLAN_SEO_AEO_GEO.md)). Dual spine: HK web design + AI automation / Hong Kong AI. Awaiting K1–K7. |
+| 2026-09-29 | SEO/AEO/GEO Phase 0 drafted. Dual spine: HK web design + AI automation / Hong Kong AI. Awaiting K1–K7. |
 | 2026-09-29 | Soft SEO shipped: hero/services nudges, static `#root` prerender EN+繁, Organization JSON-LD. FAQ out. K7 Search Console still ops. |
 | 2026-09-29 | K7 done: Search Console sitemap Success, 6 discovered URLs. SEO/AEO/GEO pass complete for this phase. |
 | 2026-09-29 | FAQ removed after review. K4 → D. SEO plan refocused on prerender + Organization + dual keywords. |
+| 2026-09-29 | Docs cleanup: removed completed section plans + issue briefs; dropped unused legacy demos, aurora, vortex. |

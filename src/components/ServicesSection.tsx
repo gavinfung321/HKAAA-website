@@ -238,8 +238,7 @@ function ServiceTile({ service, index, hovered, dimmed, onHoverChange }: Service
 }
 
 /**
- * Our Services (#25) — two-row bento, website first.
- * Legacy six-card grid in `ServicesSection.legacy.tsx`.
+ * Our Services — two-row bento, website first.
  */
 export function ServicesSection() {
   const t = useMessages();

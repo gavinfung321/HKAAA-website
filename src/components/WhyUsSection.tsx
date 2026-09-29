@@ -7,8 +7,7 @@ import { headingJoinGap, useLocale, useMessages } from '../i18n';
 const ICONS = [PackageCheck, Users, Sparkles] as const;
 
 /**
- * Why Choose Us (#23) — centered header + spread glass cards (trial layout).
- * Legacy zig-zag in `WhyUsSection.legacy.tsx`.
+ * Why Choose Us — centered header + glass cards over violet paths.
  */
 export function WhyUsSection() {
   const t = useMessages();

@@ -1,43 +1,14 @@
 # Docs
 
-All project plans and issue-tracking guides live here. Do not code from a plan until it has been reviewed.
+Living plans and ops notes. Completed section plans and issue briefs were removed 2026-09-29 (history is in git).
 
 | Path | What it is |
 | --- | --- |
-| [plans/IMPLEMENTATION_PLAN.md](plans/IMPLEMENTATION_PLAN.md) | Site-wide plan and checklist |
-| [plans/IMPLEMENTATION_PLAN_PRICING.md](plans/IMPLEMENTATION_PLAN_PRICING.md) | Pricing section (Plan A) |
-| [plans/IMPLEMENTATION_PLAN_CHAT_WIDGET.md](plans/IMPLEMENTATION_PLAN_CHAT_WIDGET.md) | Remove Voiceflow floating chat button |
-| [plans/IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md](plans/IMPLEMENTATION_PLAN_PORTAL_FIELD_HERO.md) | Portal Field / cloud-field WebGL hero backdrop |
-| [plans/IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md](plans/IMPLEMENTATION_PLAN_BOOK_CALL_CTA.md) | Book a Call gradient-beam CTA |
-| [plans/IMPLEMENTATION_PLAN_HERO_CRAFT.md](plans/IMPLEMENTATION_PLAN_HERO_CRAFT.md) | Hero craft pass (voice, composition, materials) |
-| [plans/IMPLEMENTATION_PLAN_SITE_COPY.md](plans/IMPLEMENTATION_PLAN_SITE_COPY.md) | Site-wide copy pass to match hero voice (paused) |
-| [plans/IMPLEMENTATION_PLAN_PROCESS_VISUAL.md](plans/IMPLEMENTATION_PLAN_PROCESS_VISUAL.md) | Process section visual polish |
-| [plans/IMPLEMENTATION_PLAN_PLANS_VISUAL.md](plans/IMPLEMENTATION_PLAN_PLANS_VISUAL.md) | Plans section visual + placement |
-| [plans/IMPLEMENTATION_PLAN_TESTIMONIALS.md](plans/IMPLEMENTATION_PLAN_TESTIMONIALS.md) | Testimonials after hero (auto marquee) |
-| [plans/IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md](plans/IMPLEMENTATION_PLAN_TESTIMONIALS_PAPER.md) | Testimonials brand 3D plate polish |
-| [plans/IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md](plans/IMPLEMENTATION_PLAN_TESTIMONIALS_VORTEX.md) | Testimonials vortex particle background |
-| [plans/IMPLEMENTATION_PLAN_WHY_US_VISUAL.md](plans/IMPLEMENTATION_PLAN_WHY_US_VISUAL.md) | Why Choose Us visual polish (closed) |
-| [plans/IMPLEMENTATION_PLAN_SERVICES_VISUAL.md](plans/IMPLEMENTATION_PLAN_SERVICES_VISUAL.md) | Our Services visual polish |
-| [plans/IMPLEMENTATION_PLAN_GLASS_NAV.md](plans/IMPLEMENTATION_PLAN_GLASS_NAV.md) | Glass floating header + desktop spring (closed — not planned) |
-| [issues/Github_Issue_Guide.md](issues/Github_Issue_Guide.md) | How we create and close GitHub issues |
-| [issues/001-hide-public-prices.md](issues/001-hide-public-prices.md) | Local brief for GitHub issue #1 |
-| [issues/002-supabase-env-crash.md](issues/002-supabase-env-crash.md) | Local brief for GitHub issue #2 (paused) |
-| [issues/003-remove-chatbot-button.md](issues/003-remove-chatbot-button.md) | Local brief for GitHub issue #3 |
-| [issues/004-remove-bolt-leftovers.md](issues/004-remove-bolt-leftovers.md) | Local brief for GitHub issue #4 |
-| [issues/005-cinematic-harbour-hero.md](issues/005-cinematic-harbour-hero.md) | Local brief for GitHub issue #5 (closed — not planned) |
-| [issues/006-contact-web-design-seo.md](issues/006-contact-web-design-seo.md) | Local brief for GitHub issue #6 |
-| [issues/007-portal-field-hero.md](issues/007-portal-field-hero.md) | Local brief for GitHub issue #7 |
-| [issues/009-hero-copy.md](issues/009-hero-copy.md) | Local brief for GitHub issue #9 |
-| [issues/011-book-call-cta.md](issues/011-book-call-cta.md) | Local brief for GitHub issue #11 |
-| [issues/013-glass-floating-header.md](issues/013-glass-floating-header.md) | Local brief for GitHub issue #13 |
-| [issues/014-hero-craft.md](issues/014-hero-craft.md) | Local brief for GitHub issue #14 |
-| [issues/016-site-copy.md](issues/016-site-copy.md) | Local brief for GitHub issue #16 (paused) |
-| [issues/017-process-visual.md](issues/017-process-visual.md) | Local brief for GitHub issue #17 |
-| [issues/018-plans-visual.md](issues/018-plans-visual.md) | Local brief for GitHub issue #18 |
-| [issues/019-testimonials.md](issues/019-testimonials.md) | Local brief for GitHub issue #19 |
-| [issues/023-why-us-visual.md](issues/023-why-us-visual.md) | Local brief for GitHub issue #23 (closed) |
-| [issues/025-services-visual.md](issues/025-services-visual.md) | Local brief for GitHub issue #25 |
-| [issues/027-testimonials-paper.md](issues/027-testimonials-paper.md) | Local brief for GitHub issue #27 |
-| [issues/028-testimonials-vortex.md](issues/028-testimonials-vortex.md) | Local brief for GitHub issue #28 |
+| [plans/IMPLEMENTATION_PLAN.md](plans/IMPLEMENTATION_PLAN.md) | Site-wide checklist |
+| [plans/I18N_COPY_DRAFT_ZH_HANT.md](plans/I18N_COPY_DRAFT_ZH_HANT.md) | 繁體 copy reference (dictionaries are source of truth in code) |
+| [plans/LEGAL_COPY_DRAFT.md](plans/LEGAL_COPY_DRAFT.md) | Privacy / Terms draft (shipped) |
+| [plans/SEO_COPY_DRAFT.md](plans/SEO_COPY_DRAFT.md) | Soft SEO body + prerender copy (shipped) |
+| [issues/Github_Issue_Guide.md](issues/Github_Issue_Guide.md) | How we open/close GitHub issues |
+| [ops/LEAD_EMAIL_NOTIFY.md](ops/LEAD_EMAIL_NOTIFY.md) | Resend lead email setup |
 
-GitHub source of truth for issues: [gavinfung321/HKAAA-website/issues](https://github.com/gavinfung321/HKAAA-website/issues)
+GitHub issues: [gavinfung321/HKAAA-website/issues](https://github.com/gavinfung321/HKAAA-website/issues)

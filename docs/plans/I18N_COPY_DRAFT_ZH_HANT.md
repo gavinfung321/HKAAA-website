@@ -235,4 +235,4 @@ Locked 2026-09-29 for SEO spine: web design / 網頁設計, Hong Kong AI / 香�
 2. **優勢** for nav “Why Us” — shorter than 為什麼選我們; section H2 still 為什麼選我們.
 3. **預約通話** for Book a Call — say if you prefer 預約諮詢.
 4. Hero **用更好的** + rotator — check line break feel on mobile.
-5. Unused legacy demos (ChatbotDemo / WorkflowDemo) not translated; not on the live page.
+5. Legacy demos removed from the codebase (2026-09-29 cleanup).
