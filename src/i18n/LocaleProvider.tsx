@@ -63,15 +63,20 @@ function syncDocumentHead(locale: Locale, messages: Messages) {
   document.title = title;
   document.documentElement.lang = HTML_LANG[locale];
 
+  const path = pathForLocale(locale).replace(/\/$/, '') || '/';
+  const canonicalUrl = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
+  const ogImage = `${SITE_ORIGIN}${locale === 'zh-Hant' ? '/og-zh.jpg' : '/og.jpg'}`;
+
   upsertMeta('name', 'description', description);
   upsertMeta('property', 'og:title', title);
   upsertMeta('property', 'og:description', description);
   upsertMeta('property', 'og:locale', locale === 'zh-Hant' ? 'zh_HK' : 'en_HK');
+  upsertMeta('property', 'og:image', ogImage);
+  upsertMeta('property', 'og:url', canonicalUrl);
+  upsertMeta('name', 'twitter:image', ogImage);
+  upsertMeta('name', 'twitter:card', 'summary_large_image');
   upsertMeta('name', 'twitter:title', title);
   upsertMeta('name', 'twitter:description', description);
-
-  const path = pathForLocale(locale).replace(/\/$/, '') || '/';
-  const canonicalUrl = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
 
   upsertLink('canonical', { href: canonicalUrl });
   upsertLink('alternate', { hreflang: 'en', href: `${SITE_ORIGIN}/` });
