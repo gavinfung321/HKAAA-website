@@ -1,21 +1,14 @@
 import { Linkedin } from 'lucide-react';
 import { BlazeBackground } from './effects/blaze/BlazeBackground';
+import { useMessages } from '../i18n';
 
-const teamMembers = [
+const MEMBER_META = [
   {
-    name: 'Gavin Fung',
-    role: 'Co-founder',
     image: '/team/gavin.png',
-    description:
-      'Builds the sites, automations, and outreach clients actually run.',
     linkedin: 'https://www.linkedin.com/in/gavin-fung-48811539/',
   },
   {
-    name: 'Natalie Tso',
-    role: 'Co-founder',
     image: '/team/natalie.jpg',
-    description:
-      'Writes and edits the posts, stories, and video behind the brand.',
     linkedin: 'https://www.linkedin.com/in/natalie-tso-b6b204a0/',
   },
 ] as const;
@@ -24,17 +17,20 @@ const teamMembers = [
  * Meet Our Team (#31) — two-up plates + DesignCode Blaze smoke backdrop.
  */
 export const TeamSection = () => {
+  const t = useMessages();
+  const teamMembers = t.team.members.map((m, i) => ({
+    ...m,
+    role: t.team.role,
+    ...MEMBER_META[i],
+  }));
+
   return (
     <section
       id="team-section"
       className="relative isolate overflow-hidden bg-gray-900 px-6 py-16 md:px-10 md:py-24 lg:px-12"
     >
       <div className="pointer-events-none absolute inset-0 z-0 opacity-90" aria-hidden>
-        <BlazeBackground
-          smoke={0.65}
-          sparks={0.45}
-          glow={1.35}
-        />
+        <BlazeBackground smoke={0.65} sparks={0.45} glow={1.35} />
       </div>
 
       <div
@@ -49,9 +45,9 @@ export const TeamSection = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
-            Meet Our{' '}
+            {t.team.h2Before}{' '}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Team
+              {t.team.h2Highlight}
             </span>
           </h2>
         </div>
@@ -64,11 +60,11 @@ export const TeamSection = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="team-card__photo h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    className="team-card__photo h-full w-full object-cover object-top group-hover:scale-[1.03]"
                   />
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(3,5,12,0.92)_0%,rgba(3,5,12,0.35)_42%,rgba(8,10,18,0.22)_100%)]"
+                    className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(3,5,12,0.92)_0%,rgba(3,5,12,0.35)_42%,rgba(8,10,18,0.22)_100%)] transition-opacity duration-500 group-hover:opacity-70"
                   />
                 </div>
 
@@ -81,9 +77,7 @@ export const TeamSection = () => {
                       {member.role}
                     </p>
                   </div>
-                  <p className="text-sm leading-snug text-white/70">
-                    {member.description}
-                  </p>
+                  <p className="text-sm leading-snug text-white/70">{member.description}</p>
                   <a
                     href={member.linkedin}
                     target="_blank"
@@ -91,7 +85,7 @@ export const TeamSection = () => {
                     className="mt-1 inline-flex w-fit items-center gap-2 text-sm text-white/65 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
                   >
                     <Linkedin className="h-4 w-4" aria-hidden />
-                    <span>LinkedIn</span>
+                    <span>{t.team.linkedin}</span>
                   </a>
                 </div>
               </article>

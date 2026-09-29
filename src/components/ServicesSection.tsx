@@ -11,6 +11,7 @@ import {
   type AnimationPlaybackControls,
 } from 'framer-motion';
 import { cn } from '../lib/utils';
+import { useMessages } from '../i18n';
 import {
   ChatbotVisual,
   ContentVisual,
@@ -28,13 +29,13 @@ type Service = {
   span: string;
 };
 
-const services: Service[] = [
-  { name: 'Web Design', headline: 'A site that wins you customers', visual: WebDesignVisual, span: 'lg:col-span-4' },
-  { name: 'SEO', headline: 'Get found on Google', visual: SeoVisual, span: 'lg:col-span-3' },
-  { name: 'Content', headline: 'Posts, blogs, and videos handled', visual: ContentVisual, span: 'lg:col-span-3' },
-  { name: 'Chatbot', headline: "Answers customers while you're busy", visual: ChatbotVisual, span: 'lg:col-span-3' },
-  { name: 'Workflow', headline: 'Busywork, done for you', visual: WorkflowVisual, span: 'lg:col-span-4' },
-  { name: 'Lead gen', headline: 'A steady stream of enquiries', visual: LeadGenVisual, span: 'lg:col-span-3' },
+const SERVICE_META: Omit<Service, 'name' | 'headline'>[] = [
+  { visual: WebDesignVisual, span: 'lg:col-span-4' },
+  { visual: SeoVisual, span: 'lg:col-span-3' },
+  { visual: ContentVisual, span: 'lg:col-span-3' },
+  { visual: ChatbotVisual, span: 'lg:col-span-3' },
+  { visual: WorkflowVisual, span: 'lg:col-span-4' },
+  { visual: LeadGenVisual, span: 'lg:col-span-3' },
 ];
 
 const BORDER_MASK: CSSProperties = {
@@ -241,7 +242,13 @@ function ServiceTile({ service, index, hovered, dimmed, onHoverChange }: Service
  * Legacy six-card grid in `ServicesSection.legacy.tsx`.
  */
 export function ServicesSection() {
+  const t = useMessages();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const services: Service[] = t.services.items.map((item, i) => ({
+    ...item,
+    ...SERVICE_META[i],
+  }));
 
   return (
     <section
@@ -256,20 +263,20 @@ export function ServicesSection() {
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-3 animate-on-scroll md:flex-row md:items-end md:justify-between md:gap-10">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-[3.25rem]">
-            Our{' '}
+            {t.services.h2Before}{' '}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Services
+              {t.services.h2Highlight}
             </span>
           </h2>
           <p className="max-w-md text-base leading-relaxed text-gray-400 md:pb-2 md:text-lg">
-            Websites first. AI and outreach when you need them.
+            {t.services.sub}
           </p>
         </div>
 
         <ul className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 md:grid-cols-2 lg:grid-cols-10 lg:gap-5">
           {services.map((service, index) => (
             <li
-              key={service.name}
+              key={`${service.name}-${index}`}
               className={cn('animate-on-scroll relative', service.span)}
               style={{ '--animation-delay': `${0.06 + index * 0.06}s` } as CSSProperties}
             >

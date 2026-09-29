@@ -1,29 +1,34 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useLocale, useMessages } from '../i18n';
+import type { Locale } from '../i18n/types';
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
 }
 
-const NAV_ITEMS = [
-  { label: 'Process', sectionId: 'process-section' },
-  { label: 'Why Us', sectionId: 'why-us-section' },
-  { label: 'Services', sectionId: 'services-section' },
-  { label: 'Plans', sectionId: 'pricing-section' },
-  { label: 'Team', sectionId: 'team-section' },
-] as const;
+const NAV_SECTION_IDS = [
+  { key: 'process' as const, sectionId: 'process-section' },
+  { key: 'whyUs' as const, sectionId: 'why-us-section' },
+  { key: 'services' as const, sectionId: 'services-section' },
+  { key: 'plans' as const, sectionId: 'pricing-section' },
+  { key: 'team' as const, sectionId: 'team-section' },
+];
 
 const SECTION_IDS = [
   'hero-section',
-  ...NAV_ITEMS.map((item) => item.sectionId),
+  ...NAV_SECTION_IDS.map((item) => item.sectionId),
   'contact-section',
 ] as const;
 
 /**
  * Fixed nav (#35) — transparent at rest; dark plate when scrolled or mobile menu open.
  * Desktop scroll-spy underline; Contact quiet fill aligned with mobile.
+ * EN | 繁 locale toggle (#i18n).
  */
 export function Header({ scrollToSection }: HeaderProps) {
+  const { locale, setLocale } = useLocale();
+  const t = useMessages();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState<string>('hero-section');
@@ -55,7 +60,6 @@ export function Header({ scrollToSection }: HeaderProps) {
       },
       {
         root: null,
-        // Bias toward the section under the fixed nav / upper viewport
         rootMargin: '-20% 0px -55% 0px',
         threshold: [0, 0.25, 0.5, 0.75, 1],
       },
@@ -67,6 +71,33 @@ export function Header({ scrollToSection }: HeaderProps) {
 
   const contactClassName =
     'rounded-full border border-white/15 bg-white/10 px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:border-purple-500/25 hover:bg-white/15';
+
+  const langBtn = (code: Locale, label: string) => {
+    const active = locale === code;
+    return (
+      <button
+        type="button"
+        onClick={() => setLocale(code)}
+        className={`px-1 text-sm font-medium transition-colors ${
+          active ? 'text-white' : 'text-white/40 hover:text-white/70'
+        }`}
+        aria-pressed={active}
+        aria-label={code === 'en' ? 'English' : '繁體中文'}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  const langToggle = (
+    <div className="flex items-center gap-0.5" role="group" aria-label="Language">
+      {langBtn('en', 'EN')}
+      <span className="text-white/25" aria-hidden>
+        |
+      </span>
+      {langBtn('zh-Hant', '繁')}
+    </div>
+  );
 
   return (
     <nav
@@ -91,7 +122,7 @@ export function Header({ scrollToSection }: HeaderProps) {
           </button>
 
           <div className="hidden items-center space-x-8 md:flex">
-            {NAV_ITEMS.map((item) => {
+            {NAV_SECTION_IDS.map((item) => {
               const isActive = activeSectionId === item.sectionId;
               return (
                 <button
@@ -102,35 +133,42 @@ export function Header({ scrollToSection }: HeaderProps) {
                     isActive ? 'nav-link--active text-white' : 'text-gray-300 hover:text-white'
                   }`}
                 >
-                  {item.label}
+                  {t.nav[item.key]}
                 </button>
               );
             })}
+            {langToggle}
             <a
               onClick={() => scrollToSection('contact-section')}
               role="button"
               className={contactClassName}
             >
-              Contact Us
+              {t.nav.contact}
             </a>
           </div>
 
-          <button
-            type="button"
-            className="md:hidden"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-6 w-6" aria-hidden /> : <Menu className="h-6 w-6" aria-hidden />}
-          </button>
+          <div className="flex items-center gap-4 md:hidden">
+            {langToggle}
+            <button
+              type="button"
+              aria-label={isMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <X className="h-6 w-6" aria-hidden />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
       <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 pb-5 pt-2">
           <div className="space-y-2">
-            {NAV_ITEMS.map((item) => {
+            {NAV_SECTION_IDS.map((item) => {
               const isActive = activeSectionId === item.sectionId;
               return (
                 <button
@@ -144,7 +182,7 @@ export function Header({ scrollToSection }: HeaderProps) {
                     isActive ? 'text-white' : 'text-gray-300 hover:text-white'
                   }`}
                 >
-                  {item.label}
+                  {t.nav[item.key]}
                 </button>
               );
             })}
@@ -157,7 +195,7 @@ export function Header({ scrollToSection }: HeaderProps) {
             role="button"
             className={`mt-5 inline-block ${contactClassName}`}
           >
-            Contact Us
+            {t.nav.contact}
           </a>
         </div>
       </div>

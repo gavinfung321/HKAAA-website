@@ -9,6 +9,7 @@ import {
 import { CloudFieldBackground } from './effects/cloud-field/CloudFieldBackground';
 import { RotatingHeroPhrase } from './RotatingHeroPhrase';
 import { GradientBeamCta } from './ui/GradientBeamCta';
+import { useMessages } from '../i18n';
 
 /**
  * First-viewport hero: brand lockup, POV headline + rotator, one CTA, cloud-field stage.
@@ -16,6 +17,7 @@ import { GradientBeamCta } from './ui/GradientBeamCta';
  * On scroll-out, clouds approach the copy (shader u_scroll); type lags slightly.
  */
 export function HeroSection() {
+  const t = useMessages();
   const sectionRef = useRef<HTMLDivElement>(null);
   const scrollProgressRef = useRef(0);
   const reduceMotion = useReducedMotion();
@@ -64,28 +66,23 @@ export function HeroSection() {
           style={{ x: copyX, y: copyY }}
         >
           <p className="mb-4 text-2xl font-semibold tracking-[-0.02em] text-white animate-[fadeInLeft_0.9s_ease-out] opacity-0 [animation-fill-mode:forwards] md:mb-5 md:text-3xl lg:text-4xl">
-            HKAAA
+            {t.hero.brand}
           </p>
 
           <h1 className="mb-5 text-[2.75rem] font-normal leading-[1.08] tracking-[-0.02em] text-white animate-[slideInRight_1s_ease-out_0.05s] opacity-0 [animation-fill-mode:forwards] sm:text-5xl md:mb-6 md:text-6xl lg:text-7xl">
-            <span className="block md:whitespace-nowrap">
-              Elevate with better
-            </span>
+            <span className="block md:whitespace-nowrap">{t.hero.h1}</span>
             <span className="mt-0.5 block md:mt-1">
               <RotatingHeroPhrase />
             </span>
           </h1>
 
           <p className="mb-8 max-w-md text-base leading-relaxed text-gray-300/95 animate-[fadeInLeft_1s_ease-out_0.3s] opacity-0 [animation-fill-mode:forwards] md:mb-10 md:text-lg">
-            We build your next-level website, drive organic traffic, and deploy AI when
-            you&apos;re ready.
+            {t.hero.sub}
           </p>
 
           <div className="flex flex-col items-start gap-3.5 animate-[scaleIn_1s_ease-out_0.55s] opacity-0 [animation-fill-mode:forwards]">
-            <GradientBeamCta />
-            <p className="max-w-sm text-sm leading-snug text-gray-400">
-              From first site to automation. One team in Hong Kong.
-            </p>
+            <GradientBeamCta>{t.hero.cta}</GradientBeamCta>
+            <p className="max-w-sm text-sm leading-snug text-gray-400">{t.hero.underCta}</p>
           </div>
         </motion.div>
       </div>

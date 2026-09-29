@@ -2,36 +2,17 @@ import type { CSSProperties } from 'react';
 import { PackageCheck, Sparkles, Users } from 'lucide-react';
 import { BackgroundPaths } from './ui/background-paths';
 import { GlassCard } from './ui/GlassCard';
+import { useMessages } from '../i18n';
 
-const reasons = [
-  {
-    label: 'Delivery',
-    title: 'Proven delivery',
-    subhead: 'Real results, not slide decks',
-    body: 'We ship sites and systems you can run, built for how Hong Kong teams actually work.',
-    icon: PackageCheck,
-  },
-  {
-    label: 'Team',
-    title: 'One team through launch',
-    subhead: 'Strategy, build, and support',
-    body: 'Same people from first call to go-live. No agency handoff between brief and launch.',
-    icon: Users,
-  },
-  {
-    label: 'Future',
-    title: 'Ready for what comes next',
-    subhead: "Website first, AI when you're ready",
-    body: 'Nail the site and SEO first. Add chatbots and workflows when you’re ready.',
-    icon: Sparkles,
-  },
-] as const;
+const ICONS = [PackageCheck, Users, Sparkles] as const;
 
 /**
  * Why Choose Us (#23) — centered header + spread glass cards (trial layout).
  * Legacy zig-zag in `WhyUsSection.legacy.tsx`.
  */
 export function WhyUsSection() {
+  const t = useMessages();
+
   return (
     <section
       id="why-us-section"
@@ -51,32 +32,35 @@ export function WhyUsSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-[3.25rem]">
-            Why{' '}
+            {t.whyUs.h2Before}{' '}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Choose Us
+              {t.whyUs.h2Highlight}
             </span>
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-gray-400 md:text-lg">
-            Clear ownership. Real delivery. Room to grow after launch.
+            {t.whyUs.sub}
           </p>
         </div>
 
         <ul className="mt-12 flex flex-col items-center justify-center gap-8 sm:mt-14 md:flex-row md:flex-wrap md:items-stretch md:gap-7 lg:gap-9">
-          {reasons.map((reason, index) => (
-            <li
-              key={reason.label}
-              className="animate-on-scroll"
-              style={{ '--animation-delay': `${0.08 + index * 0.07}s` } as CSSProperties}
-            >
-              <GlassCard
-                label={reason.label}
-                title={reason.title}
-                subhead={reason.subhead}
-                body={reason.body}
-                icon={reason.icon}
-              />
-            </li>
-          ))}
+          {t.whyUs.reasons.map((reason, index) => {
+            const Icon = ICONS[index] ?? PackageCheck;
+            return (
+              <li
+                key={reason.label}
+                className="animate-on-scroll"
+                style={{ '--animation-delay': `${0.08 + index * 0.07}s` } as CSSProperties}
+              >
+                <GlassCard
+                  label={reason.label}
+                  title={reason.title}
+                  subhead={reason.subhead}
+                  body={reason.body}
+                  icon={Icon}
+                />
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>

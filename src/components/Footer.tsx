@@ -1,14 +1,15 @@
 import { Facebook, Instagram, Linkedin, X } from 'lucide-react';
 import { WireframeLandscapeBackground } from './effects/wireframe-landscape/WireframeLandscapeBackground';
+import { useMessages } from '../i18n';
 
 const EXPLORE = [
-  { label: 'Process', href: '#process-section' },
-  { label: 'Why Us', href: '#why-us-section' },
-  { label: 'Services', href: '#services-section' },
-  { label: 'Plans', href: '#pricing-section' },
-  { label: 'Team', href: '#team-section' },
-  { label: 'Contact', href: '#contact-section' },
-] as const;
+  { key: 'process' as const, href: '#process-section' },
+  { key: 'whyUs' as const, href: '#why-us-section' },
+  { key: 'services' as const, href: '#services-section' },
+  { key: 'plans' as const, href: '#pricing-section' },
+  { key: 'team' as const, href: '#team-section' },
+  { key: 'contact' as const, href: '#contact-section' },
+];
 
 const SOCIALS = [
   {
@@ -36,6 +37,7 @@ const linkClass =
  * Site footer (#33) — Brand / Explore / Connect over wireframe landscape.
  */
 export const Footer = () => {
+  const t = useMessages();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -59,16 +61,10 @@ export const Footer = () => {
               href="#hero-section"
               className="inline-flex items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
             >
-              <img
-                src="/brand/logo.png"
-                alt=""
-                className="h-8 w-auto"
-              />
+              <img src="/brand/logo.png" alt="" className="h-8 w-auto" />
               <span className="text-xl font-medium tracking-tight text-white">HKAAA</span>
             </a>
-            <p className="max-w-xs text-sm leading-relaxed text-white/55">
-              From first site to automation. One team in Hong Kong.
-            </p>
+            <p className="max-w-xs text-sm leading-relaxed text-white/55">{t.footer.tagline}</p>
             <div className="flex gap-2.5 pt-1">
               {SOCIALS.map(({ icon: Icon, href, label }) => (
                 <a
@@ -87,13 +83,13 @@ export const Footer = () => {
 
           <div>
             <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
-              Explore
+              {t.footer.explore}
             </h3>
             <ul className="mt-4 space-y-2.5">
               {EXPLORE.map((item) => (
                 <li key={item.href}>
                   <a href={item.href} className={linkClass}>
-                    {item.label}
+                    {t.footer.nav[item.key]}
                   </a>
                 </li>
               ))}
@@ -102,7 +98,7 @@ export const Footer = () => {
 
           <div>
             <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-white/40">
-              Connect
+              {t.footer.connect}
             </h3>
             <ul className="mt-4 space-y-2.5">
               <li>
@@ -117,7 +113,7 @@ export const Footer = () => {
               </li>
               <li>
                 <a href="#contact-section" className={linkClass}>
-                  Get in Touch
+                  {t.footer.getInTouch}
                 </a>
               </li>
             </ul>
@@ -126,7 +122,7 @@ export const Footer = () => {
 
         <div className="mt-12 border-t border-white/10 pt-6">
           <p className="text-center text-sm text-white/40">
-            © {currentYear} HKAAA. All rights reserved.
+            {t.footer.copyright.replace('{year}', String(currentYear))}
           </p>
         </div>
       </div>

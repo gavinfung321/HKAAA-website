@@ -1,7 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-
-const PHRASES = ['Websites', 'SEO', 'Chatbots', 'Automation'] as const;
+import { useMessages } from '../i18n';
 
 const INTERVAL_MS = 2800;
 
@@ -15,18 +14,24 @@ type RotatingHeroPhraseProps = {
  * Freezes on the first phrase when prefers-reduced-motion is set.
  */
 export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
+  const t = useMessages();
+  const phrases = t.hero.phrases;
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    setIndex(0);
+  }, [phrases]);
+
+  useEffect(() => {
     if (reduceMotion) return;
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % PHRASES.length);
+      setIndex((i) => (i + 1) % phrases.length);
     }, INTERVAL_MS);
     return () => window.clearInterval(id);
-  }, [reduceMotion]);
+  }, [reduceMotion, phrases]);
 
-  const phrase = PHRASES[index];
+  const phrase = phrases[index];
 
   if (reduceMotion) {
     return (
@@ -34,7 +39,7 @@ export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
         className={`bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ${className ?? ''}`}
         aria-live="polite"
       >
-        {PHRASES[0]}
+        {phrases[0]}
       </span>
     );
   }
@@ -58,7 +63,7 @@ export function RotatingHeroPhrase({ className }: RotatingHeroPhraseProps) {
         </motion.span>
       </AnimatePresence>
       <span className="invisible whitespace-nowrap" aria-hidden>
-        Automation
+        {t.hero.phraseSizer}
       </span>
     </span>
   );

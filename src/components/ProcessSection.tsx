@@ -1,29 +1,14 @@
 import type { CSSProperties } from 'react';
 import { LaserMatrixBackground } from './effects/laser-matrix/LaserMatrixBackground';
-
-const steps = [
-  {
-    number: '01',
-    title: 'Discovery Call',
-    body: 'We map your site, traffic, and what “done” looks like. Then we decide if AI belongs in v1.',
-  },
-  {
-    number: '02',
-    title: 'Solution Design',
-    body: 'A clear scope: pages, SEO, and only the automations you’ll actually use.',
-  },
-  {
-    number: '03',
-    title: 'Implementation',
-    body: 'We build, launch, and hand over. Bilingual-ready when you need it.',
-  },
-] as const;
+import { useMessages } from '../i18n';
 
 /**
  * Process timeline — left-aligned (#17) over Matrix Junction laser (focus on right).
  * Animated card version kept in `ProcessSection.legacy.tsx` (not mounted).
  */
 export function ProcessSection() {
+  const t = useMessages();
+
   return (
     <section
       id="process-section"
@@ -31,7 +16,6 @@ export function ProcessSection() {
     >
       <LaserMatrixBackground className="z-0" />
 
-      {/* Soft seams into Testimonials (above) and Why Us (below) */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 z-[1] h-28 bg-gradient-to-b from-gray-900 via-gray-900/70 to-transparent md:h-36"
@@ -41,7 +25,6 @@ export function ProcessSection() {
         className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-28 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent md:h-36"
       />
 
-      {/* Extra left scrim so type stays crisp over beams — same gray-900 as site */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent md:via-gray-900/45"
@@ -50,14 +33,12 @@ export function ProcessSection() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="max-w-xl text-left animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
-            Our{' '}
+            {t.process.h2Before}{' '}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Process
+              {t.process.h2Highlight}
             </span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">
-            Three clear steps from first call to launch. Scope first, then build.
-          </p>
+          <p className="mt-4 text-base leading-relaxed text-gray-400 md:text-lg">{t.process.sub}</p>
         </div>
 
         <ol className="relative mt-14 max-w-2xl md:mt-16">
@@ -66,7 +47,7 @@ export function ProcessSection() {
             className="absolute bottom-2 left-[0.6875rem] top-2 w-px bg-gradient-to-b from-purple-500/40 via-white/10 to-transparent md:left-[0.9375rem]"
           />
 
-          {steps.map((step, index) => (
+          {t.process.steps.map((step, index) => (
             <li
               key={step.number}
               className="group relative flex gap-5 pb-12 last:pb-0 md:gap-8 md:pb-16 animate-on-scroll"

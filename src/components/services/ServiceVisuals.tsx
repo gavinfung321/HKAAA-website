@@ -26,6 +26,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { useMessages } from '../../i18n';
 
 export type ServiceVisualProps = {
   /** Pointer is over the tile. */
@@ -105,6 +106,7 @@ const SEO_FINAL = ['you', 'a', 'b'] as const;
 const SEO_START = ['a', 'b', 'you'] as const;
 
 export function SeoVisual({ replay }: ServiceVisualProps) {
+  const t = useMessages();
   const { ref, play, reduceMotion } = useTilePlayback<HTMLDivElement>();
   const [order, setOrder] = useState<readonly string[]>(SEO_START);
 
@@ -125,7 +127,7 @@ export function SeoVisual({ replay }: ServiceVisualProps) {
     <div ref={ref} className="absolute inset-x-6 bottom-5 top-1 flex flex-col gap-2.5">
       <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-gray-300">
         <Search className="h-3.5 w-3.5 text-purple-400" strokeWidth={2.25} />
-        web design hong kong
+        {t.services.seoSearch}
       </div>
 
       <ul className="flex flex-col gap-1.5">
@@ -266,6 +268,7 @@ function BotAvatar() {
 }
 
 export function ChatbotVisual({ replay }: ServiceVisualProps) {
+  const t = useMessages();
   const { ref, play, reduceMotion } = useTilePlayback<HTMLDivElement>();
   const [step, setStep] = useState(0);
 
@@ -294,7 +297,7 @@ export function ChatbotVisual({ replay }: ServiceVisualProps) {
           {...enter}
           className="max-w-[80%] self-end rounded-2xl rounded-br-md bg-white/10 px-3 py-2 text-xs text-gray-100"
         >
-          Are you open on Saturday?
+          {t.services.chatUser}
         </motion.p>
       )}
 
@@ -318,7 +321,7 @@ export function ChatbotVisual({ replay }: ServiceVisualProps) {
           <motion.div key="reply" {...enter} className="flex items-end gap-2">
             <BotAvatar />
             <p className="max-w-[80%] rounded-2xl rounded-bl-md border border-purple-400/20 bg-gradient-to-br from-purple-500/30 to-pink-500/20 px-3 py-2 text-xs text-white">
-              Yes, 10am–6pm. Want me to book you in?
+              {t.services.chatBot}
             </p>
           </motion.div>
         )}
@@ -327,10 +330,10 @@ export function ChatbotVisual({ replay }: ServiceVisualProps) {
       {step >= 4 && (
         <motion.div {...enter} className="ml-8 flex gap-1.5">
           <span className="rounded-full border border-purple-400/40 bg-purple-500/10 px-2.5 py-1 text-[11px] text-purple-100">
-            Book Sat 11am
+            {t.services.chatChip1}
           </span>
           <span className="rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-gray-400">
-            Another time
+            {t.services.chatChip2}
           </span>
         </motion.div>
       )}
@@ -351,10 +354,21 @@ const NODE_LIT = 'rgba(236,72,153,0.95)';
 const PULSE_BURST = { duration: 1.1, repeatDelay: 0.5 };
 
 export function WorkflowVisual({ hovered }: ServiceVisualProps) {
+  const t = useMessages();
   const { ref, play, reduceMotion } = useTilePlayback<HTMLDivElement>();
   const gradientId = useSvgId('workflow-pulse');
   const drawn = play || reduceMotion;
   const burst = hovered && play;
+
+  const branchLabels = WORKFLOW_BRANCHES.map((branch) => ({
+    ...branch,
+    label:
+      branch.label === 'Reply'
+        ? t.services.workflowReply
+        : branch.label === 'Team'
+          ? t.services.workflowTeam
+          : branch.label,
+  }));
 
   return (
     <div ref={ref} className="absolute inset-x-4 bottom-3 top-0">
@@ -366,7 +380,7 @@ export function WorkflowVisual({ hovered }: ServiceVisualProps) {
           </linearGradient>
         </defs>
 
-        {WORKFLOW_BRANCHES.map((branch, i) => (
+        {branchLabels.map((branch, i) => (
           <g key={branch.label}>
             <motion.path
               d={branch.d}
@@ -421,7 +435,7 @@ export function WorkflowVisual({ hovered }: ServiceVisualProps) {
           New enquiry
         </text>
 
-        {WORKFLOW_BRANCHES.map(({ cx, label, icon: Icon }) => (
+        {branchLabels.map(({ cx, label, icon: Icon }) => (
           <g key={label}>
             <motion.circle
               key={burst ? 'burst' : 'idle'}
@@ -457,19 +471,22 @@ export function WorkflowVisual({ hovered }: ServiceVisualProps) {
 /* ─── Lead gen: a visitor travels the path to a booked call ─── */
 
 const LEAD_PATH = 'M14 128 C62 128 72 56 124 70 S196 136 250 30';
-const LEAD_STOPS = [
-  { at: 0, label: 'Visitor' },
-  { at: 0.5, label: 'Enquiry' },
-  { at: 1, label: 'Booked' },
-];
+const LEAD_STOP_ATS = [0, 0.5, 1] as const;
 
 export function LeadGenVisual({ hovered, replay }: ServiceVisualProps) {
+  const t = useMessages();
   const { ref, play, reduceMotion } = useTilePlayback<HTMLDivElement>();
   const gradientId = useSvgId('lead-trail');
   const pathRef = useRef<SVGPathElement>(null);
   const controlsRef = useRef<AnimationPlaybackControls | null>(null);
   const [stops, setStops] = useState<{ x: number; y: number }[]>([]);
   const progress = useMotionValue(0);
+
+  const stopLabels = [
+    t.services.leadVisitor,
+    t.services.leadEnquiry,
+    t.services.leadBooked,
+  ];
 
   const pointAt = (p: number) => {
     const path = pathRef.current;
@@ -484,7 +501,7 @@ export function LeadGenVisual({ hovered, replay }: ServiceVisualProps) {
   const toastY = useTransform(progress, [0.93, 1], [6, 0]);
 
   useLayoutEffect(() => {
-    setStops(LEAD_STOPS.map((stop) => pointAt(stop.at)));
+    setStops(LEAD_STOP_ATS.map((at) => pointAt(at)));
   }, []);
 
   useEffect(() => {
@@ -541,7 +558,7 @@ export function LeadGenVisual({ hovered, replay }: ServiceVisualProps) {
         {stops.map((point, i) => {
           const isBooked = i === stops.length - 1;
           return (
-            <g key={LEAD_STOPS[i].label}>
+            <g key={stopLabels[i]}>
               {isBooked ? (
                 <motion.circle cx={point.x} cy={point.y} r={bookedRadius} fill={`url(#${gradientId})`} />
               ) : (
@@ -554,7 +571,7 @@ export function LeadGenVisual({ hovered, replay }: ServiceVisualProps) {
                 fill={isBooked ? '#f5d0fe' : '#9ca3af'}
                 textAnchor={i === 0 ? 'start' : isBooked ? 'end' : 'middle'}
               >
-                {LEAD_STOPS[i].label}
+                {stopLabels[i]}
               </text>
             </g>
           );
@@ -563,7 +580,7 @@ export function LeadGenVisual({ hovered, replay }: ServiceVisualProps) {
         <motion.g style={{ opacity: toastOpacity, y: toastY }}>
           <rect x="140" y="8" width="64" height="18" rx="9" fill={`url(#${gradientId})`} />
           <text x="172" y="20.5" fontSize="10" fontWeight="600" fill="#fff" textAnchor="middle">
-            +1 enquiry
+            {t.services.leadToast}
           </text>
         </motion.g>
 

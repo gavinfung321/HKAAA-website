@@ -1,5 +1,6 @@
 import { useReducedMotion } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { useMessages } from '../i18n';
 
 type Tool = {
   name: string;
@@ -95,6 +96,7 @@ function ToolMark({ tool }: { tool: Tool }) {
  * Capped width (not full-bleed); marquee scrolls inside the shorter track.
  */
 export function ToolsStrip() {
+  const t = useMessages();
   const reduceMotion = useReducedMotion();
   const loop = [...tools, ...tools];
 
@@ -102,10 +104,10 @@ export function ToolsStrip() {
     <section
       id="tools-strip"
       className="relative overflow-hidden bg-gray-900 pb-4 pt-2 md:pb-6 md:pt-3"
-      aria-label="Stack we build with"
+      aria-label={t.tools.label}
     >
       <p className="mb-5 text-center text-[10px] font-medium uppercase tracking-[0.22em] text-white/35 md:mb-6 md:text-[11px]">
-        Stack we build with
+        {t.tools.label}
       </p>
 
       {reduceMotion ? (

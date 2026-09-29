@@ -888,9 +888,16 @@ html {
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Unify Imgur portraits into the dark plate (esp. light studio backdrops). */
+/* Unify portraits into the dark plate; lift slightly on hover. */
 .team-card__photo {
   filter: brightness(0.92) contrast(1.06) saturate(0.88);
+  transition:
+    transform 0.5s ease,
+    filter 0.45s ease;
+}
+
+.team-card:hover .team-card__photo {
+  filter: brightness(1.05) contrast(1.06) saturate(0.95);
 }
 
 /*

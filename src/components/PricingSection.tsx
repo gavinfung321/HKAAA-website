@@ -1,48 +1,26 @@
 import { useRef, type CSSProperties, type PointerEvent } from 'react';
 import { Check } from 'lucide-react';
 import { GradientBeamCta } from './ui/GradientBeamCta';
+import { useMessages } from '../i18n';
 
 const TILT_X_MAX = 2.5;
 const TILT_Y_MAX = 3.5;
 
-const plans = [
-  {
-    name: 'Launch',
-    blurb: 'A professional website.',
-    features: [
-      '5-page site',
-      'Enquiry form',
-      'Built with you in working sessions',
-    ],
-    isPopular: false,
-    restSpot: { x: '78%', y: '32%' },
-  },
-  {
-    name: 'Practice',
-    blurb: 'A bilingual website.',
-    features: [
-      'Everything in Launch',
-      'English + Traditional Chinese',
-      'SEO and WhatsApp',
-      'Optional site chatbot',
-    ],
-    isPopular: true,
-    restSpot: { x: '70%', y: '24%' },
-  },
-  {
-    name: 'Partner',
-    blurb: 'Site plus automation.',
-    features: [
-      'Everything in Practice',
-      'Monthly working sessions',
-      'Workflows, chatbot, and AI outreach',
-    ],
-    isPopular: false,
-    restSpot: { x: '22%', y: '70%' },
-  },
-];
+const PLAN_META = [
+  { isPopular: false, restSpot: { x: '78%', y: '32%' } },
+  { isPopular: true, restSpot: { x: '70%', y: '24%' } },
+  { isPopular: false, restSpot: { x: '22%', y: '70%' } },
+] as const;
 
-function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
+type PlanView = {
+  name: string;
+  blurb: string;
+  features: readonly string[];
+  isPopular: boolean;
+  restSpot: { x: string; y: string };
+};
+
+function PlanCard({ plan, popularLabel }: { plan: PlanView; popularLabel: string }) {
   const cardRef = useRef<HTMLElement>(null);
 
   const resetSpot = () => {
@@ -92,7 +70,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
         </h3>
         {plan.isPopular && (
           <span className="shrink-0 rounded-md border border-white/12 bg-white/[0.04] px-2.5 py-1 text-[11px] font-medium tracking-wide text-white/70">
-            Most chosen
+            {popularLabel}
           </span>
         )}
       </div>
@@ -121,7 +99,6 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
         ))}
       </ul>
 
-      {/* Equal-height fill sits under the list, not between blurb and rule */}
       <div className="relative z-[1] min-h-0 flex-1" aria-hidden />
     </article>
   );
@@ -131,6 +108,12 @@ function PlanCard({ plan }: { plan: (typeof plans)[number] }) {
  * Plans — dialed glass shelf, white title, one Book a Call.
  */
 export const PricingSection = () => {
+  const t = useMessages();
+  const plans: PlanView[] = t.plans.items.map((item, i) => ({
+    ...item,
+    ...PLAN_META[i],
+  }));
+
   return (
     <section
       id="pricing-section"
@@ -139,18 +122,16 @@ export const PricingSection = () => {
       <div className="relative mx-auto max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-4 text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
+            {t.plans.h2Before}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Plans
-            </span>{' '}
-            for your business
+              {t.plans.h2Highlight}
+            </span>
+            {t.plans.h2After ? ` ${t.plans.h2After}` : ''}
           </h2>
-          <p className="text-base leading-relaxed text-gray-400 md:text-lg">
-            Websites, plus chatbots, workflow automation, and AI outreach when you need them.
-          </p>
+          <p className="text-base leading-relaxed text-gray-400 md:text-lg">{t.plans.sub}</p>
         </div>
 
         <div className="relative mt-14 md:mt-16 animate-on-scroll">
-          {/* Soft static stage — no motion; lifts glass off flat gray */}
           <div
             aria-hidden
             className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[120%] w-[115%] max-w-none -translate-x-1/2 -translate-y-[46%] rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(55,142,254,0.07)_0%,rgba(99,102,241,0.04)_38%,transparent_68%)]"
@@ -165,15 +146,15 @@ export const PricingSection = () => {
                     : 'h-full md:opacity-[0.9]'
                 }
               >
-                <PlanCard plan={plan} />
+                <PlanCard plan={plan} popularLabel={t.plans.popular} />
               </div>
             ))}
           </div>
         </div>
 
         <div className="mt-14 flex flex-col items-center gap-3 animate-on-scroll md:mt-16">
-          <p className="text-sm text-gray-400">Every plan is quoted to your scope.</p>
-          <GradientBeamCta />
+          <p className="text-sm text-gray-400">{t.plans.quoteNote}</p>
+          <GradientBeamCta>{t.plans.cta}</GradientBeamCta>
         </div>
       </div>
     </section>

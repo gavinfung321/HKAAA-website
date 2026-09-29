@@ -2,12 +2,14 @@ import { useReducedMotion } from 'framer-motion';
 import {
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
   type PointerEvent as ReactPointerEvent,
 } from 'react';
 import { BlazeBackground } from './effects/blaze/BlazeBackground';
+import { useMessages } from '../i18n';
 
 type Testimonial = {
   name: string;
@@ -16,58 +18,21 @@ type Testimonial = {
   quote: string;
 };
 
-/** Mix prior clients + Asian personas. Title · industry; one Founder, one CEO. */
-const testimonials: Testimonial[] = [
-  {
-    name: 'John',
-    role: 'Founder · Marketing',
-    image:
-      'https://framerusercontent.com/images/ETgoVdeITLLIYCHTFNeVuZDMyQY.png',
-    quote:
-      'The automation features have saved us countless hours. Managing multiple accounts is now a breeze.',
-  },
-  {
-    name: 'Daniel',
-    role: 'CPA Partner · Accounting',
-    image: '/testimonials/accountant.png',
-    quote:
-      'We finally have a site clients trust. Enquiries come in clean, and follow-up is simple.',
-  },
-  {
-    name: 'Robby',
-    role: 'Growth lead · Agency',
-    image: '/testimonials/robby.png',
-    quote:
-      'The chatbot handles client questions like a pro, saving me hours of back-and-forth. That leaves me free to focus on the big picture.',
-  },
-  {
-    name: 'Mei',
-    role: 'Brand lead · Retail',
-    image: '/testimonials/ecommerce.png',
-    quote:
-      'The new site looks sharp on mobile and the chatbot catches questions while we sleep.',
-  },
-  {
-    name: 'Mike',
-    role: 'Content lead · Media',
-    image: '/testimonials/mike.png',
-    quote:
-      'Completely transformed how I plan and post content. The analytics dashboard is a game-changer.',
-  },
-  {
-    name: 'Sophia',
-    role: 'CEO · Consulting',
-    image: '/testimonials/ceo.png',
-    quote:
-      'Clear scope, honest timeline, and a team we can reach. The site was only the start.',
-  },
-];
+/** Images stay; role/quote come from locale dictionaries. */
+const TESTIMONIAL_IMAGES = [
+  'https://framerusercontent.com/images/ETgoVdeITLLIYCHTFNeVuZDMyQY.png',
+  '/testimonials/accountant.png',
+  '/testimonials/robby.png',
+  '/testimonials/ecommerce.png',
+  '/testimonials/mike.png',
+  '/testimonials/ceo.png',
+] as const;
 
 const REST_SPOT = { x: '28%', y: '18%' };
 const TILT_X_MAX = 3;
 const TILT_Y_MAX = 4;
 const AUTO_MS = 6200;
-const COUNT = testimonials.length;
+const COUNT = TESTIMONIAL_IMAGES.length;
 
 /** Shortest signed distance on a circular ring (−floor(n/2) … +floor(n/2)). */
 function ringOffset(index: number, active: number, n: number) {
@@ -172,6 +137,7 @@ function TestimonialCardFace({
  * Coverflow testimonials — center spotlight, slow auto-rotate, click/drag to flip.
  */
 export const TestimonialsSection = () => {
+  const t = useMessages();
   const reduceMotion = useReducedMotion();
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -181,6 +147,15 @@ export const TestimonialsSection = () => {
     moved: boolean;
   } | null>(null);
   const suppressClickRef = useRef(false);
+
+  const testimonials: Testimonial[] = useMemo(
+    () =>
+      t.testimonials.items.map((item, i) => ({
+        ...item,
+        image: TESTIMONIAL_IMAGES[i],
+      })),
+    [t.testimonials.items],
+  );
 
   const go = useCallback((next: number) => {
     setActive(((next % COUNT) + COUNT) % COUNT);
@@ -232,7 +207,7 @@ export const TestimonialsSection = () => {
     <section
       id="testimonials-section"
       className="relative isolate overflow-hidden bg-gray-900 py-16 md:py-20"
-      aria-label="Client testimonials"
+      aria-label={t.testimonials.aria}
     >
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
         <BlazeBackground
@@ -263,14 +238,14 @@ export const TestimonialsSection = () => {
       <div className="relative z-10 mx-auto mb-10 max-w-3xl px-6 text-center md:mb-14">
         <h2 className="text-3xl font-normal leading-tight tracking-tight text-white/85 md:text-5xl md:leading-[1.15]">
           <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Sites
+            {t.testimonials.h2aHighlight}
           </span>{' '}
-          that work.
+          {t.testimonials.h2aRest}
           <br />
           <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Clients
+            {t.testimonials.h2bHighlight}
           </span>{' '}
-          who stay.
+          {t.testimonials.h2bRest}
         </h2>
       </div>
 

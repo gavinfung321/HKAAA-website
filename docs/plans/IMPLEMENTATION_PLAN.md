@@ -194,7 +194,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 - [ ] Terms of use
 - [ ] Sitemap
 - [ ] Case studies / work samples
-- [ ] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — later; do not code until prioritized. Scope sketch: header/nav toggle, translate all public marketing copy (hero through footer), keep one URL or `/zh` TBD in Phase 0, contact form labels + success/error strings, meta/OG locale. Out of scope until then: Instantly/outreach mail, admin tools.
+- [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; see [IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md). Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Prerender follow-up still under SEO/AEO/GEO.
 - [ ] **SEO / AEO / GEO pass** — later; do not code until prioritized. Includes richer SEO beyond current meta/schema (titles, sitemap/robots, headings, CWV), AEO (answer-ready copy, honest FAQ/HowTo + structured data), and GEO (citeable who/where/what, org entity, pages models can summarize accurately). Phase 0 will scope pages and schema; no fake proof.
 
 ---
@@ -256,3 +256,8 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | Meta/OG/Twitter copy aligned to hero voice. Natalie photo compressed (~10MB PNG → ~100KB JPEG). Burger aria-label added. |
 | 2026-09-29 | Backlog: SEO / AEO / GEO pass noted under Phase E (with 繁體 switcher). No code until prioritized. |
 | 2026-09-29 | Contact honeypot: hidden website field; filled = fake success, no leads insert. |
+| 2026-09-29 | Phase 0: Traditional Chinese switcher plan drafted ([IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md)). Awaiting locks. |
+| 2026-09-29 | I18n locks: 1A 2A 3A 4-table 5B 6A 7A. 繁體 copy draft for review: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). |
+| 2026-09-29 | I18n lock **1 revised A→B**: `/zh` slug for ranking; Netlify SPA + hreflang in this pass; prerender may follow in SEO pass. |
+| 2026-09-29 | 繁體 copy draft marked ready for v1 (meta/hero/testimonials edits). Awaiting go to implement switcher. |
+| 2026-09-29 | I18n implement: LocaleProvider, `/`·`/zh`, EN\|繁 toggle, dictionaries, Netlify SPA `_redirects`, hreflang/meta. |

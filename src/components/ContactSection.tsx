@@ -1,20 +1,13 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react';
 import { Send, CheckCircle, AlertCircle, MapPin, Phone, Mail } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-
-const SERVICES = [
-  'Web Design',
-  'SEO',
-  'Content Creation',
-  'Chatbot Development',
-  'Workflow Automation',
-  'Lead Generation',
-] as const;
+import { useMessages } from '../i18n';
 
 /**
  * Get in Touch (#32) — quiet plates, website-first form, muted info marks.
  */
 export const ContactSection = () => {
+  const t = useMessages();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -25,6 +18,15 @@ export const ContactSection = () => {
   const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  const fail = () => {
+    setStatus('error');
+    setErrorMessage(t.contact.error);
+    setTimeout(() => {
+      setStatus('idle');
+      setErrorMessage('');
+    }, 3000);
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -39,35 +41,20 @@ export const ContactSection = () => {
     }
 
     if (!supabase) {
-      setStatus('error');
-      setErrorMessage('Something went wrong. Please try again.');
-      setTimeout(() => {
-        setStatus('idle');
-        setErrorMessage('');
-      }, 3000);
+      fail();
       return;
     }
 
     try {
       const { error } = await supabase.from('leads').insert([formData]);
-
       if (error) throw error;
 
       setStatus('success');
       setFormData({ name: '', email: '', service: '', message: '' });
       setWebsite('');
-
-      setTimeout(() => {
-        setStatus('idle');
-      }, 3000);
+      setTimeout(() => setStatus('idle'), 3000);
     } catch {
-      setStatus('error');
-      setErrorMessage('Something went wrong. Please try again.');
-
-      setTimeout(() => {
-        setStatus('idle');
-        setErrorMessage('');
-      }, 3000);
+      fail();
     }
   };
 
@@ -100,13 +87,13 @@ export const ContactSection = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="text-center animate-on-scroll">
           <h2 className="text-4xl font-normal tracking-tight text-white md:text-5xl lg:text-6xl">
-            Get in{' '}
+            {t.contact.h2Before}{' '}
             <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Touch
+              {t.contact.h2Highlight}
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/55 md:text-lg">
-            Tell us about your site or next project. We&apos;ll reply with a clear next step.
+            {t.contact.sub}
           </p>
         </div>
 
@@ -132,7 +119,7 @@ export const ContactSection = () => {
               <div className="space-y-4">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/70">
-                    Name <span className="text-red-400/90">*</span>
+                    {t.contact.name} <span className="text-red-400/90">*</span>
                   </label>
                   <input
                     type="text"
@@ -142,13 +129,13 @@ export const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className={fieldClass}
-                    placeholder="Your name"
+                    placeholder={t.contact.phName}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/70">
-                    Email <span className="text-red-400/90">*</span>
+                    {t.contact.email} <span className="text-red-400/90">*</span>
                   </label>
                   <input
                     type="email"
@@ -158,13 +145,13 @@ export const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={fieldClass}
-                    placeholder="your@email.com"
+                    placeholder={t.contact.phEmail}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="service" className="mb-2 block text-sm font-medium text-white/70">
-                    Service <span className="text-red-400/90">*</span>
+                    {t.contact.service} <span className="text-red-400/90">*</span>
                   </label>
                   <select
                     id="service"
@@ -175,11 +162,11 @@ export const ContactSection = () => {
                     className={`${fieldClass} [&>option]:text-black`}
                   >
                     <option value="" disabled>
-                      Select a service
+                      {t.contact.phService}
                     </option>
-                    {SERVICES.map((service) => (
-                      <option key={service} value={service}>
-                        {service}
+                    {t.contact.services.map((service) => (
+                      <option key={service.value} value={service.value}>
+                        {service.label}
                       </option>
                     ))}
                   </select>
@@ -187,7 +174,7 @@ export const ContactSection = () => {
 
                 <div>
                   <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/70">
-                    What do you need help with? <span className="text-red-400/90">*</span>
+                    {t.contact.message} <span className="text-red-400/90">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -197,7 +184,7 @@ export const ContactSection = () => {
                     onChange={handleChange}
                     rows={4}
                     className={`${fieldClass} resize-none`}
-                    placeholder="A short note on your site, SEO, or automation goals"
+                    placeholder={t.contact.phMessage}
                   />
                 </div>
               </div>
@@ -210,16 +197,16 @@ export const ContactSection = () => {
                 }`}
               >
                 {status === 'submitting' ? (
-                  <>Sending...</>
+                  <>{t.contact.sending}</>
                 ) : status === 'success' ? (
                   <>
                     <CheckCircle className="h-5 w-5" aria-hidden />
-                    Sent
+                    {t.contact.sent}
                   </>
                 ) : (
                   <>
                     <Send className="h-4 w-4" aria-hidden />
-                    Send enquiry
+                    {t.contact.submit}
                   </>
                 )}
               </button>
@@ -235,24 +222,22 @@ export const ContactSection = () => {
 
           <aside className="contact-plate rounded-2xl p-6 md:p-8">
             <h3 className="text-lg font-medium tracking-tight text-white md:text-xl">
-              Contact Information
+              {t.contact.infoHeading}
             </h3>
 
             <ul className="mt-6 space-y-6">
               <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-white/45" aria-hidden />
                 <div>
-                  <h4 className="text-sm font-medium text-white">Office Address</h4>
-                  <p className="mt-1 text-sm leading-relaxed text-white/60">
-                    Room N, 9/F, Kwun Tong Industrial Centre, 460 Kwun Tong Road, Kowloon, Hong Kong
-                  </p>
+                  <h4 className="text-sm font-medium text-white">{t.contact.office}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-white/60">{t.contact.address}</p>
                 </div>
               </li>
 
               <li className="flex gap-3">
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-white/45" aria-hidden />
                 <div>
-                  <h4 className="text-sm font-medium text-white">Phone</h4>
+                  <h4 className="text-sm font-medium text-white">{t.contact.phone}</h4>
                   <p className="mt-1 text-sm text-white/60">
                     <a
                       href="tel:+85291678204"
@@ -267,7 +252,7 @@ export const ContactSection = () => {
               <li className="flex gap-3">
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-white/45" aria-hidden />
                 <div>
-                  <h4 className="text-sm font-medium text-white">Email</h4>
+                  <h4 className="text-sm font-medium text-white">{t.contact.emailLabel}</h4>
                   <p className="mt-1 text-sm text-white/60">
                     <a
                       href="mailto:info@hkaiautomation.com"
