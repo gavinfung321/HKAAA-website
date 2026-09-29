@@ -96,7 +96,6 @@ export function LegalPage({ kind }: { kind: 'privacy' | 'terms' }) {
         <h1 className="mt-3 text-3xl font-normal tracking-tight text-white md:text-5xl">
           {doc.title}
         </h1>
-        <p className="mt-3 text-sm text-white/45">{doc.lastUpdated}</p>
         <Blocks blocks={doc.intro} linkPolicy={linkPolicy} />
         {doc.sections.map((section) => (
           <section key={section.heading} className="mt-10">

@@ -11,14 +11,12 @@ export type LegalSection = {
 
 export type LegalDoc = {
   title: string;
-  lastUpdated: string;
   intro: LegalBlock[];
   sections: LegalSection[];
 };
 
 const privacyEn: LegalDoc = {
   title: 'Privacy Policy',
-  lastUpdated: 'Last updated: 29 September 2026',
   intro: [
     {
       type: 'p',
@@ -210,7 +208,6 @@ const privacyEn: LegalDoc = {
 
 const termsEn: LegalDoc = {
   title: 'Terms of Use',
-  lastUpdated: 'Last updated: 29 September 2026',
   intro: [
     {
       type: 'p',
@@ -355,7 +352,6 @@ const termsEn: LegalDoc = {
 
 const privacyZh: LegalDoc = {
   title: '私隱政策',
-  lastUpdated: '最後更新日期：2026年9月29日',
   intro: [
     {
       type: 'p',
@@ -533,7 +529,6 @@ const privacyZh: LegalDoc = {
 
 const termsZh: LegalDoc = {
   title: '使用條款',
-  lastUpdated: '最後更新日期：2026年9月29日',
   intro: [
     {
       type: 'p',

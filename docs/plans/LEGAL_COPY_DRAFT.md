@@ -43,8 +43,6 @@ Cross-border: PDPO s.33 (ban on sending personal data out of HK) is **not in for
 ## English — Privacy Policy
 
 **Hong Kong AI Automation Agency (HKAAA)**  
-**Last updated:** [publish date]
-
 This policy explains how we handle personal data on [hkaiautomation.com](https://hkaiautomation.com/). We follow the Personal Data (Privacy) Ordinance (Cap. 486) of Hong Kong.
 
 ### Who we are
@@ -143,8 +141,6 @@ We will update the date at the top when this policy changes. The current version
 ## English — Terms of Use
 
 **Hong Kong AI Automation Agency (HKAAA)**  
-**Last updated:** [publish date]
-
 These terms govern use of [hkaiautomation.com](https://hkaiautomation.com/) and enquiries you send through it. They are governed by the laws of the Hong Kong Special Administrative Region.
 
 They are **not** the contract for a paid website or automation project. Paid work needs a written quote and scope that you accept.
@@ -216,8 +212,6 @@ If the English and Traditional Chinese versions differ, the English version of t
 ## 繁體 — 私隱政策
 
 **香港人工智能自動化機構（HKAAA）**  
-**最後更新日期：**［上線日期］
-
 本政策說明我們在 [hkaiautomation.com](https://hkaiautomation.com/) 如何處理個人資料。我們遵守香港《個人資料（私隱）條例》（第 486 章）。
 
 ### 我們是誰
@@ -316,8 +310,6 @@ If the English and Traditional Chinese versions differ, the English version of t
 ## 繁體 — 使用條款
 
 **香港人工智能自動化機構（HKAAA）**  
-**最後更新日期：**［上線日期］
-
 本條款規管你使用 [hkaiautomation.com](https://hkaiautomation.com/) 及經網站提交的查詢。適用法律為香港特別行政區法律。
 
 本條款**不是**收費網站或自動化項目的合約。收費工作須另有書面報價及範圍，並經你接受。
