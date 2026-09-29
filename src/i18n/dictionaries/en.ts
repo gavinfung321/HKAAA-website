@@ -146,7 +146,7 @@ export const en = {
     h2Before: 'Our',
     h2Highlight: 'Work',
     h2After: '',
-    sub: 'Sites and content we’ve shipped.',
+    sub: 'Real client websites and brand content.',
     close: 'Close',
     items: {
       speedy: {
