@@ -236,6 +236,8 @@ export const en = {
     connect: 'Connect',
     getInTouch: 'Get in Touch',
     copyright: '© {year} HKAAA. All rights reserved.',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Use',
     nav: {
       process: 'Process',
       whyUs: 'Why Us',
@@ -244,6 +246,14 @@ export const en = {
       team: 'Team',
       contact: 'Contact',
     },
+  },
+  legal: {
+    privacyTitle: 'Privacy Policy | HKAAA',
+    termsTitle: 'Terms of Use | HKAAA',
+    privacyDescription:
+      'How Hong Kong AI Automation Agency (HKAAA) handles personal data under the Personal Data (Privacy) Ordinance (Cap. 486).',
+    termsDescription:
+      'Terms of use for hkaiautomation.com. Hong Kong law. Enquiries are not a paid project contract.',
   },
 } satisfies Record<string, unknown>;
 

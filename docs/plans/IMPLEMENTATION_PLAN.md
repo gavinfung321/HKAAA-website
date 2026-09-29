@@ -190,8 +190,8 @@ A reliable way to see and act on new leads.
 
 Do not start this phase until A–C are done, unless a specific page is blocking launch.
 
-- [ ] Privacy policy
-- [ ] Terms of use
+- [x] Privacy policy — `/privacy` · `/zh/privacy`. HK PDPO. Copy: [LEGAL_COPY_DRAFT.md](LEGAL_COPY_DRAFT.md)
+- [x] Terms of use — `/terms` · `/zh/terms`. HK governing law. Same draft.
 - [ ] Sitemap
 - [ ] Case studies / work samples
 - [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; see [IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md). Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Prerender follow-up still under SEO/AEO/GEO.
@@ -261,3 +261,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | I18n lock **1 revised A→B**: `/zh` slug for ranking; Netlify SPA + hreflang in this pass; prerender may follow in SEO pass. |
 | 2026-09-29 | 繁體 copy draft marked ready for v1 (meta/hero/testimonials edits). Awaiting go to implement switcher. |
 | 2026-09-29 | I18n implement: LocaleProvider, `/`·`/zh`, EN\|繁 toggle, dictionaries, Netlify SPA `_redirects`, hreflang/meta. |
+| 2026-09-29 | Privacy + Terms live: `/privacy` `/terms` and `/zh` twins. HK PDPO / implied services terms. No amount cap. Name: HKAAA. |

@@ -12,8 +12,10 @@ import { zhHant } from './dictionaries/zh-Hant';
 import {
   HTML_LANG,
   SITE_ORIGIN,
+  appPageFromPathname,
   localeFromPathname,
   pathForLocale,
+  type AppPage,
   type Locale,
 } from './types';
 
@@ -24,6 +26,7 @@ const dictionaries: Record<Locale, Messages> = {
 
 type LocaleContextValue = {
   locale: Locale;
+  page: AppPage;
   messages: Messages;
   setLocale: (locale: Locale) => void;
 };
@@ -58,13 +61,28 @@ function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
   el.content = content;
 }
 
-function syncDocumentHead(locale: Locale, messages: Messages) {
-  const { title, description } = messages.meta;
+function absoluteUrl(path: string) {
+  return path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
+}
+
+function syncDocumentHead(locale: Locale, messages: Messages, page: AppPage) {
+  const title =
+    page === 'privacy'
+      ? messages.legal.privacyTitle
+      : page === 'terms'
+        ? messages.legal.termsTitle
+        : messages.meta.title;
+  const description =
+    page === 'privacy'
+      ? messages.legal.privacyDescription
+      : page === 'terms'
+        ? messages.legal.termsDescription
+        : messages.meta.description;
+
   document.title = title;
   document.documentElement.lang = HTML_LANG[locale];
 
-  const path = pathForLocale(locale).replace(/\/$/, '') || '/';
-  const canonicalUrl = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
+  const canonicalUrl = absoluteUrl(pathForLocale(locale, '', page));
   const ogImage = `${SITE_ORIGIN}${locale === 'zh-Hant' ? '/og-zh.jpg' : '/og.jpg'}`;
 
   upsertMeta('name', 'description', description);
@@ -79,9 +97,18 @@ function syncDocumentHead(locale: Locale, messages: Messages) {
   upsertMeta('name', 'twitter:description', description);
 
   upsertLink('canonical', { href: canonicalUrl });
-  upsertLink('alternate', { hreflang: 'en', href: `${SITE_ORIGIN}/` });
-  upsertLink('alternate', { hreflang: 'zh-Hant', href: `${SITE_ORIGIN}/zh` });
-  upsertLink('alternate', { hreflang: 'x-default', href: `${SITE_ORIGIN}/` });
+  upsertLink('alternate', {
+    hreflang: 'en',
+    href: absoluteUrl(pathForLocale('en', '', page)),
+  });
+  upsertLink('alternate', {
+    hreflang: 'zh-Hant',
+    href: absoluteUrl(pathForLocale('zh-Hant', '', page)),
+  });
+  upsertLink('alternate', {
+    hreflang: 'x-default',
+    href: absoluteUrl(pathForLocale('en', '', page)),
+  });
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
@@ -90,24 +117,33 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       ? localeFromPathname(window.location.pathname)
       : 'en',
   );
+  const [page, setPage] = useState<AppPage>(() =>
+    typeof window !== 'undefined'
+      ? appPageFromPathname(window.location.pathname)
+      : 'home',
+  );
 
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    const hash = window.location.hash;
-    const nextPath = pathForLocale(next, hash);
-    if (`${window.location.pathname}${window.location.hash}` !== nextPath) {
-      window.history.pushState(null, '', nextPath);
-    }
-    try {
-      localStorage.setItem('hkaaa-locale', next);
-    } catch {
-      /* ignore */
-    }
-  }, []);
+  const setLocale = useCallback(
+    (next: Locale) => {
+      setLocaleState(next);
+      const hash = page === 'home' ? window.location.hash : '';
+      const nextPath = pathForLocale(next, hash, page);
+      if (`${window.location.pathname}${window.location.hash}` !== nextPath) {
+        window.history.pushState(null, '', nextPath);
+      }
+      try {
+        localStorage.setItem('hkaaa-locale', next);
+      } catch {
+        /* ignore */
+      }
+    },
+    [page],
+  );
 
   useEffect(() => {
     const onPop = () => {
       setLocaleState(localeFromPathname(window.location.pathname));
+      setPage(appPageFromPathname(window.location.pathname));
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
@@ -116,12 +152,12 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const messages = dictionaries[locale];
 
   useEffect(() => {
-    syncDocumentHead(locale, messages);
-  }, [locale, messages]);
+    syncDocumentHead(locale, messages, page);
+  }, [locale, messages, page]);
 
   const value = useMemo(
-    () => ({ locale, messages, setLocale }),
-    [locale, messages, setLocale],
+    () => ({ locale, page, messages, setLocale }),
+    [locale, page, messages, setLocale],
   );
 
   return (

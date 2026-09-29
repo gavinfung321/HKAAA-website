@@ -231,6 +231,8 @@ export const zhHant: Messages = {
     connect: '聯絡',
     getInTouch: '聯絡我們',
     copyright: '© {year} HKAAA. 版權所有。',
+    privacy: '私隱政策',
+    terms: '使用條款',
     nav: {
       process: '流程',
       whyUs: '優勢',
@@ -239,5 +241,13 @@ export const zhHant: Messages = {
       team: '團隊',
       contact: '聯絡',
     },
+  },
+  legal: {
+    privacyTitle: '私隱政策｜HKAAA',
+    termsTitle: '使用條款｜HKAAA',
+    privacyDescription:
+      '香港人工智能自動化機構（HKAAA）如何按《個人資料（私隱）條例》（第 486 章）處理個人資料。',
+    termsDescription:
+      'hkaiautomation.com 使用條款。適用香港法律。網站查詢並非收費項目合約。',
   },
 };

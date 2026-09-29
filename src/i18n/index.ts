@@ -1,3 +1,3 @@
 ﻿export { LocaleProvider, useLocale, useMessages } from './LocaleProvider';
-export type { Locale } from './types';
-export { headingJoinGap } from './types';
+export type { AppPage, Locale } from './types';
+export { appPageFromPathname, headingJoinGap, pathForLocale } from './types';

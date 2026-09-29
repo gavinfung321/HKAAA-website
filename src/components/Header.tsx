@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocale, useMessages } from '../i18n';
-import type { Locale } from '../i18n/types';
+import { pathForLocale, type Locale } from '../i18n/types';
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
@@ -27,8 +27,10 @@ const SECTION_IDS = [
  * EN | 繁 locale toggle (#i18n).
  */
 export function Header({ scrollToSection }: HeaderProps) {
-  const { locale, setLocale } = useLocale();
+  const { locale, page, setLocale } = useLocale();
   const t = useMessages();
+  const homeHref = pathForLocale(locale);
+  const onHome = page === 'home';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState<string>('hero-section');
@@ -107,44 +109,74 @@ export function Header({ scrollToSection }: HeaderProps) {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <button
-            type="button"
-            onClick={() => scrollToSection('hero-section')}
-            className="flex items-center space-x-2 transition-opacity hover:opacity-80"
-          >
-            <img
-              src="/brand/logo.png"
-              alt="HKAAA Logo"
-              className="h-7 w-auto object-contain md:h-10"
-              loading="eager"
-            />
-            <div className="gradient-text text-xl font-bold md:text-2xl">HKAAA</div>
-          </button>
+          {onHome ? (
+            <button
+              type="button"
+              onClick={() => scrollToSection('hero-section')}
+              className="flex items-center space-x-2 transition-opacity hover:opacity-80"
+            >
+              <img
+                src="/brand/logo.png"
+                alt="HKAAA Logo"
+                className="h-7 w-auto object-contain md:h-10"
+                loading="eager"
+              />
+              <div className="gradient-text text-xl font-bold md:text-2xl">HKAAA</div>
+            </button>
+          ) : (
+            <a
+              href={homeHref}
+              className="flex items-center space-x-2 transition-opacity hover:opacity-80"
+            >
+              <img
+                src="/brand/logo.png"
+                alt="HKAAA Logo"
+                className="h-7 w-auto object-contain md:h-10"
+                loading="eager"
+              />
+              <div className="gradient-text text-xl font-bold md:text-2xl">HKAAA</div>
+            </a>
+          )}
 
           <div className="hidden items-center space-x-8 md:flex">
             {NAV_SECTION_IDS.map((item) => {
-              const isActive = activeSectionId === item.sectionId;
-              return (
+              const isActive = onHome && activeSectionId === item.sectionId;
+              const className = `nav-link transition-colors ${
+                isActive ? 'nav-link--active text-white' : 'text-gray-300 hover:text-white'
+              }`;
+              return onHome ? (
                 <button
                   key={item.sectionId}
                   type="button"
                   onClick={() => scrollToSection(item.sectionId)}
-                  className={`nav-link transition-colors ${
-                    isActive ? 'nav-link--active text-white' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={className}
                 >
                   {t.nav[item.key]}
                 </button>
+              ) : (
+                <a
+                  key={item.sectionId}
+                  href={`${homeHref}#${item.sectionId}`}
+                  className={className}
+                >
+                  {t.nav[item.key]}
+                </a>
               );
             })}
             {langToggle}
-            <a
-              onClick={() => scrollToSection('contact-section')}
-              role="button"
-              className={contactClassName}
-            >
-              {t.nav.contact}
-            </a>
+            {onHome ? (
+              <a
+                onClick={() => scrollToSection('contact-section')}
+                role="button"
+                className={contactClassName}
+              >
+                {t.nav.contact}
+              </a>
+            ) : (
+              <a href={`${homeHref}#contact-section`} className={contactClassName}>
+                {t.nav.contact}
+              </a>
+            )}
           </div>
 
           <div className="flex items-center gap-4 md:hidden">
@@ -169,8 +201,11 @@ export function Header({ scrollToSection }: HeaderProps) {
         <div className="px-4 pb-5 pt-2">
           <div className="space-y-2">
             {NAV_SECTION_IDS.map((item) => {
-              const isActive = activeSectionId === item.sectionId;
-              return (
+              const isActive = onHome && activeSectionId === item.sectionId;
+              const className = `block w-full px-4 py-2 text-left transition-colors ${
+                isActive ? 'text-white' : 'text-gray-300 hover:text-white'
+              }`;
+              return onHome ? (
                 <button
                   key={item.sectionId}
                   type="button"
@@ -178,25 +213,42 @@ export function Header({ scrollToSection }: HeaderProps) {
                     scrollToSection(item.sectionId);
                     setIsMenuOpen(false);
                   }}
-                  className={`block w-full px-4 py-2 text-left transition-colors ${
-                    isActive ? 'text-white' : 'text-gray-300 hover:text-white'
-                  }`}
+                  className={className}
                 >
                   {t.nav[item.key]}
                 </button>
+              ) : (
+                <a
+                  key={item.sectionId}
+                  href={`${homeHref}#${item.sectionId}`}
+                  className={className}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {t.nav[item.key]}
+                </a>
               );
             })}
           </div>
-          <a
-            onClick={() => {
-              scrollToSection('contact-section');
-              setIsMenuOpen(false);
-            }}
-            role="button"
-            className={`mt-5 inline-block ${contactClassName}`}
-          >
-            {t.nav.contact}
-          </a>
+          {onHome ? (
+            <a
+              onClick={() => {
+                scrollToSection('contact-section');
+                setIsMenuOpen(false);
+              }}
+              role="button"
+              className={`mt-5 inline-block ${contactClassName}`}
+            >
+              {t.nav.contact}
+            </a>
+          ) : (
+            <a
+              href={`${homeHref}#contact-section`}
+              className={`mt-5 inline-block ${contactClassName}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t.nav.contact}
+            </a>
+          )}
         </div>
       </div>
     </nav>

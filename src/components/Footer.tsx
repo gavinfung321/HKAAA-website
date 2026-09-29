@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Linkedin, X } from 'lucide-react';
 import { WireframeLandscapeBackground } from './effects/wireframe-landscape/WireframeLandscapeBackground';
-import { useMessages } from '../i18n';
+import { useMessages, useLocale } from '../i18n';
+import { pathForLocale } from '../i18n/types';
 
 const EXPLORE = [
   { key: 'process' as const, href: '#process-section' },
@@ -38,7 +39,11 @@ const linkClass =
  */
 export const Footer = () => {
   const t = useMessages();
+  const { locale } = useLocale();
   const currentYear = new Date().getFullYear();
+  const homeHref = pathForLocale(locale);
+  const privacyHref = pathForLocale(locale, '', 'privacy');
+  const termsHref = pathForLocale(locale, '', 'terms');
 
   return (
     <footer className="relative isolate overflow-hidden border-t border-white/10 bg-gray-950">
@@ -58,7 +63,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 md:gap-12">
           <div className="space-y-4 sm:col-span-2 md:col-span-1">
             <a
-              href="#hero-section"
+              href={`${homeHref}#hero-section`}
               className="inline-flex items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
             >
               <img src="/brand/logo.png" alt="" className="h-8 w-auto" />
@@ -88,7 +93,7 @@ export const Footer = () => {
             <ul className="mt-4 space-y-2.5">
               {EXPLORE.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className={linkClass}>
+                  <a href={`${homeHref}${item.href}`} className={linkClass}>
                     {t.footer.nav[item.key]}
                   </a>
                 </li>
@@ -112,7 +117,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#contact-section" className={linkClass}>
+                <a href={`${homeHref}#contact-section`} className={linkClass}>
                   {t.footer.getInTouch}
                 </a>
               </li>
@@ -120,10 +125,34 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6">
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 sm:flex-row sm:justify-center sm:gap-6">
           <p className="text-center text-sm text-white/40">
             {t.footer.copyright.replace('{year}', String(currentYear))}
           </p>
+          <div className="flex items-center gap-4">
+            <a
+              href={privacyHref}
+              className={linkClass}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, '', privacyHref);
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }}
+            >
+              {t.footer.privacy}
+            </a>
+            <a
+              href={termsHref}
+              className={linkClass}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState(null, '', termsHref);
+                window.dispatchEvent(new PopStateEvent('popstate'));
+              }}
+            >
+              {t.footer.terms}
+            </a>
+          </div>
         </div>
       </div>
     </footer>

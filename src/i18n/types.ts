@@ -20,13 +20,28 @@ export function localeFromPathname(pathname: string): Locale {
   return 'en';
 }
 
+export type AppPage = 'home' | 'privacy' | 'terms';
+
 export function headingJoinGap(locale: Locale) {
   return locale === 'en' ? ' ' : '';
 }
 
-export function pathForLocale(locale: Locale, hash = ''): string {
-  const base = LOCALE_PATH[locale];
+export function appPageFromPathname(pathname: string): AppPage {
+  const path = pathname.replace(/\/+$/, '') || '/';
+  if (path === '/privacy' || path === '/zh/privacy') return 'privacy';
+  if (path === '/terms' || path === '/zh/terms') return 'terms';
+  return 'home';
+}
+
+export function pathForLocale(
+  locale: Locale,
+  hash = '',
+  page: AppPage = 'home',
+): string {
+  if (page !== 'home') {
+    return locale === 'en' ? `/${page}` : `/zh/${page}`;
+  }
   const h = hash && !hash.startsWith('#') ? `#${hash}` : hash;
-  if (base === '/') return `/${h}`;
-  return `${base}${h}`;
+  if (locale === 'en') return `/${h}`;
+  return `/zh${h}`;
 }

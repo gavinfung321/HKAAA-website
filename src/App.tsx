@@ -10,6 +10,8 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
 import { ToolsStrip } from './components/ToolsStrip';
+import { LegalPage } from './components/LegalPage';
+import { useLocale } from './i18n';
 
 const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
@@ -19,9 +21,16 @@ const scrollToSection = (sectionId: string) => {
 };
 
 function App() {
+  const { page } = useLocale();
+
   useEffect(() => {
+    if (page !== 'home') {
+      window.scrollTo(0, 0);
+      return;
+    }
+
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
         }
@@ -29,15 +38,30 @@ function App() {
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.1
+      threshold: 0.1,
     });
 
-    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+    document.querySelectorAll('.animate-on-scroll').forEach((element) => {
       observer.observe(element);
     });
 
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      requestAnimationFrame(() => scrollToSection(hash));
+    }
+
     return () => observer.disconnect();
-  }, []);
+  }, [page]);
+
+  if (page === 'privacy' || page === 'terms') {
+    return (
+      <div className="min-h-screen bg-gray-900 text-white">
+        <Header scrollToSection={scrollToSection} />
+        <LegalPage kind={page} />
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -55,16 +79,12 @@ function App() {
 
       <ServicesSection />
 
-      {/* Pricing Section */}
       <PricingSection />
 
-      {/* Team Section */}
       <TeamSection />
 
-      {/* Contact Section */}
       <ContactSection />
 
-      {/* Footer */}
       <Footer />
     </div>
   );
