@@ -192,7 +192,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 
 - [x] Privacy policy — `/privacy` · `/zh/privacy`. HK PDPO. Copy: [LEGAL_COPY_DRAFT.md](LEGAL_COPY_DRAFT.md)
 - [x] Terms of use — `/terms` · `/zh/terms`. HK governing law. Same draft.
-- [ ] Sitemap
+- [x] Sitemap — `public/sitemap.xml` + `robots.txt` (EN/`zh` home, privacy, terms + hreflang)
 - [ ] Case studies / work samples
 - [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; see [IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md). Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Prerender follow-up still under SEO/AEO/GEO.
 - [ ] **SEO / AEO / GEO pass** — later; do not code until prioritized. Includes richer SEO beyond current meta/schema (titles, sitemap/robots, headings, CWV), AEO (answer-ready copy, honest FAQ/HowTo + structured data), and GEO (citeable who/where/what, org entity, pages models can summarize accurately). Phase 0 will scope pages and schema; no fake proof.
@@ -262,3 +262,4 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | 繁體 copy draft marked ready for v1 (meta/hero/testimonials edits). Awaiting go to implement switcher. |
 | 2026-09-29 | I18n implement: LocaleProvider, `/`·`/zh`, EN\|繁 toggle, dictionaries, Netlify SPA `_redirects`, hreflang/meta. |
 | 2026-09-29 | Privacy + Terms live: `/privacy` `/terms` and `/zh` twins. HK PDPO / implied services terms. No amount cap. Name: HKAAA. |
+| 2026-09-29 | Sitemap + robots.txt: six indexable URLs with hreflang alternates. |

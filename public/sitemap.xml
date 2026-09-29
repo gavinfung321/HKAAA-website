@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://hkaiautomation.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hkaiautomation.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/" />
+  </url>
+  <url>
+    <loc>https://hkaiautomation.com/zh</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hkaiautomation.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/" />
+  </url>
+  <url>
+    <loc>https://hkaiautomation.com/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hkaiautomation.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/privacy" />
+  </url>
+  <url>
+    <loc>https://hkaiautomation.com/zh/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hkaiautomation.com/privacy" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh/privacy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/privacy" />
+  </url>
+  <url>
+    <loc>https://hkaiautomation.com/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hkaiautomation.com/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/terms" />
+  </url>
+  <url>
+    <loc>https://hkaiautomation.com/zh/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hkaiautomation.com/terms" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh/terms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/terms" />
+  </url>
+</urlset>
