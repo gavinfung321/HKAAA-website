@@ -132,6 +132,7 @@ Copy, form/data alignment, unused code, and content that is already on the page.
 - [x] Remove unused Spline viewer script from `index.html`
 - [x] Remove unused plan / subscription state from `App.tsx` — already gone (no leftover Stripe/plan selection state)
 - [x] Mobile burger menu readable on hero — follow [IMPLEMENTATION_PLAN_MOBILE_NAV.md](IMPLEMENTATION_PLAN_MOBILE_NAV.md) ([#34](https://github.com/gavinfung321/HKAAA-website/issues/34)). Option A + quiet-fill Contact Us; signed off 2026-09-29.
+- [x] Nav bar polish (labels, active section, Contact) — follow [IMPLEMENTATION_PLAN_NAV.md](IMPLEMENTATION_PLAN_NAV.md) ([#35](https://github.com/gavinfung321/HKAAA-website/issues/35)). Soft hover plate; signed off 2026-09-29.
 - [x] Remove unmounted `HongKongSkyline` and the `three` / `@types/three` deps (left over from #23)
 - [x] Fill footer empty columns (sitemap, contact, legal) or collapse the grid so it does not look unfinished — done via [#33](https://github.com/gavinfung321/HKAAA-website/issues/33) Brand / Explore / Connect.
 
@@ -193,7 +194,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 - [ ] Terms of use
 - [ ] Sitemap
 - [ ] Case studies / work samples
-- [ ] Bilingual EN / ZH
+- [ ] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — later; do not code until prioritized. Scope sketch: header/nav toggle, translate all public marketing copy (hero through footer), keep one URL or `/zh` TBD in Phase 0, contact form labels + success/error strings, meta/OG locale. Out of scope until then: Instantly/outreach mail, admin tools.
 - [ ] Richer SEO beyond the current meta tags and schema
 
 ---
@@ -248,3 +249,6 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | #34 closed: mobile burger uses scrolled chrome while open; quiet-fill Contact Us. |
 | 2026-09-29 | #16 closed: site-wide copy pass (Process → Footer) to match hero voice; no em dashes. |
 | 2026-09-29 | Company field removed from form. Logo + team photos moved to `public/`. Lead email notify function drafted (Resend → info@); needs secrets + webhook. |
+| 2026-09-29 | Backlog: Traditional Chinese (繁體) language switcher noted under Phase E. No code until prioritized. |
+| 2026-09-29 | #35: Nav polish plan drafted (labels / scroll-spy / Contact / a11y). Phase 0; no code until locked. |
+| 2026-09-29 | #35 closed: Services label, scroll-spy, quiet Contact, soft hover plate (no hover underline). |

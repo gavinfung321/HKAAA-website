@@ -58,7 +58,26 @@
 /* Navigation */
 .nav-link {
   position: relative;
+  z-index: 0;
   @apply font-medium tracking-tight;
+  padding: 0.4rem 0.65rem;
+  border-radius: 0.5rem;
+}
+
+/* Soft hover plate (Vercel-style cue; stays behind type) */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: -1;
+}
+
+.nav-link:hover::before {
+  opacity: 1;
 }
 
 .nav-link::after {
@@ -66,14 +85,20 @@
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -4px;
-  left: 0;
+  bottom: 0.2rem;
+  left: 0.65rem;
   background: linear-gradient(90deg, #a855f7, #ec4899);
   transition: width 0.3s ease-out;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.nav-link:hover::after {
-  width: 100%;
+.nav-link--active::after {
+  width: calc(100% - 1.3rem);
+}
+
+.nav-link--active {
+  @apply text-white;
 }
 .hero-overlay {
   position: absolute;
