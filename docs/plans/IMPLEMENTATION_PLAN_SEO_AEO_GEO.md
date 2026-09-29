@@ -1,6 +1,6 @@
 # SEO / AEO / GEO — implementation plan
 
-**Status:** Soft SEO pass **shipped** 2026-09-29 — body nudges + prerender + Organization/WebSite. FAQ dropped (K4 D). K7 Search Console still ops.  
+**Status:** Soft SEO pass **shipped** 2026-09-29 — body nudges + prerender + Organization/WebSite. FAQ dropped (K4 D). **K7 done** (Search Console sitemap Success, 6 URLs).  
 **Locks:** **K1 C · K2 A · K3 A · K4 D · K5 A′ · K6 A · K7 A**  
 **Site:** [hkaiautomation.com](https://hkaiautomation.com/) · `/` EN · `/zh` 繁體  
 **Voice:** Website first. AI when ready. Hong Kong team. **機構 / agency** only. No em dashes. No fake proof.
@@ -74,7 +74,7 @@ HKAAA · Hong Kong AI Automation Agency · 香港人工智能自動化機構
 | **K4** | FAQ | **D** None this pass (was A; revised after visual review) |
 | **K5** | Schema | **A′** `Organization` + `WebSite` only (no FAQPage) |
 | **K6** | URLs | **A** One-pager + legal |
-| **K7** | Search Console | **A** Verify + submit sitemap (ops) |
+| **K7** | Search Console | **A** Verify + submit sitemap — **done** 2026-09-29 (Success, 6 pages) |
 
 ---
 
@@ -89,7 +89,7 @@ HKAAA · Hong Kong AI Automation Agency · 香港人工智能自動化機構
 | FAQ section | **Removed** |
 | Prerender beyond meta shell | **Open (K3)** |
 | Body keyword audit | **Open** |
-| Search Console | **Open (K7 — you)** |
+| Search Console | **Done** — sitemap Success, 6 URLs (2026-09-29) |
 
 ---
 
