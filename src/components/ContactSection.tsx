@@ -38,7 +38,7 @@ export const ContactSection = () => {
       setStatus('success');
       setFormData({ name: '', email: '', service: '', message: '' });
       setWebsite('');
-      setTimeout(() => setStatus('idle'), 3000);
+      setTimeout(() => setStatus('idle'), 8000);
       return;
     }
 
@@ -54,7 +54,7 @@ export const ContactSection = () => {
       setStatus('success');
       setFormData({ name: '', email: '', service: '', message: '' });
       setWebsite('');
-      setTimeout(() => setStatus('idle'), 3000);
+      setTimeout(() => setStatus('idle'), 8000);
     } catch {
       fail();
     }
@@ -193,9 +193,11 @@ export const ContactSection = () => {
 
               <button
                 type="submit"
-                disabled={status === 'submitting'}
+                disabled={status === 'submitting' || status === 'success'}
                 className={`contact-submit inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium tracking-wide text-white transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400 ${
-                  status === 'submitting' ? 'cursor-not-allowed opacity-50' : 'hover:opacity-90'
+                  status === 'submitting' || status === 'success'
+                    ? 'cursor-not-allowed opacity-50'
+                    : 'hover:opacity-90'
                 }`}
               >
                 {status === 'submitting' ? (
@@ -212,6 +214,17 @@ export const ContactSection = () => {
                   </>
                 )}
               </button>
+
+              {status === 'success' && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="mt-3 flex items-start gap-2 rounded-lg border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-sm leading-relaxed text-emerald-200"
+                >
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" aria-hidden />
+                  {t.contact.success}
+                </div>
+              )}
 
               {status === 'error' && (
                 <div className="mt-2 flex items-center gap-2 text-sm text-red-400">

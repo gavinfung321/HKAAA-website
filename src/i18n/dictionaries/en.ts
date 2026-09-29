@@ -259,6 +259,8 @@ export const en = {
     submit: 'Send enquiry',
     sending: 'Sending...',
     sent: 'Sent',
+    success:
+      'Your message was sent. We will reply soon.',
     error: 'Something went wrong. Please try again.',
     infoHeading: 'Contact Information',
     office: 'Office Address',

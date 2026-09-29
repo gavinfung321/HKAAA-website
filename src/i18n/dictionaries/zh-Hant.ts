@@ -254,6 +254,7 @@ export const zhHant: Messages = {
     submit: '送出查詢',
     sending: '傳送中...',
     sent: '已送出',
+    success: '訊息已送出。我們會盡快回覆你。',
     error: '出了點問題。請再試一次。',
     infoHeading: '聯絡資料',
     office: '辦公室地址',
