@@ -22,7 +22,7 @@ export const zhHant: Messages = {
     h1: '打造更好的',
     phrases: ['網站', '搜尋排名', '聊天機械人', '工作流程'],
     phraseSizer: '聊天機械人',
-    sub: '我們為你建立專業可信的網站、提升流量，並在你準備好時加入 AI。',
+    sub: '我們為你建立專業可信的網站、提升流量，並在你準備好時加入 AI 自動化。',
     cta: '預約通話',
     underCta: '從網站到自動化，由香港團隊執行。',
   },
@@ -119,7 +119,7 @@ export const zhHant: Messages = {
   services: {
     h2Before: '我們的',
     h2Highlight: '服務',
-    sub: '網站先行。需要時再加 AI 與外展。',
+    sub: '網頁設計先行。需要時再加 AI 自動化與外展。',
     items: [
       { name: '網頁設計', headline: '幫你贏得客戶的網站' },
       { name: 'SEO', headline: '在 Google 被找到' },

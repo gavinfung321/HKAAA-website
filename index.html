@@ -25,18 +25,71 @@
     <link rel="alternate" hreflang="en" href="https://hkaiautomation.com/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh" />
     <link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/" />
-    <script type="application/ld+json">
+    <script type="application/ld+json" id="hkaaa-jsonld-bootstrap">
     {
-      "@context" : "https://schema.org",
-      "@type" : "WebSite",
-      "name" : "Hong Kong AI Automation Agency",
-      "url" : "https://hkaiautomation.com/",
-      "alternateName": ["HK AI Automation Agency"]
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://hkaiautomation.com/#organization",
+          "name": "Hong Kong AI Automation Agency",
+          "alternateName": ["HKAAA", "香港人工智能自動化機構"],
+          "url": "https://hkaiautomation.com/",
+          "logo": "https://hkaiautomation.com/brand/logo.png",
+          "email": "info@hkaiautomation.com",
+          "telephone": "+852-9167-8204",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Room N, 9/F, Kwun Tong Industrial Centre, 460 Kwun Tong Road",
+            "addressLocality": "Kowloon",
+            "addressCountry": "HK"
+          },
+          "areaServed": { "@type": "AdministrativeArea", "name": "Hong Kong" },
+          "knowsAbout": [
+            "Hong Kong web design",
+            "AI automation",
+            "Hong Kong AI",
+            "Hong Kong AI automation",
+            "香港網頁設計",
+            "香港 AI 自動化"
+          ],
+          "sameAs": [
+            "https://www.facebook.com/profile.php?id=61572987646180",
+            "https://www.instagram.com/hkaiautomation/",
+            "https://x.com/hkaiautomation",
+            "https://www.linkedin.com/company/105922732"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://hkaiautomation.com/#website",
+          "url": "https://hkaiautomation.com/",
+          "name": "HKAAA | Hong Kong Web Design & AI Automation",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://hkaiautomation.com/#organization" }
+        }
+      ]
     }
     </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!--seo-static-start-->
+      <div data-seo-static lang="en">
+        <h1>HKAAA | Hong Kong Web Design &amp; AI Automation</h1>
+        <p>
+          HKAAA is a Hong Kong agency for web design and AI automation. We build sites
+          clients trust, help you get found, and add automation when you are ready. One
+          team based in Hong Kong.
+        </p>
+        <p>
+          What we offer: web design, SEO, content, chatbots, workflow automation, and
+          lead generation.
+        </p>
+        <p>Book a call, or email info@hkaiautomation.com.</p>
+      </div>
+      <!--seo-static-end-->
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

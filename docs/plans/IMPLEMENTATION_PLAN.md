@@ -195,7 +195,7 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 - [x] Sitemap — `public/sitemap.xml` + `robots.txt` (EN/`zh` home, privacy, terms + hreflang)
 - [ ] Case studies / work samples
 - [x] **Traditional Chinese language switcher** (EN ↔ 繁體中文) — `/` EN · `/zh` 繁體; see [IMPLEMENTATION_PLAN_I18N.md](IMPLEMENTATION_PLAN_I18N.md). Copy: [I18N_COPY_DRAFT_ZH_HANT.md](I18N_COPY_DRAFT_ZH_HANT.md). Prerender follow-up still under SEO/AEO/GEO.
-- [ ] **SEO / AEO / GEO pass** — later; do not code until prioritized. Includes richer SEO beyond current meta/schema (titles, sitemap/robots, headings, CWV), AEO (answer-ready copy, honest FAQ/HowTo + structured data), and GEO (citeable who/where/what, org entity, pages models can summarize accurately). Phase 0 will scope pages and schema; no fake proof.
+- [x] **SEO / AEO / GEO pass** — soft body + prerender + Organization/WebSite. FAQ dropped. Copy: [SEO_COPY_DRAFT.md](SEO_COPY_DRAFT.md). Plan: [IMPLEMENTATION_PLAN_SEO_AEO_GEO.md](IMPLEMENTATION_PLAN_SEO_AEO_GEO.md). K7 Search Console still yours.
 
 ---
 
@@ -263,3 +263,6 @@ Do not start this phase until A–C are done, unless a specific page is blocking
 | 2026-09-29 | I18n implement: LocaleProvider, `/`·`/zh`, EN\|繁 toggle, dictionaries, Netlify SPA `_redirects`, hreflang/meta. |
 | 2026-09-29 | Privacy + Terms live: `/privacy` `/terms` and `/zh` twins. HK PDPO / implied services terms. No amount cap. Name: HKAAA. |
 | 2026-09-29 | Sitemap + robots.txt: six indexable URLs with hreflang alternates. |
+| 2026-09-29 | SEO/AEO/GEO Phase 0 drafted ([IMPLEMENTATION_PLAN_SEO_AEO_GEO.md](IMPLEMENTATION_PLAN_SEO_AEO_GEO.md)). Dual spine: HK web design + AI automation / Hong Kong AI. Awaiting K1–K7. |
+| 2026-09-29 | Soft SEO shipped: hero/services nudges, static `#root` prerender EN+繁, Organization JSON-LD. FAQ out. K7 Search Console still ops. |
+| 2026-09-29 | FAQ removed after review. K4 → D. SEO plan refocused on prerender + Organization + dual keywords. |

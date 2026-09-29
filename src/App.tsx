@@ -10,6 +10,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { HeroSection } from './components/HeroSection';
 import { ToolsStrip } from './components/ToolsStrip';
+import { HomeJsonLd } from './components/HomeJsonLd';
 import { LegalPage } from './components/LegalPage';
 import { useLocale } from './i18n';
 
@@ -65,6 +66,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
+      <HomeJsonLd />
       <Header scrollToSection={scrollToSection} />
 
       <HeroSection />

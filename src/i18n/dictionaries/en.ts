@@ -21,7 +21,7 @@ export const en = {
     phrases: ['Websites', 'SEO', 'Chatbots', 'Automation'],
     /** Width sizer for rotator — longest EN phrase */
     phraseSizer: 'Automation',
-    sub: "We build a site clients trust, grow your traffic, and add AI when you're ready.",
+    sub: "We build a site clients trust, grow your traffic, and add AI automation when you're ready.",
     cta: 'Book a Call',
     underCta: 'From site to automation. Delivered by our Hong Kong team.',
   },
@@ -120,7 +120,7 @@ export const en = {
   services: {
     h2Before: 'Our',
     h2Highlight: 'Services',
-    sub: 'Websites first. AI and outreach when you need them.',
+    sub: 'Web design first. AI automation and outreach when you need them.',
     items: [
       { name: 'Web Design', headline: 'A site that wins you customers' },
       { name: 'SEO', headline: 'Get found on Google' },

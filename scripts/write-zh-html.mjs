@@ -11,12 +11,50 @@ const ZH_DESC =
   '香港網頁設計與 AI 自動化。建立專業可信的網站、提升自然流量，並在你準備好時加入 AI。由香港團隊執行。';
 const ZH_ALT = 'HKAAA 繁體主視覺：打造更好的網站、搜尋排名與工作流程';
 
+const ZH_SEO_STATIC = `<!--seo-static-start-->
+      <div data-seo-static lang="zh-Hant">
+        <h1>HKAAA｜香港網頁設計與 AI 自動化機構</h1>
+        <p>
+          HKAAA 是香港的網頁設計與 AI 自動化機構。我們建立客戶信得過的網站、幫你被找到，並在你準備好時加入自動化。團隊在香港。
+        </p>
+        <p>
+          服務包括：網頁設計、SEO、內容、聊天機械人、工作流程自動化與潛在客戶開發。
+        </p>
+        <p>預約通話，或電郵 info@hkaiautomation.com。</p>
+      </div>
+      <!--seo-static-end-->`;
+
 function replaceOnce(html, from, to, label) {
   if (!html.includes(from)) {
     console.warn(`write-zh-html: missing ${label}`);
     return html;
   }
   return html.replace(from, to);
+}
+
+function replaceSeoStatic(html, nextBlock) {
+  const re = /<!--seo-static-start-->[\s\S]*?<!--seo-static-end-->/;
+  if (!re.test(html)) {
+    console.warn('write-zh-html: missing seo-static block');
+    return html;
+  }
+  return html.replace(re, nextBlock);
+}
+
+function patchZhWebsiteJsonLd(html) {
+  let next = html.replace(
+    '"@id": "https://hkaiautomation.com/#website"',
+    '"@id": "https://hkaiautomation.com/zh#website"',
+  );
+  next = next.replace(
+    '"url": "https://hkaiautomation.com/",\n          "name": "HKAAA | Hong Kong Web Design & AI Automation",\n          "inLanguage": "en"',
+    `"url": "https://hkaiautomation.com/zh",\n          "name": "${ZH_TITLE}",\n          "description": "${ZH_DESC}",\n          "inLanguage": "zh-Hant"`,
+  );
+  next = next.replace(
+    '"url": "https://hkaiautomation.com/",\n          "name": "HKAAA | Hong Kong Web Design &amp; AI Automation",\n          "inLanguage": "en"',
+    `"url": "https://hkaiautomation.com/zh",\n          "name": "${ZH_TITLE}",\n          "description": "${ZH_DESC}",\n          "inLanguage": "zh-Hant"`,
+  );
+  return next;
 }
 
 let html = await readFile(src, 'utf8');
@@ -66,6 +104,9 @@ html = replaceOnce(
   '<link rel="canonical" href="https://hkaiautomation.com/zh" />',
   'canonical',
 );
+
+html = replaceSeoStatic(html, ZH_SEO_STATIC);
+html = patchZhWebsiteJsonLd(html);
 
 await mkdir(dirname(dest), { recursive: true });
 await writeFile(dest, html);
