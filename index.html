@@ -25,6 +25,20 @@
     <link rel="alternate" hreflang="en" href="https://hkaiautomation.com/" />
     <link rel="alternate" hreflang="zh-Hant" href="https://hkaiautomation.com/zh" />
     <link rel="alternate" hreflang="x-default" href="https://hkaiautomation.com/" />
+    <!-- Hide SEO bootstrap copy until React mounts (avoids white text flash). -->
+    <style>
+      [data-seo-static] {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
     <script type="application/ld+json" id="hkaaa-jsonld-bootstrap">
     {
       "@context": "https://schema.org",
